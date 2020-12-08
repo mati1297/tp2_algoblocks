@@ -1,0 +1,170 @@
+@startuml
+class Game {
+
+}
+
+class Player {
+
+}
+
+class Coordinates {
+
+}
+
+class Coordinate {
+
+}
+
+class Pencil {
+
+}
+
+interface PencilState {
+
+}
+
+class RaisedPencilState {
+
+}
+
+class LoweredPencilState {
+
+}
+
+class Whiteboard {
+
+}
+
+
+class Drawing {
+
+}
+
+class Line {
+
+}
+
+class Workspace {
+
+}
+
+class Algorithm {
+
+}
+
+class Sequence {
+
+}
+
+class Action {
+
+}
+
+class BlockPicker {
+
+}
+
+
+abstract class Block {
+
+}
+
+abstract class ActionBlock {
+
+}
+
+abstract class EffectBlock {
+
+}
+
+class MoveUp {
+
+}
+
+class MoveDown {
+
+}
+
+class MoveRight {
+
+}
+
+class MoveLeft {
+
+}
+
+class RaisePencil {
+
+}
+
+class LowerPencil {
+
+}
+
+class Repeat {
+
+}
+
+class Inverse {
+
+}
+
+class CustomBlock {
+
+}
+
+
+class Grid {
+
+}
+
+Game "1" o-- "1" Player
+Player "1" o-- "1" Coordinates
+Coordinates "1" o-- "2" Coordinate
+Player ..> Whiteboard
+
+Player "1" o-- "1" Pencil
+Pencil "1" o-- "1" PencilState
+PencilState <|.. RaisedPencilState
+PencilState <|.. LoweredPencilState
+
+Game "1" o--left "1" Whiteboard
+Whiteboard "1" o-- "1" Drawing
+Drawing "1" o-- "*" Line
+Line "1" o-- "2" Coordinates
+
+Game "1" o-- "1" BlockPicker
+BlockPicker "1" o-- "*" Block
+Block <|-- EffectBlock
+Block <|-- ActionBlock
+Block <|-- CustomBlock
+
+Game "1" o--right "1" Workspace
+Workspace "1" o-- "1" Algorithm
+Algorithm "1" o-- "*" Block
+
+
+Workspace "1" o-- "1" Sequence
+Sequence "1" o-- "*" Action
+
+ActionBlock <|-- MoveUp
+ActionBlock <|-- MoveDown
+ActionBlock <|-- MoveRight
+ActionBlock <|-- MoveLeft
+ActionBlock <|-- LowerPencil
+ActionBlock <|-- RaisePencil
+Action <..right ActionBlock
+
+EffectBlock <|-- Repeat
+EffectBlock <|-- Inverse
+
+
+
+Player o-- Grid
+Whiteboard o--Grid
+
+
+Algorithm ..> Sequence
+EffectBlock ..> Sequence
+CustomBlock ..> Sequence
+@enduml

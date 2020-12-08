@@ -1,0 +1,56 @@
+@startuml move_left
+
+actor User
+
+activate User
+User -> Game: pickBlock(moveLeft)
+activate Game
+Game -> BlockPicker: pickBlock(moveLeft)
+activate BlockPicker
+create moveLeftBlock
+BlockPicker --> moveLeftBlock: <<create>>
+activate moveLeftBlock
+return moveLeftBlock
+return moveLeftBlock
+
+Game -> Workspace: addBlock(moveLeftBlock)
+activate Workspace
+Workspace -> Algorithm: addBlock(moveLeftBlock)
+activate Algorithm
+deactivate Algorithm
+deactivate Workspace
+deactivate Game
+
+
+User -> Game: run()
+activate Game
+Game -> Workspace: compile()
+activate Workspace
+Workspace -> Algorithm: compile()
+activate Algorithm
+create Sequence
+Algorithm -> Sequence: <<create>>
+activate Sequence
+return sequence
+return sequence
+return sequence
+
+Game -> Player: do(sequence, Whiteboard)
+activate Player
+loop for every action in sequence
+Player -> Player: do(action)
+activate Player
+deactivate Player
+end
+deactivate Player
+deactivate Game
+deactivate User
+
+
+
+
+
+
+
+
+@enduml
