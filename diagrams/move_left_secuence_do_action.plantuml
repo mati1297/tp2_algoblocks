@@ -1,0 +1,35 @@
+@startuml move_left_do_action
+
+activate Player
+Player -> Player: do(moveLeft)
+activate Player
+
+Player -> Grid: moveLeft(oldCoordenate)
+activate Grid
+return newCoordenate
+
+Player -> Pencil: draw(oldCoordenate,\n newCoordenate)
+activate Pencil
+Pencil -> LoweredPencilState: draw(oldCoordenate, \n newCoordenate)
+activate LoweredPencilState
+LoweredPencilState -> Line: <<create>>
+activate Line
+return line
+return line
+return line
+
+Player -> Whiteboard: drawLine(line)
+activate Whiteboard
+Whiteboard -> Drawing: drawLine(line)
+activate Drawing
+deactivate Drawing
+deactivate Whiteboard
+deactivate Player
+deactivate Player
+
+
+
+
+
+
+@enduml
