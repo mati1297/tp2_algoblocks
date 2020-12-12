@@ -60,11 +60,6 @@ class Action {
 
 }
 
-class BlockPicker {
-
-}
-
-
 abstract class Block {
 
 }
@@ -121,7 +116,7 @@ class Grid {
 Game "1" o-- "1" Player
 Player "1" o-- "1" Coordinates
 Coordinates "1" o-- "2" Coordinate
-Player ..> Whiteboard
+Player -- Action
 
 Player "1" o-- "1" Pencil
 Pencil "1" o-- "1" PencilState
@@ -134,8 +129,7 @@ Drawing "1" o-- "*" Line
 Line "1" o-- "2" Coordinates
 Pencil "1" o-- "*" Line
 
-Game "1" o-- "1" BlockPicker
-BlockPicker "1" o-- "*" Block
+Game "1" o-- "*" Block
 Block <|-- EffectBlock
 Block <|-- ActionBlock
 Block <|-- CustomBlock
@@ -163,7 +157,7 @@ EffectBlock <|-- Inverse
 
 Player o-- Grid
 Whiteboard o--Grid
-
+Grid o-- Coordinate
 
 Algorithm ..> Sequence
 EffectBlock ..> Sequence
