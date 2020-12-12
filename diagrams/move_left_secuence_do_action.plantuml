@@ -1,7 +1,7 @@
 @startuml move_left_do_action
 
-activate Player
-Player -> Player: do(moveLeft)
+activate Game
+Game -> Player: do(moveLeft)
 activate Player
 
 Player -> Grid: moveLeft(oldCoordenate)
@@ -17,15 +17,16 @@ activate Line
 return line
 return line
 return line
+return line
 
-Player -> Whiteboard: drawLine(line)
+Game -> Whiteboard: drawLine(line)
 activate Whiteboard
 Whiteboard -> Drawing: drawLine(line)
 activate Drawing
 deactivate Drawing
 deactivate Whiteboard
 deactivate Player
-deactivate Player
+deactivate Game
 
 
 
