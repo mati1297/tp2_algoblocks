@@ -13,7 +13,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Rodrigo Vargas** - [github](https://github.com/Scuero)
 * **Matias Charrut** - [github](https://github.com/mati1297)
 
-Corrector: **{Corrector}**
+Corrector: **{Edson Justo}**
 
 ### Pre-requisitos
 
