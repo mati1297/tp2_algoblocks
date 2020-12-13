@@ -113,8 +113,19 @@ class Grid {
 
 }
 
+class Movement{
+    
+}
+
+class Direction{
+
+}
+
+class Position{
+    
+}
+
 Game "1" o-- "1" Player
-Player "1" o-- "1" Coordinates
 Coordinates "1" o-- "2" Coordinate
 Player -- Action
 
@@ -153,11 +164,17 @@ Action <..right ActionBlock
 EffectBlock <|-- Repeat
 EffectBlock <|-- Inverse
 
+Player *-- Movement
+Movement o-- Position
+Position o-- Grid
+Player ..> Direction
+Movement *-- Direction
+Whiteboard o-- Grid
+Coordinates "1" --o "1" Player
+Grid o-- Coordinates
+Position ..> Coordinates
+Movement ..> Coordinates
 
-
-Player o-- Grid
-Whiteboard o--Grid
-Grid o-- Coordinate
 
 Algorithm ..> Sequence
 EffectBlock ..> Sequence

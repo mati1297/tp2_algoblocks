@@ -4,8 +4,14 @@ activate Game
 Game -> Player: do(moveLeft)
 activate Player
 
-Player -> Grid: moveLeft(oldCoordenate)
+Player -> Movement: move(left, oldCoordenate)
+activate Movement
+Movement -> Position: nextPosition(left, oldCoordenate)
+activate Position
+Position -> Grid: isInGrid(oldCoordenate)
 activate Grid
+return newCoordenate
+return newCoordenate
 return newCoordenate
 
 Player -> Pencil: draw(oldCoordenate,\n newCoordenate)
