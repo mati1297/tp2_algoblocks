@@ -40,7 +40,15 @@ class Drawing {
 
 }
 
+abstract class Shape{
+
+}
+
 class Line {
+
+}
+
+class Blank {
 
 }
 
@@ -122,7 +130,7 @@ class Direction{
 }
 
 class Position{
-    
+
 }
 
 Game "1" o-- "1" Player
@@ -136,9 +144,11 @@ PencilState <|.. LoweredPencilState
 
 Game "1" o--left "1" Whiteboard
 Whiteboard "1" o-- "1" Drawing
-Drawing "1" o-- "*" Line
-Line "1" o-- "2" Coordinates
-Pencil "1" o-- "*" Line
+Drawing "1" o-- "*" Shape
+Shape "1" o-- "*" Coordinates
+Shape <|-- Line
+Shape <|-- Blank
+Pencil "1" o-- "*" Shape
 
 Game "1" o-- "*" Block
 Block <|-- EffectBlock
