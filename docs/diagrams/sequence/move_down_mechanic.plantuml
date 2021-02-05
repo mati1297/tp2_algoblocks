@@ -1,0 +1,38 @@
+@startuml move_down_mechanic
+
+":Player" -> ":Movement": move(DownDirection, position)
+Activate ":Player"
+Activate ":Movement"
+
+":Movement" -> ":DownDirection": move(position)
+Activate ":DownDirection"
+return newPosition
+
+":Movement" -> ":Grid": validate(newPosition)
+Activate ":Grid"
+
+":Grid" -> ":Bounds": validate(newPosition)
+Activate ":Bounds"
+
+loop for every Bound in Bounds
+
+  ":Bounds" -> ":Bound": validate(newPosition)
+  Activate ":Bound"
+
+  alt if out of bound
+    ":Bound" --> ":Bounds": newValidatedPosition
+  else
+    ":Bound" --> ":Bounds": newPosition
+  end
+
+  Deactivate ":Bound"
+
+end
+
+return finalPosition
+return finalPosition
+return finalPosition
+
+Deactivate ":Player"
+
+@enduml

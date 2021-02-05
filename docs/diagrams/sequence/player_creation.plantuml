@@ -1,0 +1,36 @@
+@startuml player_creation
+
+Actor User
+activate User
+create "player: Player"
+User -> "player: Player": new Player(grid)
+activate "player: Player"
+
+create "pencil: Pencil"
+"player: Player" -> "pencil: Pencil": new Pencil()
+activate "pencil: Pencil"
+create "state: RaisedPencilState"
+"pencil: Pencil" -> "state: RaisedPencilState": new RaisedPencilState()
+activate "state: RaisedPencilState"
+return state
+return pencil
+
+create "position: Coordinates"
+"player: Player" -> "position: Coordinates": new Coordinates()
+activate "position: Coordinates"
+return position
+
+create "movement: Movement"
+"player: Player" -> "movement: Movement": new Movement(grid)
+activate "movement: Movement"
+return position
+
+create "drawing: Drawing"
+"player: Player" -> "drawing: Drawing": new Drawing()
+activate "drawing: Drawing"
+return drawing
+
+return player
+deactivate User
+
+@enduml

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![Build Status](https://circleci.com/gh/mati1297/tp2_algoblocks.svg?style=svg)](https://circleci.com/gh/mati1297/tp2_algoblocks.svg?style=svg) [![codecov](https://codecov.io/gh/mati1297/tp2_algoblocks/branch/master/graph/badge.svg)](https://codecov.io/gh/mati1297/tp2_algoblocks)
 
 
 
@@ -13,7 +13,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Rodrigo Vargas** - [github](https://github.com/Scuero)
 * **Matias Charrut** - [github](https://github.com/mati1297)
 
-Corrector: **{Edson Justo}**
+Corrector: **Edson Justo**
+
+### Informe
+[overleaf](https://www.overleaf.com/read/whdthgdpzyyx)
 
 ### Pre-requisitos
 

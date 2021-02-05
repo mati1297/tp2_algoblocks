@@ -1,0 +1,52 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Sequence {
+    + run(player : Player)
+}
+
+abstract class Action {
+    {abstract}+ execute(player : Player)
+}
+
+class MoveUpAction {
+    + execute(player : Player)
+}
+
+class MoveDownAction {
+    + execute(player : Player)
+}
+
+class MoveRightAction {
+    + execute(player : Player)
+}
+
+class MoveLeftAction {
+    + execute(player : Player)
+}
+
+class RaisePencilAction {
+    + execute(player : Player)
+}
+
+class LowerPencilAction {
+    + execute(player : Player)
+}
+
+class Player {
+    + run(sequence : Sequence) : Drawing
+}
+
+Sequence "1" o--down "*" Action
+Player ..left Sequence
+Player <..left Action
+
+Action <|-- MoveDownAction
+Action <|-- MoveUpAction
+Action <|-- MoveLeftAction
+Action <|-- MoveRightAction
+Action <|-- RaisePencilAction
+Action <|-- LowerPencilAction
+
+
+@enduml

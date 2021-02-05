@@ -1,0 +1,57 @@
+@startuml move_down_from_blocks
+
+Actor User
+User -> ":Game": addBlockToWorkspace\n(MoveDownBlock)
+activate User
+activate ":Game"
+":Game" -> ":Workspace": addBlock(MoveDownBlock)
+activate ":Workspace"
+":Workspace" -> ":Algorithm": addBlock\n(MoveDownBlock)
+activate ":Algorithm"
+deactivate ":Algorithm"
+deactivate ":Workspace"
+deactivate ":Game"
+deactivate User
+
+User -> ":Game": run()
+activate User
+activate ":Game"
+":Game" -> ":Workspace": compile()
+activate ":Workspace"
+":Workspace" -> ":Algorithm": compile()
+activate ":Algorithm"
+":Algorithm" -> ":Sequence": new Sequence()
+activate ":Sequence"
+return sequence
+":Algorithm" -> ":MoveDownBlock": getSequence()
+activate ":MoveDownBlock"
+return sequenceWith\nMoveDownAction
+":Algorithm" -> ":Sequence": concatenate(sequenceWith\nMoveDown)
+activate ":Sequence"
+deactivate ":Sequence"
+return sequence
+return sequence
+
+
+":Game" -> ":Player": run(sequence)
+activate ":Player"
+":Player" -> ":Sequence": run(Player)
+activate ":Sequence"
+":Sequence" -> ":MoveDownAction": execute(Player)
+activate ":MoveDownAction"
+":MoveDownAction" -> ":Player": move(DownDirection)
+activate ":Player"
+":Player" -> ":Movement": move(DownDirection, position)
+activate ":Movement"
+return newPosition
+":Player" -> ":Pencil": draw(position, newPosition)
+activate ":Pencil"
+return shape
+deactivate ":Player"
+deactivate ":MoveDownAction"
+deactivate ":Sequence"
+return drawing
+deactivate ":Game"
+deactivate User
+
+@enduml

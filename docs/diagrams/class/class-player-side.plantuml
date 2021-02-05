@@ -1,0 +1,74 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Game {
+
+}
+
+class Player {
+    + run(sequence : Sequence) : Drawing
+    + move(direction : Direction)
+}
+
+class Coordinates {
+
+}
+
+class Coordinate {
+    - coordinate : int
+    + inc() : Coordinate
+    + dec() : Coordinate
+}
+
+class Pencil {
+    + draw(start : Coordinates, finish : Coordinates) : Shape
+    + raise()
+    + lower()
+}
+
+interface PencilState {
+    {abstract}+ draw(start : Coordinates, finish : Coordinates) : Shape
+}
+
+class RaisedPencilState {
+
+}
+
+class LoweredPencilState {
+
+}
+
+class Movement {
+    - grid : Grid
+    + move(direction : Direction, position : Coordinates) : Coordinates
+}
+
+interface Direction {
+    {abstract}+ move(actualCoords : Coordinates) : Coordinates
+}
+
+class Drawing {
+    - shapes : ArrayList<Shape>
+    + addShape(newShape : Shape)
+}
+
+
+Game "1" o-- "1" Player
+Coordinates "1" o-- "2" Coordinate
+
+Player "1" o--left "1" Pencil
+Player "1" o--down "1" Coordinates
+Player "1" o-- "1" Movement
+Player o--right "1" Drawing
+
+Sequence .. Player
+Direction <..left Player 
+
+Pencil o--down "1" PencilState
+PencilState <|.. RaisedPencilState
+PencilState <|.. LoweredPencilState
+
+Direction <.. Movement
+Coordinates <.. Movement
+
+@enduml

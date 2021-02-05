@@ -13,3 +13,4 @@ buildNumber.properties
 *.class
 *.png
 *.jar
+.settings

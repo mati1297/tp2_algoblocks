@@ -1,0 +1,72 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface Block {
+    {abstract}+ getSequence() : Sequence
+}
+
+interface ActionBlock {
+    {abstract}+ getInvertedSequence() : Sequence
+}
+
+abstract class EffectBlock {
+
+}
+
+class MoveUpBlock {
+
+}
+
+class MoveDownBlock {
+
+}
+
+class MoveRightBlock {
+
+}
+
+class MoveLeftBlock {
+
+}
+
+class RaisePencilBlock {
+
+}
+
+class LowerPencilBlock {
+
+}
+
+class RepeatBlock {
+
+}
+
+class InverseBlock {
+
+}
+
+class CustomBlock {
+
+}
+
+Algorithm "1" o-- "*" Block
+
+Sequence <..left Block
+Block <|..right EffectBlock
+
+Block <|--down ActionBlock
+Block <|..left CustomBlock
+
+EffectBlock <|-- RepeatBlock
+EffectBlock <|-- InverseBlock
+
+ActionBlock <|.. MoveUpBlock
+ActionBlock <|.. MoveDownBlock
+ActionBlock <|.. MoveRightBlock
+ActionBlock <|.. MoveLeftBlock
+ActionBlock <|.. LowerPencilBlock
+ActionBlock <|.. RaisePencilBlock
+
+
+
+@enduml

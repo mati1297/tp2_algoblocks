@@ -1,0 +1,35 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Game {
+    +run()
+    +addBlockToWorkspace(newBlock : Block)
+}
+
+class Workspace {
+    - algorithm : Algorithm
+    + compile() : Sequence
+    + addBlock(newBlock : Block)
+}
+
+class Player {
+    + run(sequence : Sequence) : Drawing
+}
+
+class Whiteboard {
+    - drawing : Drawing
+    + draw(newDrawing : Drawing)
+}
+
+interface Block {
+
+}
+
+Game o-- Player
+Game o-- Workspace
+Game o-- Whiteboard
+
+Block <..right Game
+Block <.. Workspace
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml lower_pencil_from_blocks
+
+Actor User
+User -> ":Game": addBlockToWorkspace\n(LowerPencilBlock)
+activate User
+activate ":Game"
+":Game" -> ":Workspace": addBlock(LowerPencilBlock)
+activate ":Workspace"
+":Workspace" -> ":Algorithm": addBlock\n(LowerPencilBlock)
+activate ":Algorithm"
+deactivate ":Algorithm"
+deactivate ":Workspace"
+deactivate ":Game"
+deactivate User
+
+User -> ":Game": run()
+activate User
+activate ":Game"
+":Game" -> ":Workspace": compile()
+activate ":Workspace"
+":Workspace" -> ":Algorithm": compile()
+activate ":Algorithm"
+":Algorithm" -> ":Sequence": new Sequence()
+activate ":Sequence"
+return sequence
+":Algorithm" -> ":LowerPencilBlock": getSequence()
+activate ":LowerPencilBlock"
+return sequenceWith\nLowerPencilAction
+":Algorithm" -> ":Sequence": concatenate(sequenceWith\nLowerPencil)
+activate ":Sequence"
+deactivate ":Sequence"
+return sequence
+return sequence
+
+
+":Game" -> ":Player": run(sequence)
+activate ":Player"
+":Player" -> ":Sequence": run(Player)
+activate ":Sequence"
+":Sequence" -> ":LowerPencilAction": execute(Player)
+activate ":LowerPencilAction"
+":LowerPencilAction" -> ":Player": lowerPencil()
+activate ":Player"
+":Player" -> ":Pencil": lower()
+activate ":Pencil"
+deactivate ":Pencil"
+deactivate ":Player"
+deactivate ":LowerPencilAction"
+deactivate ":Sequence"
+return drawing
+deactivate ":Game"
+deactivate User
+
+@enduml
