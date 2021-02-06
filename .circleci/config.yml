@@ -16,7 +16,7 @@ jobs:
           path:  target
     env:
       global:
-        - CODECOV_TOKEN=:uuid-repo-token
+        - CODECOV_TOKEN=bc798755-e8b6-45c8-8dae-1877d6a5fc42
     after_success:
       - bash <(curl -s https://codecov.io/bash)
     
