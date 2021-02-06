@@ -1,0 +1,1 @@
+Actualizar diagramas de clase: EffectBlock debe conocer a ActionBlock ya que se le pasan ActionBlocks.
