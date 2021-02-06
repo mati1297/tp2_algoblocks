@@ -2,7 +2,10 @@ package algoblocks.engine;
 
 import org.junit.jupiter.api.Test;
 
+import jdk.jfr.Timestamp;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class EffectBlockTest {
     @Test
@@ -23,6 +26,7 @@ public class EffectBlockTest {
 
         assertTrue(repeatSequence.equals(testSequence));
     }
+
 
     @Test
     public void RepeatTwoTimesBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){
@@ -85,4 +89,74 @@ public class EffectBlockTest {
 
         assertTrue(repeatSequence.equals(testSequence));
     }
+
+    @Test
+    public void RepeatingTwoTimesAThreeTimesBlockRepeatItsActionSixTimes(){
+        ActionBlock moveDownBlock = new MoveDownBlock();
+
+        EffectBlock repeatThreeTimes = new RepeatThreeTimesBlock();
+        EffectBlock repeatTwoTimes = new RepeatTwoTimesBlock();
+
+        repeatThreeTimes.addBlock(moveDownBlock);
+        repeatTwoTimes.addBlock(repeatThreeTimes);
+        
+        Sequence repeatSequence = repeatTwoTimes.getSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+
+        assertTrue(repeatSequence.equals(testSequence));
+    }
+
+    @Test
+    public void InvertBlockWithRaisePencilReturnSequenceWithLowerPencil(){
+        ActionBlock raisePencilBlock = new RaisePencilBlock();
+
+        EffectBlock invertBlock = new InvertBlock();
+        invertBlock.addBlock(raisePencilBlock);
+
+        Sequence invertedSequence = invertBlock.getSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(raisePencilBlock.getInvertedSequence());
+
+        assertTrue(invertedSequence.equals(testSequence));
+
+    }
+
+    @Test
+    public void InvertBlockWithRaisePencilReturnInvertedSequenceWithRaisePencil(){
+        ActionBlock raisePencilBlock = new RaisePencilBlock();
+
+        EffectBlock invertBlock = new InvertBlock();
+        invertBlock.addBlock(raisePencilBlock);
+
+        Sequence invertedSequence = invertBlock.getInvertedSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(raisePencilBlock.getSequence());
+
+        assertTrue(invertedSequence.equals(testSequence));
+
+    }
+
+
+    @Test
+    public void InvertingAnInvertBlockReturnOriginalAction(){
+        ActionBlock raisePencilBlock = new RaisePencilBlock();
+
+        EffectBlock invertBlockOne = new InvertBlock();
+        EffectBlock invertBlockTwo = new InvertBlock();
+        invertBlockOne.addBlock(raisePencilBlock);
+        invertBlockTwo.addBlock(invertBlockOne);
+
+        Sequence doubleInvertedSequence = invertBlockTwo.getSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(raisePencilBlock.getSequence());
+
+        assertTrue(doubleInvertedSequence.equals(testSequence));
+    }
+
 }
