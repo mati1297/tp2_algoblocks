@@ -8,7 +8,7 @@ public class BoundTest {
   public void validatePositiveXBound() {
     Bound bound = new PositiveXBound(5);
     Coordinates coordinatesToValidate = new Coordinates(6, 0);
-    Coordinates expectedValidatedCoordinates = new Coordinates(-5, 0);
+    Coordinates expectedValidatedCoordinates = new Coordinates(5, 0);
 
     assertTrue(bound.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -17,7 +17,7 @@ public class BoundTest {
   public void validateNegativeXBound() {
     Bound bound = new NegativeXBound(-5);
     Coordinates coordinatesToValidate = new Coordinates(-6, 0);
-    Coordinates expectedValidatedCoordinates = new Coordinates(5, 0);
+    Coordinates expectedValidatedCoordinates = new Coordinates(-5, 0);
 
     assertTrue(bound.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -26,7 +26,7 @@ public class BoundTest {
   public void validatePositiveYBound() {
     Bound bound = new PositiveYBound(5);
     Coordinates coordinatesToValidate = new Coordinates(0, 6);
-    Coordinates expectedValidatedCoordinates = new Coordinates(0, -5);
+    Coordinates expectedValidatedCoordinates = new Coordinates(0, 5);
 
     assertTrue(bound.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -35,7 +35,7 @@ public class BoundTest {
   public void validateNegativeYBound() {
     Bound bound = new NegativeYBound(-5);
     Coordinates coordinatesToValidate = new Coordinates(0, -6);
-    Coordinates expectedValidatedCoordinates = new Coordinates(0, 5);
+    Coordinates expectedValidatedCoordinates = new Coordinates(0, -5);
 
     assertTrue(bound.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
