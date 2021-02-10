@@ -8,7 +8,7 @@ public class GridTest {
   public void validatePositiveXBound() {
     Grid grid = new Grid();
     Coordinates coordinatesToValidate = new Coordinates(6, 0);
-    Coordinates expectedValidatedCoordinates = new Coordinates(-5, 0);
+    Coordinates expectedValidatedCoordinates = new Coordinates(5, 0);
 
     assertTrue(grid.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -17,7 +17,7 @@ public class GridTest {
   public void validateNegativeXBound() {
     Grid grid = new Grid();
     Coordinates coordinatesToValidate = new Coordinates(-6, 0);
-    Coordinates expectedValidatedCoordinates = new Coordinates(5, 0);
+    Coordinates expectedValidatedCoordinates = new Coordinates(-5, 0);
 
     assertTrue(grid.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -26,7 +26,7 @@ public class GridTest {
   public void validatePositiveYBound() {
     Grid grid = new Grid();
     Coordinates coordinatesToValidate = new Coordinates(0, 6);
-    Coordinates expectedValidatedCoordinates = new Coordinates(0, -5);
+    Coordinates expectedValidatedCoordinates = new Coordinates(0, 5);
 
     assertTrue(grid.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
@@ -35,7 +35,7 @@ public class GridTest {
   public void validateNegativeYBound() {
     Grid grid = new Grid();
     Coordinates coordinatesToValidate = new Coordinates(0, -6);
-    Coordinates expectedValidatedCoordinates = new Coordinates(0, 5);
+    Coordinates expectedValidatedCoordinates = new Coordinates(0, -5);
 
     assertTrue(grid.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
   }
