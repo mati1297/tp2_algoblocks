@@ -1,14 +1,19 @@
 package algoblocks.engine;
 
-public class RepeatThreeTimesBlock extends EffectBlock{
+public class RepeatBlock extends EffectBlock{
 
-  public RepeatThreeTimesBlock(){
+  private int times;
+
+  public RepeatBlock(int times){
     super();
+    this.times = 2;
+    if(times >= 2)
+      this.times = times;
   }
 
   public Sequence getSequence() {
     Sequence sequence = new Sequence();
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < times; i++){
       for(Block block: blocks)
         sequence.concatenate(block.getSequence());
     }
@@ -17,7 +22,7 @@ public class RepeatThreeTimesBlock extends EffectBlock{
 
   public Sequence getInvertedSequence() {
     Sequence sequence = new Sequence();
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < times; i++){
       for(Block block: blocks)
         sequence.concatenate(block.getInvertedSequence());
     }
