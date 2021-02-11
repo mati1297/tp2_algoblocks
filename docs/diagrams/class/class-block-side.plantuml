@@ -51,11 +51,11 @@ class CustomBlock {
 
 Algorithm "1" o-- "*" Block
 
-Sequence <..left Block
+Sequence <..right Block
 Block <|..right EffectBlock
 
 Block <|--down ActionBlock
-Block <|..left CustomBlock
+EffectBlock <|--right CustomBlock
 
 EffectBlock <|-- RepeatBlock
 EffectBlock <|-- InverseBlock
