@@ -1,0 +1,40 @@
+@startuml move_player_with_pencil_down
+
+activate ":Game"
+    ":Game" -> "player:Player": run(sequence)
+    activate "player:Player"
+        "player:Player" -> "sequence:Sequence": run(player)
+        activate "sequence:Sequence"
+            "sequence:Sequence" -> ":LowerPencilAction": execute(player)
+            activate ":LowerPencilAction"
+                ":LowerPencilAction" -> "player:Player": lowerPencil()
+                activate "player:Player"
+                    "player:Player" -> ":Pencil": lower()
+                    activate ":Pencil"
+                        create "state:LowerPencilState"
+                            ":Pencil" -> "state:LowerPencilState": new()
+                    deactivate ":Pencil"
+                deactivate "player:Player"
+            deactivate ":LowerPencilAction"
+            "sequence:Sequence" -> ":MoveDownAction": execute(player)
+            activate ":MoveDownAction"
+                ":MoveDownAction" -> "player:Player": move(direction)
+                activate "player:Player"
+                    "player:Player" -> ":Pencil": draw(oldPos, newPos)
+                    activate ":Pencil"
+                        ":Pencil" -> "state:LowerPencilState": draw(start, finish)
+                        activate "state:LowerPencilState"
+                            create "line:Line"
+                            "state:LowerPencilState" -> "line:Line": new()
+                        return line
+                    return line
+                    "player:Player" -> ":Drawing": addShape(line)
+                    activate ":Drawing"
+                    deactivate ":Drawing"
+                deactivate "player:Player"
+            deactivate ":MoveDownAction"
+        deactivate "sequence:Sequence"
+    return drawing
+deactivate ":Game"
+
+@enduml
