@@ -1,0 +1,23 @@
+@startuml compile_invert_twice_block
+
+":Algorithm" -> "invert:InvertBlock": getSequence()
+activate ":Algorithm"
+Activate "invert:InvertBlock"
+Create "sequence:Sequence"
+"invert:InvertBlock" --> "sequence:Sequence": <<create>>
+
+
+loop for every block in blocks
+    "invert:InvertBlock" -> "block:Block": getInvertedSequence()
+    activate "block:Block"
+    return sequenceWithActions
+    "invert:InvertBlock" -> "sequence:Sequence": concatenate(\n sequenceWithAction)
+    activate "sequence:Sequence"
+    deactivate "sequence:Sequence"
+end
+
+return sequence
+deactivate ":Algorithm"
+
+
+@enduml

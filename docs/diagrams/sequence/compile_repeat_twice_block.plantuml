@@ -1,0 +1,25 @@
+@startuml compile_repeat_twice_block
+
+":Algorithm" -> "repeatTwice: RepeatBlock": getSequence()
+activate ":Algorithm"
+Activate "repeatTwice:RepeatBlock"
+Create "sequence:Sequence"
+"repeatTwice:RepeatBlock" --> "sequence:Sequence": <<create>>
+
+
+Loop twice
+    loop for every block in blocks
+        "repeatTwice:RepeatBlock" -> "block:Block": getSequence()
+        activate "block:Block"
+        return sequenceWithActions
+        "repeatTwice:RepeatBlock" -> "sequence:Sequence": concatenate(\n sequenceWithAction)
+        activate "sequence:Sequence"
+        deactivate "sequence:Sequence"
+    end
+end
+
+return sequence
+deactivate ":Algorithm"
+
+
+@enduml
