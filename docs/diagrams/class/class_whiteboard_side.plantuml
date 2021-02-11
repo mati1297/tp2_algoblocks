@@ -1,0 +1,53 @@
+@startuml class_whiteboard_side
+skinparam classAttributeIconSize 0
+
+class Whiteboard{
+    + draw(newDrawing: Drawing)
+}
+
+class Drawing{
+    + isBlank()
+    + addShape()
+}
+
+abstract class Shape{
+    
+}
+
+class Blank{
+
+}
+
+class Line{
+
+}
+
+class Coordinates{
+
+}
+
+class Coordinate{
+
+}
+
+class Grid {
+    - limits: Limits
+    + validate(): Coordinates
+}
+
+Whiteboard "1" o--left Drawing
+Whiteboard "1" o--right Grid
+
+Drawing "1" o-- "*" Shape
+
+Shape <|-- Blank
+
+Shape <|-- Line
+
+
+
+Shape "1" o--right "2" Coordinates
+
+Coordinates "1" o-- "2" Coordinate
+
+@enduml
