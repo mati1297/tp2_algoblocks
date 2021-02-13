@@ -1,4 +1,4 @@
-package algoblocks.engine;
+package algoblocks.gui;
 
 
 import javafx.application.Application;
