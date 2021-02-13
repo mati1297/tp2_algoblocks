@@ -1,5 +1,7 @@
 package algoblocks.engine;
 
+import algoblocks.engine.action.*;
+import algoblocks.engine.block.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

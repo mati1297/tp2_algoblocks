@@ -1,6 +1,9 @@
 package algoblocks.engine;
 
 
+import algoblocks.engine.action.Sequence;
+import algoblocks.engine.block.Block;
+
 public class Workspace{
     private Algorithm algorithm;
 

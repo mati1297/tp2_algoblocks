@@ -1,5 +1,7 @@
 package algoblocks.engine;
 
+import algoblocks.engine.grid.Coordinate;
+import algoblocks.engine.grid.Coordinates;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

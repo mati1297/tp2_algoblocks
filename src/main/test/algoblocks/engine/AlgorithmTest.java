@@ -1,5 +1,8 @@
 package algoblocks.engine;
 
+import algoblocks.engine.action.MoveUpAction;
+import algoblocks.engine.action.Sequence;
+import algoblocks.engine.block.MoveUpBlock;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,5 +1,10 @@
 package algoblocks.engine;
 
+import algoblocks.engine.action.Sequence;
+import algoblocks.engine.block.Block;
+import algoblocks.engine.grid.Grid;
+import algoblocks.engine.player.Player;
+
 public class Game{
     private Workspace workspace;
     private Player player;

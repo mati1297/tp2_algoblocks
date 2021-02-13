@@ -1,5 +1,8 @@
 package algoblocks.engine;
 
+import algoblocks.engine.action.Sequence;
+import algoblocks.engine.block.Block;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;

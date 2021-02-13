@@ -1,5 +1,8 @@
 package algoblocks.engine;
 
+import algoblocks.engine.drawing.Drawing;
+import algoblocks.engine.grid.Grid;
+
 public class Whiteboard {
   Drawing drawing;
   Grid grid;

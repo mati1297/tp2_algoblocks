@@ -1,5 +1,9 @@
 package algoblocks.engine;
 
+import algoblocks.engine.drawing.Blank;
+import algoblocks.engine.drawing.Drawing;
+import algoblocks.engine.drawing.Line;
+import algoblocks.engine.grid.Coordinates;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
