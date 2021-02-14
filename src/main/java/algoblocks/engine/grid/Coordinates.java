@@ -81,7 +81,8 @@ public class Coordinates {
 
     public ArrayList<Integer> toInt(){
         ArrayList<Integer> array = new ArrayList<Integer>();
-        array.add(x.toInt(), y.toInt());
+        array.add(x.toInt());
+        array.add(y.toInt());
         return array;
     }
 }

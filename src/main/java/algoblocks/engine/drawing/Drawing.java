@@ -1,6 +1,7 @@
 package algoblocks.engine.drawing;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Drawing {
   private ArrayList<Shape> shapes;
@@ -57,5 +58,9 @@ public class Drawing {
 
   public boolean isEmpty() {
     return shapes.isEmpty();
+  }
+
+  public void forEach(Consumer<? super Shape> action){
+    shapes.forEach(action);
   }
 }
