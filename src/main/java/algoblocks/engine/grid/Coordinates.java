@@ -1,5 +1,7 @@
 package algoblocks.engine.grid;
 
+import java.util.ArrayList;
+
 public class Coordinates {
     private Coordinate x;
     private Coordinate y;
@@ -75,5 +77,11 @@ public class Coordinates {
 
     public boolean isYBiggerThan(Coordinate YCoordinate) {
         return y.isBiggerThan(YCoordinate);
+    }
+
+    public ArrayList<Integer> toInt(){
+        ArrayList<Integer> array = new ArrayList<Integer>();
+        array.add(x.toInt(), y.toInt());
+        return array;
     }
 }

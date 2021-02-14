@@ -47,4 +47,8 @@ public class Coordinate {
     public boolean isBiggerThan(Coordinate otherCoordinate) {
         return coordinate > otherCoordinate.coordinate;
     }
+
+    public int toInt(){
+        return coordinate;
+    }
 }
