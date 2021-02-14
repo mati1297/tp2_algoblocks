@@ -8,6 +8,7 @@ import algoblocks.engine.drawing.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -23,14 +24,19 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
+import java.util.ArrayList;
+
 public class Main extends Application{
 
-    private static final int WINDOW_HEIGHT=600;//900;
-    private static final int WINDOW_WIDTH=800;//1600;
+    private static final int WINDOW_HEIGHT = 600;//900;
+    private static final int WINDOW_WIDTH = 800;//1600;
+    private static final double GRID_HEIGHT = WINDOW_HEIGHT * 9 / 10;
+    private static final double GRID_WIDTH = WINDOW_WIDTH * 7 / 10;
 
     private static Game game;
 
@@ -51,6 +57,7 @@ public class Main extends Application{
 //        moveLeft.setPadding(Insets.EMPTY);
 
         ListView algorithmContainer = new ListView();
+        algorithmContainer.setPrefHeight(WINDOW_HEIGHT * 8 / 10);
         
         //El string deberia salir del nombre del bloque.
         Button moveUpButton = new Button();
@@ -68,6 +75,7 @@ public class Main extends Application{
 
 
         HBox blockContainer = new HBox();
+        blockContainer.setPrefHeight(WINDOW_HEIGHT / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
         blockContainer.getChildren().addAll(moveUpButton,
@@ -79,8 +87,8 @@ public class Main extends Application{
 
         
 
-        Label gridLabel = new Label("grid");
-        Pane gridContainer = new Pane(gridLabel);
+//        Label gridLabel = new Label("grid");
+//        Pane gridContainer = new Pane(gridLabel);
 
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -101,12 +109,15 @@ public class Main extends Application{
             }
         });
         
-
+        Pane gridCanvas = new Pane();
+        gridCanvas.setPrefHeight(GRID_HEIGHT);
+        gridCanvas.setPrefWidth(GRID_WIDTH);
         Button runButton = new Button("Run");
         runButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 game.run();
                 Drawing drawing = game.getDrawing();
+                drawGrid(drawing, gridCanvas);
             }
         });
 
@@ -118,8 +129,7 @@ public class Main extends Application{
 
 
         HBox secondaryContainer = new HBox();
-//        secondaryContainer.set
-        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, gridContainer);
+        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, gridCanvas);
 
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
@@ -139,6 +149,27 @@ public class Main extends Application{
                 game.addBlockToWorkspace(block);
             }
         });
-        
+    }
+
+    public void drawGrid(Drawing drawing, Pane grid){
+        grid.getChildren().clear(); // NO SE XQ NO SE LIMPIA CON ESTO
+        drawing.forEach((Shape shape) -> {
+            ArrayList<Integer> start = shape.getStart();
+            ArrayList<Integer> end = shape.getFinish();
+            grid.getChildren().add(createLine(start, end));
+        });
+    }
+
+    public Line createLine(ArrayList<Integer> start, ArrayList<Integer> end){
+        Line line = new Line();
+        line.setStroke(Color.BLACK);
+        line.setStrokeWidth(5);
+
+        line.setStartX((start.get(0) + 5) *  GRID_WIDTH / 10);
+        line.setEndX((end.get(0) + 5) * GRID_WIDTH / 10);
+        line.setStartY((start.get(1) + 5) * GRID_HEIGHT / 10);  // VER TEMA EJE 'Y' ESPEJADO
+        line.setEndY((end.get(1) + 5) * GRID_HEIGHT / 10);
+
+        return line;
     }
 }
