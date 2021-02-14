@@ -18,6 +18,15 @@ public class Algorithm{
         blocks.add(newBlock);
     }
 
+    public void deleteBlock(int index){
+        //validar
+        blocks.remove(index);
+    }
+
+    public void clear(){
+        blocks.clear();
+    }
+
     public Sequence compile(){
         Sequence output = new Sequence();
 

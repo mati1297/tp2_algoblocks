@@ -15,4 +15,8 @@ public class Whiteboard {
   public void draw(Drawing newDrawing) {
     drawing = newDrawing;
   }
+
+  public Drawing getDrawing(){
+    return drawing;
+  }
 }

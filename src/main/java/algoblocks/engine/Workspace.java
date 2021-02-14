@@ -15,6 +15,15 @@ public class Workspace{
         algorithm.addBlock(newBlock);
     }
 
+    public void deleteBlock(int index){
+        //validar
+        algorithm.deleteBlock(index);
+    }
+
+    public void clear(){
+        algorithm.clear();
+    }
+
     public Sequence compile(){
         return algorithm.compile();
     }

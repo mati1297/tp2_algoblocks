@@ -1,9 +1,10 @@
 package algoblocks.engine;
 
-import algoblocks.engine.action.Sequence;
-import algoblocks.engine.block.Block;
-import algoblocks.engine.grid.Grid;
-import algoblocks.engine.player.Player;
+import algoblocks.engine.action.*;
+import algoblocks.engine.block.*;
+import algoblocks.engine.grid.*;
+import algoblocks.engine.player.*;
+import algoblocks.engine.drawing.*;
 
 public class Game{
     private Workspace workspace;
@@ -23,6 +24,19 @@ public class Game{
 
     public void addBlockToWorkspace(Block newBlock){
         workspace.addBlock(newBlock);
+    }
+
+    public void deleteBlockFromWorkspace(int index){
+        //validar
+        workspace.deleteBlock(index);
+    }
+
+    public void clearWorkspace(){
+        workspace.clear();
+    }
+
+    public Drawing getDrawing(){
+        return whiteboard.getDrawing();
     }
 
     public Player getPlayer(){
