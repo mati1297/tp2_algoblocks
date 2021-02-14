@@ -9,6 +9,13 @@ public class Drawing {
     shapes = new ArrayList<Shape>();
   }
 
+  public Drawing(Drawing drawing){
+    this.shapes = new ArrayList<Shape>();
+    for (Shape shape: drawing.shapes){
+        this.shapes.add(shape.makeCopy());
+    }
+  }
+
   @Override
   public boolean equals(Object object) {
     if (object == null || getClass() != object.getClass())

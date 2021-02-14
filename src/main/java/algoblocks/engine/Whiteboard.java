@@ -17,6 +17,6 @@ public class Whiteboard {
   }
 
   public Drawing getDrawing(){
-    return drawing;
+    return new Drawing(drawing);
   }
 }

@@ -4,6 +4,7 @@ package algoblocks.gui;
 import algoblocks.engine.*;
 import algoblocks.engine.block.*;
 import algoblocks.engine.grid.*;
+import algoblocks.engine.drawing.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -105,6 +106,7 @@ public class Main extends Application{
         runButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 game.run();
+                Drawing drawing = game.getDrawing();
             }
         });
 
