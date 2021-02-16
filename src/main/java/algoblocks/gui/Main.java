@@ -44,7 +44,7 @@ import java.util.Arrays;
 
 public class Main extends Application {
     private static final Window window = new Window();
-    private static final double GRID_WIDTH = window.getWidth() * 0.4;
+    private static final double GRID_WIDTH = window.getWidth() * 0.6;
     private static final double GRID_HEIGHT = GRID_WIDTH;
     private static final ArrayList<Block> BASE_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
         new MoveUpBlock(),
@@ -74,7 +74,7 @@ public class Main extends Application {
 //      moveLeft.setPadding(Insets.EMPTY);
 
         ListView<String> algorithmContainer = new ListView<String>();
-        algorithmContainer.setPrefHeight(window.getHeight() * 8 / 10);
+        algorithmContainer.setPrefHeight(window.getHeight() * 0.8);
         algorithmContainer.setId("algorithmContainer");
 
         HBox blockContainer = new HBox();
@@ -88,10 +88,11 @@ public class Main extends Application {
 //      Label gridLabel = new Label("grid");
 //      Pane gridContainer = new Pane(gridLabel);
 
-        Pane whiteboardCanvas = new Pane();
-        whiteboardCanvas.setId("Whiteboard");
+        StackPane whiteboardCanvas = new StackPane(); 
+        whiteboardCanvas.setId("whiteboard");
         whiteboardCanvas.setPrefHeight(GRID_HEIGHT);
         whiteboardCanvas.setPrefWidth(GRID_WIDTH);
+        // whiteboardCanvas.setAlignment(Pos.CENTER_LEFT);
 
         Button deleteButton = buttonConstructor("Delete", actionConstructor(() -> {
             int index = algorithmContainer.getSelectionModel().getSelectedIndex();
@@ -126,8 +127,8 @@ public class Main extends Application {
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
         mainContainer.setAlignment(Pos.CENTER);
+
         Scene scene = new Scene(mainContainer, window.getWidth(), window.getHeight());
-//      scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         scene.getStylesheets().add("File:src/main/java/algoblocks/gui/styles.css");
 
 //      scene.setCursor(Cursor.MOVE);
