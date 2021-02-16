@@ -1,8 +1,5 @@
 package algoblocks.engine.grid;
 
-import algoblocks.engine.grid.Bound;
-import algoblocks.engine.grid.Coordinates;
-
 public class NegativeXBound extends Bound {
   public NegativeXBound(int newXBound) {
     super(newXBound);

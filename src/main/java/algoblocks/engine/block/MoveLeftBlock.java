@@ -4,7 +4,11 @@ import algoblocks.engine.action.Sequence;
 import algoblocks.engine.action.MoveLeftAction;
 import algoblocks.engine.action.MoveRightAction;
 
-public class MoveLeftBlock implements ActionBlock {
+public class MoveLeftBlock extends ActionBlock {
+  public MoveLeftBlock() {
+    super("Move Left");
+  }
+
   public Sequence getSequence() {
     return new Sequence(new MoveLeftAction());
   }

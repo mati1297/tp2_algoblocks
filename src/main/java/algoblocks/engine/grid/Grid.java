@@ -2,9 +2,15 @@ package algoblocks.engine.grid;
 
 public class Grid {
   private Limits limits;
+  private Size gridSize;
 
-  public Grid(int length, int height) {
-    limits = new Limits(length, height);
+  public Grid(int width, int height) {
+    limits = new Limits(width, height);
+    gridSize = new Size(width, height);
+  }
+
+  public Size getSize() {
+    return gridSize;
   }
 
   public Grid() {

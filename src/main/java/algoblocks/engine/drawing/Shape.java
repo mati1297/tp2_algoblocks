@@ -1,16 +1,19 @@
 package algoblocks.engine.drawing;
 
 import algoblocks.engine.grid.Coordinates;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
 public abstract class Shape {
     protected Coordinates start;
     protected Coordinates finish;
+    private Color color;
 
-    public Shape(Coordinates start, Coordinates finish) {
+    public Shape(Coordinates start, Coordinates finish, Color color) {
         this.start = start;
         this.finish = finish;
+        this.color = color;
     }
 
     public abstract Shape makeCopy();
@@ -28,11 +31,15 @@ public abstract class Shape {
         return start.equals(someShape.start) && finish.equals(someShape.finish);
     }
 
-    public ArrayList<Integer> getStart(){
-        return start.toInt();
+    public Color getColor() {
+        return color;
     }
 
-    public ArrayList<Integer> getFinish(){
-        return finish.toInt();
+    public Coordinates getStart(){
+        return start;
+    }
+
+    public Coordinates getFinish(){
+        return finish;
     }
 }

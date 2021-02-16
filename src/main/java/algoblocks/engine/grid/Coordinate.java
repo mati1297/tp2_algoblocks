@@ -48,7 +48,7 @@ public class Coordinate {
         return coordinate > otherCoordinate.coordinate;
     }
 
-    public int toInt(){
+    public int getValue() {
         return coordinate;
     }
 }

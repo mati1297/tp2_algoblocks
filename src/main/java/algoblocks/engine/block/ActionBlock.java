@@ -2,7 +2,11 @@ package algoblocks.engine.block;
 
 import algoblocks.engine.action.Sequence;
 
-public interface ActionBlock extends Block {
-    public Sequence getSequence();
-    public Sequence getInvertedSequence();
+public abstract class ActionBlock extends Block {
+    public ActionBlock(String name) {
+        super(name);
+    };
+
+    public abstract Sequence getSequence();
+    public abstract Sequence getInvertedSequence();
 }

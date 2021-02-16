@@ -19,6 +19,10 @@ public class Player {
         drawing = new Drawing();
     }
 
+    public void resetPosition() {
+        position = new Coordinates();
+    }
+
     public void move(Direction direction) {
         Coordinates newPosition = movement.move(direction, position);
         drawing.addShape(pencil.draw(new Coordinates(position), newPosition));

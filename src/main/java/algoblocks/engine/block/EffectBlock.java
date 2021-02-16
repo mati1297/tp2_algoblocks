@@ -4,7 +4,7 @@ import algoblocks.engine.action.Sequence;
 
 import java.util.ArrayList;
 
-public abstract class EffectBlock implements Block {
+public abstract class EffectBlock extends Block {
     protected ArrayList<Block> blocks;
 
     public EffectBlock(){

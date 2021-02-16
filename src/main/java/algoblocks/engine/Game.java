@@ -18,8 +18,13 @@ public class Game{
     }
 
     public void run() {
+        player.resetPosition();
         Sequence sequence = workspace.compile();
         whiteboard.draw(player.run(sequence));
+    }
+
+    public Size getGridSize() {
+        return whiteboard.getSize();
     }
 
     public void addBlockToWorkspace(Block newBlock){

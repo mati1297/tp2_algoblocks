@@ -39,6 +39,14 @@ public class Coordinates {
         return x.equals(someCoordinates.x) && y.equals(someCoordinates.y);
     }
 
+    public int getX() {
+        return x.getValue();
+    }
+
+    public int getY() {
+        return y.getValue();
+    }
+
     public Coordinates incX() {
         return new Coordinates(x.inc(), y);
     }
@@ -77,12 +85,5 @@ public class Coordinates {
 
     public boolean isYBiggerThan(Coordinate YCoordinate) {
         return y.isBiggerThan(YCoordinate);
-    }
-
-    public ArrayList<Integer> toInt(){
-        ArrayList<Integer> array = new ArrayList<Integer>();
-        array.add(x.toInt());
-        array.add(y.toInt());
-        return array;
     }
 }

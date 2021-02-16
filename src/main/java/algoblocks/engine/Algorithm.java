@@ -5,7 +5,6 @@ import algoblocks.engine.block.Block;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 
 public class Algorithm{
     private List<Block> blocks;

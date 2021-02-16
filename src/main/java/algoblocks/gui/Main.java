@@ -1,42 +1,59 @@
 package algoblocks.gui;
 
-
 import algoblocks.engine.*;
 import algoblocks.engine.block.*;
-import algoblocks.engine.grid.*;
 import algoblocks.engine.drawing.*;
+import algoblocks.engine.grid.*;
 import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.geometry.Insets;
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.stage.Stage;
-import javafx.event.EventHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javafx.geometry.Pos;
+// import javafx.scene.Cursor;
+// import javafx.geometry.Rectangle2D;
+// import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+// import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+// import javafx.stage.Screen;
+// import javafx.scene.image.Image;
+// import javafx.scene.image.ImageView;
+// import javafx.geometry.Insets;
+// import javafx.application.Application;
+// import javafx.scene.Group;
+// import javafx.scene.Scene;
+import javafx.scene.control.Button;
+// import javafx.scene.image.Image;
+// import javafx.scene.image.ImageView;
+// import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+// import javafx.stage.Stage;
+import javafx.event.EventHandler;
+// import javafx.event.ActionEvent;
+
+// import java.beans.EventHandler;
+// import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Main extends Application{
-
-    private static final int WINDOW_HEIGHT = 600;//900;
-    private static final int WINDOW_WIDTH = 800;//1600;
-    private static final double GRID_HEIGHT = WINDOW_HEIGHT * 9 / 10;
-    private static final double GRID_WIDTH = WINDOW_WIDTH * 7 / 10;
+public class Main extends Application {
+    private static final Window window = new Window();
+    private static final double GRID_WIDTH = window.getWidth() * 0.4;
+    private static final double GRID_HEIGHT = GRID_WIDTH;
+    private static final ArrayList<Block> BASE_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
+        new MoveUpBlock(),
+        new MoveDownBlock(),
+        new MoveLeftBlock(),
+        new MoveRightBlock(),
+        new RaisePencilBlock(),
+        new LowerPencilBlock(),
+    }));
 
     private static Game game;
 
@@ -49,77 +66,52 @@ public class Main extends Application{
     public void start(Stage stage){
         stage.setTitle("AlgoBlocks");
 
-//        String s = "File:resources/ok.png";
-//        Image okImage = new Image(s);
-//        Button okBtn = new Button();
-//        okBtn.setGraphic(new ImageView(okImage));
-//        okBtn.setPrefSize(520, 520);
-//        moveLeft.setPadding(Insets.EMPTY);
+//      String s = "File:resources/ok.png";
+//      Image okImage = new Image(s);
+//      Button okBtn = new Button();
+//      okBtn.setGraphic(new ImageView(okImage));
+//      okBtn.setPrefSize(520, 520);
+//      moveLeft.setPadding(Insets.EMPTY);
 
-        ListView algorithmContainer = new ListView();
-        algorithmContainer.setPrefHeight(WINDOW_HEIGHT * 8 / 10);
-        
-        //El string deberia salir del nombre del bloque.
-        Button moveUpButton = new Button();
-        setButton(moveUpButton, new MoveUpBlock(), "Move Up", algorithmContainer);
-        Button moveDownButton = new Button();
-        setButton(moveDownButton, new MoveDownBlock(), "Move Down", algorithmContainer);
-        Button moveLeftButton = new Button();
-        setButton(moveLeftButton, new MoveLeftBlock(), "Move Left", algorithmContainer);
-        Button moveRightButton = new Button();
-        setButton(moveRightButton, new MoveRightBlock(), "Move Right", algorithmContainer);
-        Button raisePencilButton = new Button();
-        setButton(raisePencilButton, new RaisePencilBlock(), "Raise Pencil", algorithmContainer);
-        Button lowerPencilButton = new Button();
-        setButton(lowerPencilButton, new LowerPencilBlock(), "Lower Pencil", algorithmContainer);
-
+        ListView<String> algorithmContainer = new ListView<String>();
+        algorithmContainer.setPrefHeight(window.getHeight() * 8 / 10);
+        algorithmContainer.setId("algorithmContainer");
 
         HBox blockContainer = new HBox();
-        blockContainer.setPrefHeight(WINDOW_HEIGHT / 10);
+        blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
-        blockContainer.getChildren().addAll(moveUpButton,
-                                            moveDownButton,
-                                            moveLeftButton,
-                                            moveRightButton,
-                                            raisePencilButton,
-                                            lowerPencilButton);
+        blockContainer.getChildren().addAll(actionButtonsConstructor(BASE_BLOCKS, algorithmContainer));
 
         
 
-//        Label gridLabel = new Label("grid");
-//        Pane gridContainer = new Pane(gridLabel);
+//      Label gridLabel = new Label("grid");
+//      Pane gridContainer = new Pane(gridLabel);
 
-        Button deleteButton = new Button("Delete");
-        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                int index = algorithmContainer.getSelectionModel().getSelectedIndex();
-                if(index >= 0){
-                    game.deleteBlockFromWorkspace(index);
-                    algorithmContainer.getItems().remove(index);
-                }
-            }
-        });
+        Pane whiteboardCanvas = new Pane();
+        whiteboardCanvas.setId("Whiteboard");
+        whiteboardCanvas.setPrefHeight(GRID_HEIGHT);
+        whiteboardCanvas.setPrefWidth(GRID_WIDTH);
 
-        Button deleteAllButton = new Button("Delete All");
-        deleteAllButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                algorithmContainer.getItems().clear();
-                game.clearWorkspace();
+        Button deleteButton = buttonConstructor("Delete", actionConstructor(() -> {
+            int index = algorithmContainer.getSelectionModel().getSelectedIndex();
+            if(index >= 0){
+                game.deleteBlockFromWorkspace(index);
+                algorithmContainer.getItems().remove(index);
             }
-        });
-        
-        Pane gridCanvas = new Pane();
-        gridCanvas.setPrefHeight(GRID_HEIGHT);
-        gridCanvas.setPrefWidth(GRID_WIDTH);
-        Button runButton = new Button("Run");
-        runButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                game.run();
-                Drawing drawing = game.getDrawing();
-                drawGrid(drawing, gridCanvas);
-            }
-        });
+        }));
+
+        Button deleteAllButton = buttonConstructor("Delete All", actionConstructor(() -> {
+            algorithmContainer.getItems().clear();
+            game.clearWorkspace();
+        }));
+
+        Button runButton = buttonConstructor("Run", actionConstructor(() -> {
+            game.run();
+            Platform.runLater(() -> whiteboardCanvas.getChildren().clear());
+            Drawing drawing = game.getDrawing();
+            drawWhiteboard(drawing, whiteboardCanvas);
+        }));
 
         HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, runButton);
         deleteButtonsContainer.setSpacing(10);
@@ -129,46 +121,97 @@ public class Main extends Application{
 
 
         HBox secondaryContainer = new HBox();
-        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, gridCanvas);
+        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardCanvas);
 
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
         mainContainer.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(mainContainer, WINDOW_WIDTH, WINDOW_HEIGHT, Color.WHITE);
-//        scene.setCursor(Cursor.MOVE);
+        Scene scene = new Scene(mainContainer, window.getWidth(), window.getHeight());
+//      scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene.getStylesheets().add("File:src/main/java/algoblocks/gui/styles.css");
+
+//      scene.setCursor(Cursor.MOVE);
         stage.setScene(scene);
 
         stage.show();
     }
 
-    public void setButton(Button button, Block block, String string, ListView listView){
-        button.setText(string);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                listView.getItems().add(string);
-                game.addBlockToWorkspace(block);
+    public ArrayList<Button> actionButtonsConstructor(ArrayList<Block> baseBlocks, ListView<String> targetList) {
+        ArrayList<Button> buttonList = new ArrayList<Button>();
+
+        baseBlocks.forEach((Block block) -> {
+            buttonList.add(actionButtonConstructor(block, targetList));
+        });
+
+        return buttonList;
+    }
+
+    public Button actionButtonConstructor(Block block, ListView<String> targetList) {
+        return buttonConstructor(block.getBlockName(), actionConstructor(() -> {
+            targetList.getItems().add(block.getBlockName());
+            game.addBlockToWorkspace(block);
+        }));
+    }
+
+    public Button buttonConstructor(String buttonName, EventHandler<ActionEvent> onAction) {
+        Button button = new Button();
+        button.setText(buttonName);
+        button.setOnAction(onAction);
+        return button;
+    }
+
+    public Button buttonConstructor(String buttonName, EventHandler<ActionEvent> onAction, String id) {
+        Button button = buttonConstructor(buttonName, onAction);
+        button.setId(id);
+        return button;
+    }
+
+    public EventHandler<ActionEvent> actionConstructor(Runnable action) {
+        return new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                action.run();
             }
-        });
+        };
     }
 
-    public void drawGrid(Drawing drawing, Pane grid){
-        grid.getChildren().clear(); // NO SE XQ NO SE LIMPIA CON ESTO
+    public void drawWhiteboard(Drawing drawing, Pane whiteboard){
+        ArrayList<Runnable> tasks = new ArrayList<Runnable>();        
+
         drawing.forEach((Shape shape) -> {
-            ArrayList<Integer> start = shape.getStart();
-            ArrayList<Integer> end = shape.getFinish();
-            grid.getChildren().add(createLine(start, end));
+            Runnable task = () -> Platform.runLater(() -> whiteboard.getChildren().add(createLine(shape)));
+            tasks.add(task);
         });
+
+        executeChainOfEvents(tasks, 500, TimeUnit.MILLISECONDS);
     }
 
-    public Line createLine(ArrayList<Integer> start, ArrayList<Integer> end){
+    public void executeChainOfEvents(ArrayList<Runnable> tasks, int duration, TimeUnit timeUnit) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+        for (int i = 0; i < tasks.size(); i++)
+            executor.schedule(tasks.get(i), (i + 1) * duration, timeUnit);
+
+        executor.shutdown();
+    }
+
+    public Line createLine(Shape shape){
         Line line = new Line();
-        line.setStroke(Color.BLACK);
+
+        Size gridSize = game.getGridSize();
+        int gridWidth = gridSize.width();
+        int gridHeight = gridSize.height();
+
+        line.setStroke(shape.getColor());
         line.setStrokeWidth(5);
 
-        line.setStartX((start.get(0) + 5) *  GRID_WIDTH / 10);
-        line.setEndX((end.get(0) + 5) * GRID_WIDTH / 10);
-        line.setStartY((start.get(1) + 5) * GRID_HEIGHT / 10);  // VER TEMA EJE 'Y' ESPEJADO
-        line.setEndY((end.get(1) + 5) * GRID_HEIGHT / 10);
+        Coordinates start = shape.getStart();
+        Coordinates end = shape.getFinish();
+
+        line.setStartX((start.getX() + gridWidth / 2) *  GRID_WIDTH / gridWidth);
+        line.setEndX((end.getX() + gridWidth / 2) * GRID_WIDTH / gridWidth);
+        line.setStartY((start.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
+        line.setEndY((end.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
 
         return line;
     }
