@@ -9,13 +9,13 @@ public class Window {
 
   public Window() {
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-    height = screenBounds.getWidth();
-    width = screenBounds.getHeight();
+    width = screenBounds.getWidth();
+    height = screenBounds.getHeight();
   }
 
   public Window(double width, double height) {
-    this.height = width;
-    this.width = height;
+    this.width = width;
+    this.height = height;
   }
 
   public double getRatio() {
