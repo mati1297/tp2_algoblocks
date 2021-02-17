@@ -7,7 +7,7 @@ public class PositiveYBound extends Bound {
 
   public Coordinates validate(Coordinates position) {
     if(position.isYBiggerThan(bound))
-      return position.decY();
+      return position.decY().negY();
     return position;
   }
 }

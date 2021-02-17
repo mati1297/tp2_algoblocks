@@ -7,7 +7,7 @@ public class NegativeXBound extends Bound {
 
   public Coordinates validate(Coordinates position) {
     if(position.isXLowerThan(bound))
-      return position.incX();
+      return position.incX().negX();
     return position;
   }
 }

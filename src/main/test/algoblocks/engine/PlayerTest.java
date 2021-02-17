@@ -103,4 +103,30 @@ public class PlayerTest {
 
         assertTrue(outputDrawing.equals(expectedDrawing));
     }
+
+    @Test
+    public void playerMakesNewDrawingEveryTimeItRunsASequence() {
+        Player player = new Player(new Grid());
+
+        Sequence inputeSequence1 = new Sequence();
+        inputeSequence1.addAction(new LowerPencilAction());
+        inputeSequence1.addAction(new MoveLeftAction());
+
+        Drawing expectedDrawing1 = new Drawing();
+        expectedDrawing1.addShape(new Line(new Coordinates(), new Coordinates(-1, 0)));
+
+        Drawing outputDrawing1 = player.run(inputeSequence1);
+
+        Sequence inputeSequence2 = new Sequence();
+        inputeSequence2.addAction(new RaisePencilAction());
+        inputeSequence2.addAction(new MoveDownAction());
+
+        Drawing expectedDrawing2 = new Drawing();
+        expectedDrawing2.addShape(new Blank(new Coordinates(-1, 0), new Coordinates(-1, -1)));
+
+        Drawing outputDrawing2 = player.run(inputeSequence2);
+
+        assertTrue(outputDrawing1.equals(expectedDrawing1) && outputDrawing2.equals(expectedDrawing2));
+    }
+
 }

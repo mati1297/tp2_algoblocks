@@ -7,7 +7,7 @@ public class NegativeYBound extends Bound {
 
   public Coordinates validate(Coordinates position) {
     if(position.isYLowerThan(bound))
-      return position.incY();
+      return position.incY().negY();
     return position;
   }
 }
