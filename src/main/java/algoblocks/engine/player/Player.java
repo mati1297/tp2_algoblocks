@@ -19,8 +19,9 @@ public class Player {
         drawing = new Drawing();
     }
 
-    public void resetPosition() {
+    public void resetPlayer() {
         position = new Coordinates();
+        pencil = new Pencil();
     }
 
     public void move(Direction direction) {

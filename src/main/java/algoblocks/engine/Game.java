@@ -18,7 +18,7 @@ public class Game{
     }
 
     public void run() {
-        player.resetPosition();
+        player.resetPlayer();
         Sequence sequence = workspace.compile();
         whiteboard.draw(player.run(sequence));
     }
