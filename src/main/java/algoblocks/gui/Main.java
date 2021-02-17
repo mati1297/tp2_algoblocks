@@ -66,6 +66,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage){
         stage.setTitle("AlgoBlocks");
+        stage.setHeight(window.getHeight());
+        stage.setWidth(window.getWidth());
 
 //      String s = "File:resources/ok.png";
 //      Image okImage = new Image(s);
@@ -139,7 +141,7 @@ public class Main extends Application {
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
         mainContainer.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(mainContainer, window.getWidth(), window.getHeight());
+        Scene scene = new Scene(mainContainer);
         scene.getStylesheets().add("File:src/main/java/algoblocks/gui/styles.css");
 
 //      scene.setCursor(Cursor.MOVE);
