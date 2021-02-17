@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 // import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 // import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -44,7 +45,7 @@ import java.util.Arrays;
 
 public class Main extends Application {
     private static final Window window = new Window();
-    private static final double GRID_WIDTH = window.getWidth() * 0.6;
+    private static final double GRID_WIDTH = window.getWidth() * 0.5;
     private static final double GRID_HEIGHT = GRID_WIDTH;
     private static final ArrayList<Block> BASE_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
         new MoveUpBlock(),
@@ -89,10 +90,19 @@ public class Main extends Application {
 //      Pane gridContainer = new Pane(gridLabel);
 
         Pane whiteboardCanvas = new Pane(); 
-        whiteboardCanvas.setId("whiteboard");
         whiteboardCanvas.setPrefHeight(GRID_HEIGHT);
         whiteboardCanvas.setPrefWidth(GRID_WIDTH);
+
+        Pane whiteboardGrid = new Pane();
+        whiteboardGrid.setId("whiteboard");
+        whiteboardGrid.setPrefHeight(GRID_HEIGHT);
+        whiteboardGrid.setPrefWidth(GRID_WIDTH);
+        whiteboardGrid.getChildren().addAll(createGrid());
         // whiteboardCanvas.setAlignment(Pos.CENTER_LEFT);
+
+        StackPane whiteboardStack = new StackPane();
+        whiteboardStack.getChildren().addAll(whiteboardGrid, whiteboardCanvas);
+        // whiteboardStack.setAlignment(Pos.CENTER);
 
         Button deleteButton = buttonConstructor("Delete", actionConstructor(() -> {
             int index = algorithmContainer.getSelectionModel().getSelectedIndex();
@@ -122,7 +132,7 @@ public class Main extends Application {
 
 
         HBox secondaryContainer = new HBox();
-        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardCanvas);
+        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardStack);
 
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
@@ -196,6 +206,44 @@ public class Main extends Application {
         executor.shutdown();
     }
 
+    public ArrayList<Line> createGrid() {
+        ArrayList<Line> lines = new ArrayList<Line>();
+
+        Size gridSize = game.getGridSize();
+        int gridWidth = gridSize.width();
+        int gridHeight = gridSize.height();
+
+        for(int i = 1; i < gridWidth; i++) {
+            Line line = new Line();
+
+            line.setStroke(Color.GRAY);
+            line.setStrokeWidth(1);
+
+            line.setStartX(i *  GRID_WIDTH / gridWidth);
+            line.setEndX(i *  GRID_WIDTH / gridWidth);
+            line.setStartY(0);
+            line.setEndY(gridHeight * GRID_HEIGHT / gridHeight);
+
+            lines.add(line);
+        }
+
+        for(int i = 1; i < gridHeight; i++) {
+            Line line = new Line();
+
+            line.setStroke(Color.GRAY);
+            line.setStrokeWidth(1);
+
+            line.setStartX(0);
+            line.setEndX(gridWidth * GRID_WIDTH / gridWidth);
+            line.setStartY(i * GRID_HEIGHT / gridHeight);
+            line.setEndY(i * GRID_HEIGHT / gridHeight);
+
+            lines.add(line);
+        }
+
+        return lines;
+    }
+
     public Line createLine(Shape shape){
         Line line = new Line();
 
@@ -211,8 +259,8 @@ public class Main extends Application {
 
         line.setStartX((start.getX() + gridWidth / 2) *  GRID_WIDTH / gridWidth);
         line.setEndX((end.getX() + gridWidth / 2) * GRID_WIDTH / gridWidth);
-        line.setStartY((start.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
-        line.setEndY((end.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
+        line.setStartY((-1 * start.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
+        line.setEndY((-1 * end.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
 
         return line;
     }

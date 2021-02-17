@@ -38,6 +38,7 @@ public class Player {
     }
 
     public Drawing run(Sequence sequence) {
+        drawing = new Drawing();
         sequence.run(this);
         return drawing;
     }
