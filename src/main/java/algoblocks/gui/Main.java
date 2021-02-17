@@ -88,7 +88,7 @@ public class Main extends Application {
 //      Label gridLabel = new Label("grid");
 //      Pane gridContainer = new Pane(gridLabel);
 
-        StackPane whiteboardCanvas = new StackPane(); 
+        Pane whiteboardCanvas = new Pane(); 
         whiteboardCanvas.setId("whiteboard");
         whiteboardCanvas.setPrefHeight(GRID_HEIGHT);
         whiteboardCanvas.setPrefWidth(GRID_WIDTH);
