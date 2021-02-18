@@ -142,7 +142,7 @@ public class Main extends Application {
         mainContainer.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(mainContainer);
-        scene.getStylesheets().add("File:src/main/java/algoblocks/gui/styles.css");
+        //scene.getStylesheets().add("File:src/resources/styles.css");
 
 //      scene.setCursor(Cursor.MOVE);
         stage.setScene(scene);
