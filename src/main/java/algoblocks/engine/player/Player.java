@@ -60,6 +60,7 @@ public class Player {
 
     public Drawing run(Sequence sequence) {
         drawing = new Drawing();
+        pencil.raise();
         sequence.run(this);
         return drawing;
     }

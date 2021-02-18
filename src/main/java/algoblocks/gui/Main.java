@@ -115,7 +115,7 @@ public class Main extends Application {
         }));
 
         Button deleteAllButton = buttonConstructor("Delete All", actionConstructor(() -> {
-            Platform.runLater(() -> whiteboardCanvas.getChildren().clear());
+//            Platform.runLater(() -> whiteboardCanvas.getChildren().clear());
             algorithmContainer.getItems().clear();
             game.clearWorkspace();
         }));
