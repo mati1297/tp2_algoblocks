@@ -44,8 +44,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main extends Application {
-    private static final Window window = new Window();
-    private static final double GRID_WIDTH = window.getWidth() * 0.5;
+    private static final Window window = new Window(800, 600); // BUSCAR COMO BLOQUEAR TAMAÑO
+    private static final double GRID_WIDTH = window.getWidth() * 0.6;
     private static final double GRID_HEIGHT = GRID_WIDTH;
     private static final ArrayList<Block> BASE_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
         new MoveUpBlock(),
@@ -254,8 +254,8 @@ public class Main extends Application {
         int gridWidth = gridSize.width();
         int gridHeight = gridSize.height();
 
-        line.setStroke(shape.getColor());
-        line.setStrokeWidth(5);
+        line.setStroke(new Color(0, 0, 0, shape.getAlpha()));
+        line.setStrokeWidth(3);
 
         Coordinates start = shape.getStart();
         Coordinates end = shape.getFinish();

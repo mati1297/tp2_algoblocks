@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 public class Blank extends Shape {
     public Blank(Coordinates start, Coordinates finish){
-        super(start, finish, Color.TRANSPARENT);
+        super(start, finish, 0f);
     }
 
     public Shape makeCopy(){

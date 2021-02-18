@@ -1,11 +1,10 @@
 package algoblocks.engine.drawing;
 
 import algoblocks.engine.grid.Coordinates;
-import javafx.scene.paint.Color;
 
 public class Line extends Shape {
     public Line(Coordinates start, Coordinates finish){
-        super(start, finish, Color.BLACK);
+        super(start, finish, 1f);
     }
 
     public Shape makeCopy(){

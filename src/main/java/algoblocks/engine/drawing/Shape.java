@@ -6,12 +6,12 @@ import javafx.scene.paint.Color;
 public abstract class Shape {
     protected Coordinates start;
     protected Coordinates finish;
-    private Color color;
+    private float alpha;
 
-    public Shape(Coordinates start, Coordinates finish, Color color) {
+    public Shape(Coordinates start, Coordinates finish, float alpha) {
         this.start = start;
         this.finish = finish;
-        this.color = color;
+        this.alpha = alpha;
     }
 
     public abstract Shape makeCopy();
@@ -29,8 +29,8 @@ public abstract class Shape {
         return start.equals(someShape.start) && finish.equals(someShape.finish);
     }
 
-    public Color getColor() {
-        return color;
+    public float getAlpha() {
+        return alpha;
     }
 
     public Coordinates getStart(){
