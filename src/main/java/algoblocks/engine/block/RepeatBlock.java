@@ -1,6 +1,7 @@
 package algoblocks.engine.block;
 
 import algoblocks.engine.action.Sequence;
+import java.util.stream.IntStream;
 
 public class RepeatBlock extends EffectBlock {
 
@@ -15,19 +16,21 @@ public class RepeatBlock extends EffectBlock {
 
   public Sequence getSequence() {
     Sequence sequence = new Sequence();
-    for(int i = 0; i < times; i++){
-      for(Block block: blocks)
+    IntStream.rangeClosed(1, times).forEach((int i) -> {
+      blocks.forEach((Block block) -> {
         sequence.concatenate(block.getSequence());
-    }
+      });
+    });
     return sequence;
   }
 
   public Sequence getInvertedSequence() {
     Sequence sequence = new Sequence();
-    for(int i = 0; i < times; i++){
-      for(Block block: blocks)
+    IntStream.rangeClosed(1, times).forEach((int i) -> {
+      blocks.forEach((Block block) -> {
         sequence.concatenate(block.getInvertedSequence());
-    }
+      });
+    });
     return sequence;
   }
 }
