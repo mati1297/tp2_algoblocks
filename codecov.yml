@@ -1,0 +1,2 @@
+ignore:
+  - "src/main/java/algoblocks/gui"  # ignore folders and all its contents
