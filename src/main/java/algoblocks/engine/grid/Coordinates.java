@@ -1,7 +1,5 @@
 package algoblocks.engine.grid;
 
-import java.util.ArrayList;
-
 public class Coordinates {
     private Coordinate x;
     private Coordinate y;

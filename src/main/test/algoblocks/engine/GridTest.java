@@ -3,6 +3,8 @@ package algoblocks.engine;
 import algoblocks.engine.grid.Coordinates;
 import algoblocks.engine.grid.Grid;
 import org.junit.jupiter.api.Test;
+import algoblocks.engine.grid.Size;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GridTest {
@@ -76,5 +78,11 @@ public class GridTest {
     Coordinates expectedValidatedCoordinates = new Coordinates(0, -5);
 
     assertTrue(grid.validate(coordinatesToValidate).equals(expectedValidatedCoordinates));
+  }
+
+  @Test
+  public void verifyGridSize() {
+    Grid grid = new Grid(5, 6);
+    assertTrue(grid.getSize().equals(new Size(5, 6)));
   }
 }

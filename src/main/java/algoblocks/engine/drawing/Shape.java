@@ -3,8 +3,6 @@ package algoblocks.engine.drawing;
 import algoblocks.engine.grid.Coordinates;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-
 public abstract class Shape {
     protected Coordinates start;
     protected Coordinates finish;

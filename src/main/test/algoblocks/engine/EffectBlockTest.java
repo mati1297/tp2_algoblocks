@@ -4,10 +4,7 @@ import algoblocks.engine.action.Sequence;
 import algoblocks.engine.block.*;
 import org.junit.jupiter.api.Test;
 
-import jdk.jfr.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class EffectBlockTest {
     @Test

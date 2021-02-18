@@ -9,6 +9,16 @@ public class Size {
     this.height = height;
   }
 
+  @Override
+  public boolean equals(Object object) {
+      if (object == null || getClass() != object.getClass())
+          return false;
+
+      Size someSize = (Size) object;
+
+      return width == someSize.width && height == someSize.height;
+  }
+
   public int width() {
     return width;
   }

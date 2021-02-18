@@ -13,13 +13,34 @@ public class Algorithm{
         blocks = new ArrayList<Block>();
     }
 
+    @Override
+    public boolean equals(Object object){
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        Algorithm otherAlgorithm = (Algorithm) object;
+
+        if (otherAlgorithm.blocks.size() != blocks.size())
+            return false;
+
+        for (int i = 0; i < blocks.size(); i++)
+            if (!blocks.get(i).equals(otherAlgorithm.blocks.get(i)))
+                return false;
+
+        return true;
+    }
+
+    public void print() {
+        blocks.forEach((block) -> System.out.println(block));
+    }
+
     public void addBlock(Block newBlock){
         blocks.add(newBlock);
     }
 
     public void deleteBlock(int index){
-        //validar
-        blocks.remove(index);
+        if(index < blocks.size())
+            blocks.remove(index);
     }
 
     public void clear(){

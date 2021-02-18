@@ -32,7 +32,6 @@ public class Game{
     }
 
     public void deleteBlockFromWorkspace(int index){
-        //validar
         workspace.deleteBlock(index);
     }
 

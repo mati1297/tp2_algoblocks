@@ -10,6 +10,19 @@ public class Pencil {
         state = new RaisedPencilState();
     }
 
+    @Override
+    public boolean equals(Object object){
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        Pencil otherPencil = (Pencil) object;
+
+        if (state.getClass() != otherPencil.state.getClass())
+            return false;
+
+        return true;
+    }
+
     public Shape draw(Coordinates start, Coordinates finish) {
         return state.draw(start, finish);
     }

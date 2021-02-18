@@ -13,6 +13,19 @@ public abstract class Block {
         blockName = "";
     }
 
+    @Override
+    public boolean equals(Object object){
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        Block otherBlock = (Block) object;
+
+        if (blockName != otherBlock.blockName)
+            return false;
+        
+        return true;
+    }
+
     public String getBlockName() {
         return blockName;
     }

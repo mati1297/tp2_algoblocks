@@ -19,9 +19,29 @@ public class Player {
         drawing = new Drawing();
     }
 
+    @Override
+    public boolean equals(Object object){
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        Player otherPlayer = (Player) object;
+
+        if (!position.equals(otherPlayer.position))
+            return false;
+
+        if (!pencil.equals(otherPlayer.pencil))
+            return false;
+
+        if (!drawing.equals(otherPlayer.drawing))
+            return false;
+
+        return true;
+    }
+
     public void resetPlayer() {
         position = new Coordinates();
         pencil = new Pencil();
+        drawing = new Drawing();
     }
 
     public void move(Direction direction) {

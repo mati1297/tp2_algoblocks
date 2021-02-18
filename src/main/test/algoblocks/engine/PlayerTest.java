@@ -129,4 +129,20 @@ public class PlayerTest {
         assertTrue(outputDrawing1.equals(expectedDrawing1) && outputDrawing2.equals(expectedDrawing2));
     }
 
+    @Test
+    public void resetPlayerToOriginalState() {
+        Player player = new Player(new Grid());
+
+        Sequence inputeSequence = new Sequence();
+        inputeSequence.addAction(new LowerPencilAction());
+        inputeSequence.addAction(new MoveLeftAction());
+        inputeSequence.addAction(new MoveDownAction());
+
+        player.run(inputeSequence);
+
+        player.resetPlayer();
+
+        assertTrue(player.equals(new Player(new Grid())));
+    }
+
 }

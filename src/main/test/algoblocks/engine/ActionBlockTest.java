@@ -8,6 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ActionBlockTest {
     @Test
+    public void blockIsCreatedWithCorrectName() {
+        Block block = new MoveDownBlock();
+
+        assertTrue(block.getBlockName() == "Move Down");
+    }
+
+    @Test
     public void MoveUpBlockReturnsSequenceWithMoveUpAction(){
         ActionBlock block = new MoveUpBlock();
 

@@ -16,7 +16,6 @@ public class Workspace{
     }
 
     public void deleteBlock(int index){
-        //validar
         algorithm.deleteBlock(index);
     }
 
