@@ -8,6 +8,14 @@ public class CustomBlock extends EffectBlock {
     super();
   }
 
+  public CustomBlock(String name){
+    super(name);
+  }
+
+  public void setName(String name){
+    blockName = name;
+  }
+
   public Sequence getSequence() {
     Sequence sequence = new Sequence();
     for(Block block: blocks)

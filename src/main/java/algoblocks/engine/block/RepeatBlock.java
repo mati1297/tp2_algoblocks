@@ -12,6 +12,13 @@ public class RepeatBlock extends EffectBlock {
     this.times = 2;
     if(times >= 2)
       this.times = times;
+    blockName = "Repeat " + String.valueOf(times) + " times";
+  }
+
+  public void setTimes(int times){
+    if(times >= 2)
+      this.times = times;
+    blockName = "Repeat " + String.valueOf(times) + " times";
   }
 
   public Sequence getSequence() {

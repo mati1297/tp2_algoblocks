@@ -3,7 +3,7 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public abstract class Block {
-    private String blockName;
+    protected String blockName;
 
     public Block(String name) {
         blockName = name;
@@ -20,7 +20,7 @@ public abstract class Block {
 
         Block otherBlock = (Block) object;
 
-        if (blockName != otherBlock.blockName)
+        if (!blockName.equals(otherBlock.blockName))
             return false;
         
         return true;

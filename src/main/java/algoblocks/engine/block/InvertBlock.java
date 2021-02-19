@@ -5,7 +5,7 @@ import algoblocks.engine.action.Sequence;
 public class InvertBlock extends EffectBlock {
 
   public InvertBlock(){
-    super();
+    super("Invert");
   }
 
   public Sequence getSequence() {
