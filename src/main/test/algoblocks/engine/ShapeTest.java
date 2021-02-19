@@ -62,4 +62,18 @@ public class ShapeTest {
     
         assertFalse(shapeOne.equals(shapeTwo));
     }
+    
+    @Test
+    public void ShapeGettersReturnOK(){
+        Coordinates coordsOne = new Coordinates(1,1);
+        Coordinates coordsTwo = new Coordinates(2,2);
+        float alpha = 1.0f;
+
+
+        Shape shape = new Line(coordsOne, coordsTwo);
+
+        assertTrue(coordsOne.equals(shape.getStart()));
+        assertTrue(coordsTwo.equals(shape.getFinish()));
+        assertTrue(alpha == shape.getAlpha());
+    }
 }

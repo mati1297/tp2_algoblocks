@@ -101,4 +101,14 @@ public class CoordinatesTest {
 
         assertFalse(coordsOne.equals(coordsTwo));
     }
+
+    @Test
+    public void CoordinatesReturnCorrectIntValues(){
+        int valueX = 2;
+        int valueY = 4;
+        Coordinates coords = new Coordinates(valueX, valueY);
+
+        assertEquals(valueX, coords.getX());
+        assertEquals(valueY, coords.getY());
+    }
 }

@@ -212,4 +212,101 @@ public class EffectBlockTest {
         assertTrue(customSequence.equals(testSequence));
     }
 
+
+    @Test
+    public void RepeatBlockIsEqualToAnotherWithSameBlocksAndTimes(){
+        Block moveUp = new MoveUpBlock();
+        Block moveDown = new MoveDownBlock();
+
+        EffectBlock repeatOne = new RepeatBlock(2);
+        EffectBlock repeatTwo = new RepeatBlock(2);
+
+        repeatOne.addBlock(moveUp);
+        repeatOne.addBlock(moveDown);
+        repeatTwo.addBlock(moveUp);
+        repeatTwo.addBlock(moveDown);
+
+        assertTrue(repeatOne.equals(repeatTwo));
+    }
+
+    @Test
+    public void RepeatBlockIsDifferentToAnotherWithSameBlocksButDifferentTimes(){
+        Block moveUp = new MoveUpBlock();
+        Block moveDown = new MoveDownBlock();
+
+        EffectBlock repeatOne = new RepeatBlock(2);
+        EffectBlock repeatTwo = new RepeatBlock(3);
+
+        repeatOne.addBlock(moveUp);
+        repeatOne.addBlock(moveDown);
+        repeatTwo.addBlock(moveUp);
+        repeatTwo.addBlock(moveDown);
+
+        assertFalse(repeatOne.equals(repeatTwo));
+    }
+
+    @Test
+    public void InvertBlocksWithDifferentBlocksAreDifferent(){
+        Block moveUp = new MoveUpBlock();
+        Block moveDown = new MoveDownBlock();
+
+        EffectBlock invertOne = new InvertBlock();
+        EffectBlock invertTwo = new InvertBlock();
+
+        invertOne.addBlock(moveUp);
+        invertTwo.addBlock(moveDown);
+
+        assertFalse(invertOne.equals(invertTwo));
+    }
+
+    @Test
+    public void settingTimesInRepeatBlockWorksOk(){
+        ActionBlock moveDownBlock = new MoveDownBlock();
+
+        RepeatBlock repeat = new RepeatBlock(2);
+
+        repeat.addBlock(moveDownBlock);
+
+        repeat.setTimes(3);
+        
+        Sequence repeatSequence = repeat.getSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+
+
+        assertTrue(repeatSequence.equals(testSequence));
+    }
+
+    @Test
+    public void SettingARepeatBlockWithLessThanTwoTimesSetsATwoTimesBlock(){
+        ActionBlock moveDownBlock = new MoveDownBlock();
+
+        RepeatBlock repeat = new RepeatBlock(2);
+
+        repeat.addBlock(moveDownBlock);
+
+        repeat.setTimes(0);
+        
+        Sequence repeatSequence = repeat.getSequence();
+        Sequence testSequence = new Sequence();
+        testSequence.concatenate(moveDownBlock.getSequence());
+        testSequence.concatenate(moveDownBlock.getSequence());
+
+        assertTrue(repeatSequence.equals(testSequence));
+    }
+
+    @Test
+    public void CustomBlockConstructorAndSetNameWorkOk(){
+        CustomBlock custom = new CustomBlock("Custom block 1");
+
+        assertEquals(custom.getBlockName(), "Custom block 1");
+
+        custom.setName("Custom block 2");
+
+        assertEquals(custom.getBlockName(), "Custom block 2");
+
+    }
+
 }

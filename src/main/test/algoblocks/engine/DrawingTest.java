@@ -1,9 +1,10 @@
 package algoblocks.engine;
 
-import algoblocks.engine.drawing.Blank;
-import algoblocks.engine.drawing.Drawing;
-import algoblocks.engine.drawing.Line;
+
 import algoblocks.engine.grid.Coordinates;
+import algoblocks.engine.drawing.*;
+import jdk.jfr.Timestamp;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,5 +70,38 @@ public class DrawingTest {
     drawingTwo.addShape(new Blank(coords, coords));
 
     assertFalse(drawingOne.equals(drawingTwo));
+  }
+
+  @Test
+  public void DrawingCopyConstructorCopiesAnotherDrawing(){
+    Drawing drawingOne = new Drawing();
+    Coordinates coords = new Coordinates();
+
+    drawingOne.addShape(new Line(coords, coords));
+    drawingOne.addShape(new Blank(coords, coords));
+    
+    Drawing drawingTwo = new Drawing(drawingOne);
+
+    assertTrue(drawingTwo.equals(drawingOne));
+  }
+
+  @Test
+  public void forEachIteratesDrawing(){
+    Drawing drawingOne = new Drawing();
+    Drawing drawingTwo = new Drawing();
+    Coordinates coords = new Coordinates();
+
+    Shape line = new Line(coords, coords);
+    Shape blank = new Blank(coords, coords);
+
+    drawingOne.addShape(line);
+    drawingOne.addShape(blank);
+
+    drawingOne.forEach((Shape shape) -> {
+      drawingTwo.addShape(shape);
+    });
+
+    assertTrue(drawingOne.equals(drawingTwo));
+
   }
 }
