@@ -4,6 +4,7 @@ import algoblocks.engine.*;
 import algoblocks.engine.block.*;
 import algoblocks.engine.drawing.*;
 import algoblocks.engine.grid.*;
+import algoblocks.gui.buttons.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -106,20 +107,11 @@ public class Main extends Application {
         whiteboardStack.getChildren().addAll(whiteboardGrid, whiteboardCanvas);
         // whiteboardStack.setAlignment(Pos.CENTER);
 
-        Button deleteButton = buttonConstructor("Delete", actionConstructor(() -> {
-            int index = algorithmContainer.getSelectionModel().getSelectedIndex();
-            if(index >= 0){
-                game.deleteBlockFromWorkspace(index);
-                algorithmContainer.getItems().remove(index);
-            }
-        }));
+        Button deleteButton = new DeleteButton(game, algorithmContainer);
 
-        Button deleteAllButton = buttonConstructor("Delete All", actionConstructor(() -> {
-//            Platform.runLater(() -> whiteboardCanvas.getChildren().clear());
-            algorithmContainer.getItems().clear();
-            game.clearWorkspace();
-        }));
+        Button deleteAllButton = new DeleteAllButton(game, algorithmContainer);
 
+        //crear clase.
         Button runButton = buttonConstructor("Run", actionConstructor(() -> {
             game.run();
             Platform.runLater(() -> whiteboardCanvas.getChildren().clear());

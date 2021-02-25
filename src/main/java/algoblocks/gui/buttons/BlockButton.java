@@ -1,4 +1,4 @@
-package algoblocks.gui;
+package algoblocks.gui.buttons;
 
 
 import javafx.scene.control.Button;
