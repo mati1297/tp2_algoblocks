@@ -84,7 +84,7 @@ public class Main extends Application {
         blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
-        blockContainer.getChildren().addAll(actionButtonsConstructor(BASE_BLOCKS, algorithmContainer));
+        blockContainer.getChildren().addAll(BlockButton.createButtonArray(game, algorithmContainer, BASE_BLOCKS));
 
         
 
@@ -148,23 +148,6 @@ public class Main extends Application {
         stage.setScene(scene);
 
         stage.show();
-    }
-
-    public ArrayList<Button> actionButtonsConstructor(ArrayList<Block> baseBlocks, ListView<String> targetList) {
-        ArrayList<Button> buttonList = new ArrayList<Button>();
-
-        baseBlocks.forEach((Block block) -> {
-            buttonList.add(actionButtonConstructor(block, targetList));
-        });
-
-        return buttonList;
-    }
-
-    public Button actionButtonConstructor(Block block, ListView<String> targetList) {
-        return buttonConstructor(block.getBlockName(), actionConstructor(() -> {
-            targetList.getItems().add(block.getBlockName());
-            game.addBlockToWorkspace(block);
-        }));
     }
 
     public Button buttonConstructor(String buttonName, EventHandler<ActionEvent> onAction) {
