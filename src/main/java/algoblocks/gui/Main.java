@@ -85,39 +85,24 @@ public class Main extends Application {
         blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
-        blockContainer.getChildren().addAll(BlockButton.createButtonArray(game, algorithmContainer, BASE_BLOCKS));
+        ArrayList<Button> blockButtons = BlockButton.createButtonArray(game, algorithmContainer, BASE_BLOCKS);
+        blockContainer.getChildren().addAll(blockButtons);
 
-        
 
-//      Label gridLabel = new Label("grid");
-//      Pane gridContainer = new Pane(gridLabel);
+        WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(game, GRID_WIDTH, GRID_HEIGHT);
+        StackPane whiteboardStack = whiteboardCanvas.getStackPane();
 
-        Pane whiteboardCanvas = new Pane(); 
-        whiteboardCanvas.setPrefHeight(GRID_HEIGHT);
-        whiteboardCanvas.setPrefWidth(GRID_WIDTH);
-
-        Pane whiteboardGrid = new Pane();
-        whiteboardGrid.setId("whiteboard");
-        whiteboardGrid.setPrefHeight(GRID_HEIGHT);
-        whiteboardGrid.setPrefWidth(GRID_WIDTH);
-        whiteboardGrid.getChildren().addAll(createGrid());
-        // whiteboardCanvas.setAlignment(Pos.CENTER_LEFT);
-
-        StackPane whiteboardStack = new StackPane();
-        whiteboardStack.getChildren().addAll(whiteboardGrid, whiteboardCanvas);
         // whiteboardStack.setAlignment(Pos.CENTER);
 
         Button deleteButton = new DeleteButton(game, algorithmContainer);
 
         Button deleteAllButton = new DeleteAllButton(game, algorithmContainer);
-
-        //crear clase.
-        Button runButton = buttonConstructor("Run", actionConstructor(() -> {
-            game.run();
-            Platform.runLater(() -> whiteboardCanvas.getChildren().clear());
-            Drawing drawing = game.getDrawing();
-            drawWhiteboard(drawing, whiteboardCanvas);
-        }));
+        
+        ArrayList<Button> buttonsToBlock = new ArrayList<Button>();
+        buttonsToBlock.add(deleteButton);
+        buttonsToBlock.add(deleteAllButton);
+        buttonsToBlock.addAll(blockButtons);
+        Button runButton = new RunButton(game, whiteboardCanvas, buttonsToBlock);
 
         HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, runButton);
         deleteButtonsContainer.setSpacing(10);
