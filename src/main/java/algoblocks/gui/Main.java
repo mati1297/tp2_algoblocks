@@ -97,7 +97,7 @@ public class Main extends Application {
         Button deleteButton = new DeleteButton(game, algorithmContainer);
 
         Button deleteAllButton = new DeleteAllButton(game, algorithmContainer);
-        
+
         ArrayList<Button> buttonsToBlock = new ArrayList<Button>();
         buttonsToBlock.add(deleteButton);
         buttonsToBlock.add(deleteAllButton);
@@ -127,104 +127,5 @@ public class Main extends Application {
         stage.show();
     }
 
-    public Button buttonConstructor(String buttonName, EventHandler<ActionEvent> onAction) {
-        Button button = new Button();
-        button.setText(buttonName);
-        button.setOnAction(onAction);
-        return button;
-    }
 
-    public Button buttonConstructor(String buttonName, EventHandler<ActionEvent> onAction, String id) {
-        Button button = buttonConstructor(buttonName, onAction);
-        button.setId(id);
-        return button;
-    }
-
-    public EventHandler<ActionEvent> actionConstructor(Runnable action) {
-        return new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                action.run();
-            }
-        };
-    }
-
-    public void drawWhiteboard(Drawing drawing, Pane whiteboard){
-        ArrayList<Runnable> tasks = new ArrayList<Runnable>();        
-
-        drawing.forEach((Shape shape) -> {
-            Runnable task = () -> Platform.runLater(() -> whiteboard.getChildren().add(createLine(shape)));
-            tasks.add(task);
-        });
-
-        executeChainOfEvents(tasks, 500, TimeUnit.MILLISECONDS);
-    }
-
-    public void executeChainOfEvents(ArrayList<Runnable> tasks, int duration, TimeUnit timeUnit) {
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
-        for (int i = 0; i < tasks.size(); i++)
-            executor.schedule(tasks.get(i), (i + 1) * duration, timeUnit);
-
-        executor.shutdown();
-    }
-
-    public ArrayList<Line> createGrid() {
-        ArrayList<Line> lines = new ArrayList<Line>();
-
-        Size gridSize = game.getGridSize();
-        int gridWidth = gridSize.width();
-        int gridHeight = gridSize.height();
-
-        for(int i = 1; i < gridWidth; i++) {
-            Line line = new Line();
-
-            line.setStroke(Color.GRAY);
-            line.setStrokeWidth(1);
-
-            line.setStartX(i *  GRID_WIDTH / gridWidth);
-            line.setEndX(i *  GRID_WIDTH / gridWidth);
-            line.setStartY(0);
-            line.setEndY(gridHeight * GRID_HEIGHT / gridHeight);
-
-            lines.add(line);
-        }
-
-        for(int i = 1; i < gridHeight; i++) {
-            Line line = new Line();
-
-            line.setStroke(Color.GRAY);
-            line.setStrokeWidth(1);
-
-            line.setStartX(0);
-            line.setEndX(gridWidth * GRID_WIDTH / gridWidth);
-            line.setStartY(i * GRID_HEIGHT / gridHeight);
-            line.setEndY(i * GRID_HEIGHT / gridHeight);
-
-            lines.add(line);
-        }
-
-        return lines;
-    }
-
-    public Line createLine(Shape shape){
-        Line line = new Line();
-
-        Size gridSize = game.getGridSize();
-        int gridWidth = gridSize.width();
-        int gridHeight = gridSize.height();
-
-        line.setStroke(new Color(0, 0, 0, shape.getAlpha()));
-        line.setStrokeWidth(3);
-
-        Coordinates start = shape.getStart();
-        Coordinates end = shape.getFinish();
-
-        line.setStartX((start.getX() + gridWidth / 2) *  GRID_WIDTH / gridWidth);
-        line.setEndX((end.getX() + gridWidth / 2) * GRID_WIDTH / gridWidth);
-        line.setStartY((-1 * start.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
-        line.setEndY((-1 * end.getY() + gridHeight / 2) * GRID_HEIGHT / gridHeight);
-
-        return line;
-    }
 }
