@@ -16,6 +16,20 @@ public class CustomBlock extends EffectBlock {
     blockName = name;
   }
 
+  public EffectBlock makeCopy(){
+    EffectBlock newBlock = new CustomBlock();
+    newBlock.blockName = blockName;
+    blocks.forEach((Block block) -> {
+      if(block instanceof EffectBlock){
+        EffectBlock otherBlock = (EffectBlock) block;
+        newBlock.blocks.add(otherBlock.makeCopy());
+      }
+      else
+        newBlock.blocks.add(block);
+    });
+    return newBlock;
+  }
+
   public Sequence getSequence() {
     Sequence sequence = new Sequence();
     for(Block block: blocks)

@@ -11,21 +11,17 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
 
-public class DeleteButton extends Button{
-    public static final String TEXT = "Delete";
+public class CloseBlockButton extends Button{
+    public static final String TEXT = "Close Block";
     ListView<String> targetList;
 
-    public DeleteButton(GameController game, ListView<String> targetList){
+    public CloseBlockButton(GameController game, ListView<String> targetList){
         super();
         this.setText(TEXT);
         this.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent actionEvent){
-                int index = targetList.getSelectionModel().getSelectedIndex();
-                if(index >= 0){
-                    game.deleteBlockFromWorkspace(index);
-                    targetList.getItems().remove(index);
-                }
+                game.closeEffectBlock();
             }
         });
     }

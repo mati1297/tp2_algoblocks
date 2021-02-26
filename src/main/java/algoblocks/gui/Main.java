@@ -57,10 +57,16 @@ public class Main extends Application {
         new LowerPencilBlock(),
     }));
 
-    private static Game game;
+    private static final ArrayList<Block> EFFECT_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
+        new RepeatBlock(2),
+        new RepeatBlock(3),
+        new InvertBlock(),
+    }));
+
+    private static GameController gameController;
 
     public static void main(String[] args) {
-        game = new Game();
+        gameController = new GameController();
         launch(args);
     }
 
@@ -85,26 +91,28 @@ public class Main extends Application {
         blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
-        ArrayList<Button> blockButtons = BlockButton.createButtonArray(game, algorithmContainer, BASE_BLOCKS);
+        ArrayList<Button> blockButtons = ActionBlockButton.createButtonArray(gameController, algorithmContainer, BASE_BLOCKS);
+        blockButtons.addAll(EffectBlockButton.createButtonArray(gameController, algorithmContainer, EFFECT_BLOCKS));
         blockContainer.getChildren().addAll(blockButtons);
 
 
-        WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(game, GRID_WIDTH, GRID_HEIGHT);
+        WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(gameController, GRID_WIDTH, GRID_HEIGHT);
         StackPane whiteboardStack = whiteboardCanvas.getStackPane();
 
         // whiteboardStack.setAlignment(Pos.CENTER);
 
-        Button deleteButton = new DeleteButton(game, algorithmContainer);
+        Button deleteButton = new DeleteButton(gameController, algorithmContainer);
 
-        Button deleteAllButton = new DeleteAllButton(game, algorithmContainer);
-
+        Button deleteAllButton = new DeleteAllButton(gameController, algorithmContainer);
+        Button closeBlockButton = new CloseBlockButton(gameController, algorithmContainer);
         ArrayList<Button> buttonsToBlock = new ArrayList<Button>();
         buttonsToBlock.add(deleteButton);
         buttonsToBlock.add(deleteAllButton);
+        buttonsToBlock.add(closeBlockButton);
         buttonsToBlock.addAll(blockButtons);
-        Button runButton = new RunButton(game, whiteboardCanvas, buttonsToBlock);
+        Button runButton = new RunButton(gameController, whiteboardCanvas, buttonsToBlock);
 
-        HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, runButton);
+        HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, closeBlockButton, runButton);
         deleteButtonsContainer.setSpacing(10);
         deleteButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     

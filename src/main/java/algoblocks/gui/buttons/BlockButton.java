@@ -4,18 +4,19 @@ package algoblocks.gui.buttons;
 import javafx.scene.control.Button;
 import algoblocks.engine.*;
 import algoblocks.engine.block.*;
+import algoblocks.gui.GameController;
 import javafx.scene.control.ListView;
 import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
 
-public class BlockButton extends Button{
-    Game game;
-    ListView<String> targetList;
-    Block block;
+public abstract class BlockButton extends Button{
+    protected ListView<String> targetList;
+    protected Block block;
+    protected GameController game;
 
-    public BlockButton(Game game, ListView<String> targetList, Block block){
+    public BlockButton(GameController game, ListView<String> targetList, Block block){
         super();
         this.targetList = targetList;
         this.game = game;
@@ -24,18 +25,11 @@ public class BlockButton extends Button{
         this.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent actionEvent){
-                targetList.getItems().add(block.getBlockName());
-                game.addBlockToWorkspace(block);
+                action();
             }
         });
     }
 
-    public static ArrayList<Button> createButtonArray(Game game, ListView<String> targetList, ArrayList<Block> blocks){
-        ArrayList<Button> buttons = new ArrayList<Button>();
-
-        blocks.forEach((Block block) -> {
-            buttons.add(new BlockButton(game, targetList, block));
-        });
-        return buttons;
-    }
+    public abstract void action();
+    
 }

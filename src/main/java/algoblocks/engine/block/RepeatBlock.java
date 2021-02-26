@@ -15,6 +15,20 @@ public class RepeatBlock extends EffectBlock {
     blockName = "Repeat " + String.valueOf(times) + " times";
   }
 
+  public EffectBlock makeCopy(){
+    EffectBlock newBlock = new RepeatBlock(times);
+    newBlock.blockName = blockName;
+    blocks.forEach((Block block) -> {
+      if(block instanceof EffectBlock){
+        EffectBlock otherBlock = (EffectBlock) block;
+        newBlock.blocks.add(otherBlock.makeCopy());
+      }
+      else
+        newBlock.blocks.add(block);
+    });
+    return newBlock;
+  }
+
   public void setTimes(int times){
     if(times >= 2)
       this.times = times;

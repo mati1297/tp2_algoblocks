@@ -9,13 +9,13 @@ import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
 
 public class WhiteboardGrid{
-    Pane pane;
-    Game game;
+    private Pane pane;
+    private GameController game;
 
-    double width;
-    double height;
+    private double width;
+    private double height;
 
-    public WhiteboardGrid(Game game, double width, double height){
+    public WhiteboardGrid(GameController game, double width, double height){
         this.game = game;
         pane = new Pane();
         this.width = width;

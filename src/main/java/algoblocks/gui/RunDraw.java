@@ -14,10 +14,10 @@ public class RunDraw{
     private static final int DELAY = 500;
 
     private WhiteboardCanvas whiteboardCanvas;
-    private Game game;
+    private GameController game;
     private ArrayList<Button> buttonsToBlock;
 
-    public RunDraw(Game game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToBlock){
+    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToBlock){
         this.whiteboardCanvas = whiteboardCanvas;
         this.game = game;
         this.buttonsToBlock = buttonsToBlock;

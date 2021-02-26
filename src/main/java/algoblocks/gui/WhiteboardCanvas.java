@@ -6,10 +6,10 @@ import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 
 public class WhiteboardCanvas{
-    WhiteboardGrid grid;
-    WhiteboardDrawing drawing;
+    private WhiteboardGrid grid;
+    private WhiteboardDrawing drawing;
 
-    WhiteboardCanvas(Game game, double width, double height){
+    WhiteboardCanvas(GameController game, double width, double height){
         grid = new WhiteboardGrid(game, width, height);
         drawing = new WhiteboardDrawing(game, width, height);
     }

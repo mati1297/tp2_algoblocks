@@ -14,12 +14,11 @@ import javafx.event.ActionEvent;
 
 public class RunButton extends Button{
     private static final String NAME = "Run";
-    RunDraw run;
     ArrayList<Button> buttonsToBlock;
 
-    public RunButton(Game game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToBlock){
+    public RunButton(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToBlock){
         super();
-        run = new RunDraw(game, whiteboardCanvas, buttonsToBlock);
+        RunDraw run = new RunDraw(game, whiteboardCanvas, buttonsToBlock);
         this.buttonsToBlock = buttonsToBlock;
         this.buttonsToBlock.add(this);
         this.setText(NAME);

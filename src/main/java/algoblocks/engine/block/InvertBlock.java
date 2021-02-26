@@ -21,4 +21,18 @@ public class InvertBlock extends EffectBlock {
       sequence.concatenate(block.getSequence());
     return sequence;
   }
+
+  public EffectBlock makeCopy(){
+    EffectBlock newBlock = new InvertBlock();
+    newBlock.blockName = blockName;
+    blocks.forEach((Block block) -> {
+      if(block instanceof EffectBlock){
+        EffectBlock otherBlock = (EffectBlock) block;
+        newBlock.blocks.add(otherBlock.makeCopy());
+      }
+      else
+        newBlock.blocks.add(block);
+    });
+    return newBlock;
+  }
 }

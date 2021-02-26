@@ -12,6 +12,8 @@ public abstract class EffectBlock extends Block {
         blocks = new ArrayList<Block>();
     }
 
+    public abstract EffectBlock makeCopy();
+
     public EffectBlock(String name){
         super(name);
         blocks = new ArrayList<Block>();
@@ -20,6 +22,7 @@ public abstract class EffectBlock extends Block {
     public void addBlock(Block block){
         blocks.add(block);
     }
+
 
     @Override
     public boolean equals(Object object){
