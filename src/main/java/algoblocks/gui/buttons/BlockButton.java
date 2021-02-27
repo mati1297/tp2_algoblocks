@@ -9,14 +9,15 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import algoblocks.gui.*;
 
 
 public abstract class BlockButton extends Button{
-    protected ListView<String> targetList;
+    protected ListViewInterface targetList;
     protected Block block;
     protected GameController game;
 
-    public BlockButton(GameController game, ListView<String> targetList, Block block){
+    public BlockButton(GameController game, ListViewInterface targetList, Block block){
         super();
         this.targetList = targetList;
         this.game = game;
@@ -28,6 +29,11 @@ public abstract class BlockButton extends Button{
                 action();
             }
         });
+    }
+
+    public void setBlock(Block block){
+        this.block = block;
+        this.setText(block.getBlockName());
     }
 
     public abstract void action();
