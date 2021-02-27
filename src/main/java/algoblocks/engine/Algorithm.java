@@ -1,13 +1,14 @@
 package algoblocks.engine;
 
 import algoblocks.engine.action.Sequence;
-import algoblocks.engine.block.Block;
+import algoblocks.engine.*;
+import algoblocks.engine.block.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Algorithm{
-    private List<Block> blocks;
+    private ArrayList<Block> blocks;
 
     public Algorithm(){
         blocks = new ArrayList<Block>();
@@ -55,6 +56,10 @@ public class Algorithm{
         });
 
         return output;
+    }
+
+    public CustomBlock createCustomBlock(){
+        return new CustomBlock(blocks);
     }
     
 }

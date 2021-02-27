@@ -1,6 +1,7 @@
 package algoblocks.engine.block;
 
 import algoblocks.engine.action.Sequence;
+import java.util.ArrayList;
 
 public class CustomBlock extends EffectBlock {
 
@@ -10,6 +11,16 @@ public class CustomBlock extends EffectBlock {
 
   public CustomBlock(String name){
     super(name);
+  }
+
+  public CustomBlock(String name, ArrayList<Block> blocks){
+    super(name);
+    this.blocks.addAll(blocks);
+  }
+
+  public CustomBlock(ArrayList<Block> blocks){
+    super("");
+    this.blocks.addAll(blocks);
   }
 
   public void setName(String name){

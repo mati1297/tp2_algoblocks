@@ -2,7 +2,7 @@ package algoblocks.engine;
 
 
 import algoblocks.engine.action.Sequence;
-import algoblocks.engine.block.Block;
+import algoblocks.engine.block.*;
 
 public class Workspace{
     private Algorithm algorithm;
@@ -25,6 +25,10 @@ public class Workspace{
 
     public Sequence compile(){
         return algorithm.compile();
+    }
+
+    public CustomBlock createCustomBlock(){
+        return algorithm.createCustomBlock();
     }
 
 }
