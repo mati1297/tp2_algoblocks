@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
+import algoblocks.gui.*;
 
 public class WhiteboardGrid{
     private Pane pane;
