@@ -15,12 +15,12 @@ public class RunDraw{
 
     private WhiteboardCanvas whiteboardCanvas;
     private GameController game;
-    private ArrayList<Button> buttonsToBlock;
+    private ArrayList<Button> buttonsToDisable;
 
-    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToBlock){
+    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToDisable){
         this.whiteboardCanvas = whiteboardCanvas;
         this.game = game;
-        this.buttonsToBlock = buttonsToBlock;
+        this.buttonsToDisable = buttonsToDisable;
     }
 
     public void execute(){
@@ -43,13 +43,13 @@ public class RunDraw{
     }
 
     private void disableButtons(){
-        buttonsToBlock.forEach((Button button) -> {
+        buttonsToDisable.forEach((Button button) -> {
             Platform.runLater(() -> button.setDisable(true));
         });
     }
 
     private void enableButtons(){
-        buttonsToBlock.forEach((Button button) -> {
+        buttonsToDisable.forEach((Button button) -> {
             Platform.runLater(() -> button.setDisable(false));
         });
     }
