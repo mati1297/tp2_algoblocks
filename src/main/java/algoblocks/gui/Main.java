@@ -83,7 +83,10 @@ public class Main extends Application {
 //      okBtn.setPrefSize(520, 520);
 //      moveLeft.setPadding(Insets.EMPTY);
 
-        ListView<String> algorithmContainer = new ListView<String>();
+        //ListView<String> algorithmContainer = new ListView<String>();
+        ListViewInterface algorithmListView = new ListViewInterface();
+        ListView<BlockItem> algorithmContainer = algorithmListView.getListView();
+        //meter dentro de ListViewInterface
         algorithmContainer.setPrefHeight(window.getHeight() * 0.8);
         algorithmContainer.setId("algorithmContainer");
 
@@ -91,9 +94,11 @@ public class Main extends Application {
         blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setSpacing(10);
         blockContainer.setAlignment(Pos.TOP_CENTER);
-        ArrayList<Button> blockButtons = ActionBlockButton.createButtonArray(gameController, algorithmContainer, BASE_BLOCKS);
-        blockButtons.addAll(EffectBlockButton.createButtonArray(gameController, algorithmContainer, EFFECT_BLOCKS));
+        ArrayList<Button> blockButtons = ActionBlockButton.createButtonArray(gameController, algorithmListView, BASE_BLOCKS);
+        blockButtons.addAll(EffectBlockButton.createButtonArray(gameController, algorithmListView, EFFECT_BLOCKS));
+        ActionBlockButton customBlockButton = new ActionBlockButton(gameController, algorithmListView, new CustomBlock());
         blockContainer.getChildren().addAll(blockButtons);
+        blockContainer.getChildren().add(customBlockButton);
 
 
         WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(gameController, GRID_WIDTH, GRID_HEIGHT);
@@ -101,18 +106,19 @@ public class Main extends Application {
 
         // whiteboardStack.setAlignment(Pos.CENTER);
 
-        Button deleteButton = new DeleteButton(gameController, algorithmContainer);
+        Button deleteButton = new DeleteButton(gameController, algorithmListView);
+        Button deleteAllButton = new DeleteAllButton(gameController, algorithmListView);
+        Button closeBlockButton = new CloseBlockButton(gameController, algorithmListView);
+        Button saveButton = new SaveButton(gameController, algorithmListView, customBlockButton);
+        ArrayList<Button> buttonsToDisable = new ArrayList<Button>();
+        buttonsToDisable.add(deleteButton);
+        buttonsToDisable.add(deleteAllButton);
+        buttonsToDisable.add(closeBlockButton);
+        buttonsToDisable.add(saveButton);
+        buttonsToDisable.addAll(blockButtons);
+        Button runButton = new RunButton(gameController, whiteboardCanvas, buttonsToDisable);
 
-        Button deleteAllButton = new DeleteAllButton(gameController, algorithmContainer);
-        Button closeBlockButton = new CloseBlockButton(gameController, algorithmContainer);
-        ArrayList<Button> buttonsToBlock = new ArrayList<Button>();
-        buttonsToBlock.add(deleteButton);
-        buttonsToBlock.add(deleteAllButton);
-        buttonsToBlock.add(closeBlockButton);
-        buttonsToBlock.addAll(blockButtons);
-        Button runButton = new RunButton(gameController, whiteboardCanvas, buttonsToBlock);
-
-        HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, closeBlockButton, runButton);
+        HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, closeBlockButton, saveButton, runButton);
         deleteButtonsContainer.setSpacing(10);
         deleteButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     
