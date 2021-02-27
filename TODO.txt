@@ -9,3 +9,13 @@ tengan los mismos bloques etc (para el effect block) o la misma acción (para lo
 (ver tema de comparacion por nombre o times en repeatblocks.
 
 VER BIEN QUE RUNBUTTON USA UNA CLASE QUE ESTA FUERA DE SU PACKAGE.
+
+
+TODO para entrega.
+	Sprite para jugador.
+	Custom block -> ventana aparte para creación, pedir nombre, maxima cantidad de customblocks.
+	Hacer todas las validaciones.
+
+Configurar ventanas.
+Hacer que CustomBlock sea ahora algo con un comportamiento más similar a ActioBlock, que no sea más un EffectBLock (importante)
+ya que en la gui no es tratado como tal. (AUNQUE tiene la similitud de que esta compuesto por otros bloques, discutir).
