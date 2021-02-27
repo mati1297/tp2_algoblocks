@@ -19,12 +19,8 @@ public class GameController{
     public void addActionBlockToWorkspace(Block block){
         if(!openedBlocks.isEmpty())
             openedBlocks.get(openedBlocks.size() - 1).addBlock(block);
-        else{
+        else
             game.addBlockToWorkspace(block);
-            System.out.println("Hola");
-        }
-        
-        
     }
 
     public void addEffectBlockToWorkspace(Block block){
@@ -46,8 +42,10 @@ public class GameController{
         return game.getGridSize();
     }
 
-    public void deleteBlockFromWorkspace(int index){
-        deleteBlockFromWorkspace(index);
+    public void deleteBlockFromWorkspace(int index, boolean opened){
+        if(opened)
+            openedBlocks.clear();
+        game.deleteBlockFromWorkspace(index);
     }
 
     public void run(){
@@ -60,6 +58,11 @@ public class GameController{
     }
 
     public void closeEffectBlock(){
-        openedBlocks.remove(openedBlocks.size() - 1);
+        if(!openedBlocks.isEmpty())
+            openedBlocks.remove(openedBlocks.size() - 1);
+    }
+
+    public CustomBlock createCustomBlock(){
+        return game.createCustomBlock();
     }
 }
