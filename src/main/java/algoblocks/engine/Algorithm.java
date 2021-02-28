@@ -40,6 +40,7 @@ public class Algorithm{
     }
 
     public void deleteBlock(int index){
+        //validate
         if(index < blocks.size())
             blocks.remove(index);
     }

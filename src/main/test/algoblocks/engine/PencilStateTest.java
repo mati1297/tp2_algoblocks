@@ -15,7 +15,9 @@ public class PencilStateTest {
         PencilState raisedState = new RaisedPencilState();
         Coordinates coords = new Coordinates(0, 0);
 
-        assertTrue(raisedState.draw(coords, coords) instanceof Blank);
+        Blank blank = new Blank(coords, coords);
+        
+        assertEquals(raisedState.draw(coords, coords), blank);
     }
 
     @Test
@@ -23,6 +25,8 @@ public class PencilStateTest {
         PencilState loweredState = new LoweredPencilState();
         Coordinates coords = new Coordinates(0, 0);
 
-        assertTrue(loweredState.draw(coords, coords) instanceof Line);
+        Line line = new Line(coords, coords);
+
+        assertEquals(loweredState.draw(coords, coords), line);
     }
 }

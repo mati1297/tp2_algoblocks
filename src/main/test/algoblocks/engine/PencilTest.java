@@ -15,7 +15,9 @@ public class PencilTest {
         Coordinates start = new Coordinates(0, 0);
         Coordinates finish = new Coordinates(0, 1);
 
-        assertTrue(pencil.draw(start, finish) instanceof Blank);
+        Blank blank = new Blank(start, finish);
+
+        assertEquals(pencil.draw(start, finish), blank);
     }
 
     @Test
@@ -25,8 +27,11 @@ public class PencilTest {
         Coordinates start = new Coordinates(0, 0);
         Coordinates finish = new Coordinates(0, 1);
 
+        Line line = new Line(start, finish);
+
         pencil.lower();
-        assertTrue(pencil.draw(start, finish) instanceof Line);
+
+        assertEquals(pencil.draw(start, finish), line);
     }
 
     @Test
@@ -35,8 +40,36 @@ public class PencilTest {
 
         Coordinates start = new Coordinates(0, 0);
         Coordinates finish = new Coordinates(0, 1);
+        
+        Blank blank = new Blank(start, finish);
 
         pencil.raise();
-        assertTrue(pencil.draw(start, finish) instanceof Blank);
+        
+        assertEquals(pencil.draw(start, finish), blank);
+    }
+
+    @Test
+    public void nullIsDiferentToPencil(){
+        Pencil pencil = new Pencil();
+
+        assertNotEquals(pencil, null);
+    }
+
+    @Test
+    public void objectOfOtherClassIsDifferentToPencil(){
+        Pencil pencil = new Pencil();
+
+        assertNotEquals(pencil, 5);
+    }
+
+    @Test
+    public void pencilRaisedIsDifferentToLowered(){
+        Pencil pencilRaised = new Pencil();
+        Pencil pencilLowered = new Pencil();
+
+        pencilRaised.raise();
+        pencilLowered.lower();
+
+        assertNotEquals(pencilRaised, pencilLowered);
     }
 }

@@ -5,6 +5,7 @@ public class Size {
   private int height;
 
   public Size(int width, int height) {
+    ///validar
     this.width = width;
     this.height = height;
   }
