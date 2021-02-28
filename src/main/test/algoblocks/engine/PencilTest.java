@@ -72,4 +72,17 @@ public class PencilTest {
 
         assertNotEquals(pencilRaised, pencilLowered);
     }
+
+    @Test
+    public void loweredPencilDontDrawWhenLineIsLargerThanOne(){
+        Pencil pencil = new Pencil();
+        pencil.lower();
+
+        Coordinates coordsOne = new Coordinates(0, 0);
+        Coordinates coordsTwo = new Coordinates(0, 3);
+
+
+        Blank blank = new Blank(coordsOne, coordsTwo);
+        assertEquals(pencil.draw(coordsOne, coordsTwo), blank);
+    }
 }

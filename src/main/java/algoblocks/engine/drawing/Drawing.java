@@ -27,6 +27,9 @@ public class Drawing {
 
     Drawing someDrawing = (Drawing)object;
 
+    if(someDrawing.shapes.size() != shapes.size())
+      return false;
+
     boolean isEqual = true;
     int index = 0;
 

@@ -83,4 +83,17 @@ public class GameTest {
         
         assertEquals(expectedCoordinates, playerInGame.getPosition());
     }
+
+    @Test
+    public void DrawingCopyConstructorCopiesAnotherDrawing(){
+      Drawing drawingOne = new Drawing();
+      Coordinates coords = new Coordinates();
+  
+      drawingOne.addShape(new Line(coords, coords));
+      drawingOne.addShape(new Blank(coords, coords));
+      
+      Drawing drawingTwo = new Drawing(drawingOne);
+  
+      assertTrue(drawingTwo.equals(drawingOne));
+    }
 }
