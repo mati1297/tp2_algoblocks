@@ -1,25 +1,26 @@
 package algoblocks.gui;
 
-import algoblocks.engine.*;
+// import algoblocks.engine.*;
 import algoblocks.engine.block.*;
-import algoblocks.engine.drawing.*;
-import algoblocks.engine.grid.*;
+// import algoblocks.engine.drawing.*;
+// import algoblocks.engine.grid.*;
 import algoblocks.gui.buttons.*;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
+// import javafx.application.Platform;
+// import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+// import java.util.concurrent.Executors;
+// import java.util.concurrent.ScheduledExecutorService;
+// import java.util.concurrent.TimeUnit;
 
 import javafx.geometry.Pos;
 // import javafx.scene.Cursor;
 // import javafx.geometry.Rectangle2D;
 // import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.*;
+// import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+// import javafx.scene.paint.Color;
 // import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -34,9 +35,9 @@ import javafx.scene.control.Button;
 // import javafx.scene.image.Image;
 // import javafx.scene.image.ImageView;
 // import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
+// import javafx.scene.shape.Line;
 // import javafx.stage.Stage;
-import javafx.event.EventHandler;
+// import javafx.event.EventHandler;
 // import javafx.event.ActionEvent;
 
 // import java.beans.EventHandler;
@@ -45,7 +46,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main extends Application {
-    private static final Window window = new Window(800, 600); // BUSCAR COMO BLOQUEAR TAMAÑO
+    private static final Window window = new Window(800, 600);
     private static final double GRID_WIDTH = window.getWidth() * 0.6;
     private static final double GRID_HEIGHT = GRID_WIDTH;
     private static final ArrayList<Block> BASE_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
@@ -76,33 +77,26 @@ public class Main extends Application {
         stage.setHeight(window.getHeight());
         stage.setWidth(window.getWidth());
 
-//      String s = "File:resources/ok.png";
-//      Image okImage = new Image(s);
-//      Button okBtn = new Button();
-//      okBtn.setGraphic(new ImageView(okImage));
-//      okBtn.setPrefSize(520, 520);
-//      moveLeft.setPadding(Insets.EMPTY);
-
-        //ListView<String> algorithmContainer = new ListView<String>();
         ListViewInterface algorithmListView = new ListViewInterface();
-        ListView<BlockItem> algorithmContainer = algorithmListView.getListView();
-        //meter dentro de ListViewInterface
-        algorithmContainer.setPrefHeight(window.getHeight() * 0.8);
-        algorithmContainer.setId("algorithmContainer");
+        algorithmListView.setPrefHeight(window.getHeight() * 0.8);
+        algorithmListView.setId("algorithmContainer");
 
-        HBox blockContainer = new HBox();
-        blockContainer.setPrefHeight(window.getHeight() / 10);
-        blockContainer.setSpacing(10);
+        FlowPane blockContainer = new FlowPane();
+        // blockContainer.setPrefHeight(window.getHeight() / 10);
+        blockContainer.setPadding(new Insets(5, 5, 5, 5));
+        blockContainer.setVgap(5);
+        blockContainer.setHgap(5);
         blockContainer.setAlignment(Pos.TOP_CENTER);
+
         ArrayList<Button> blockButtons = ActionBlockButton.createButtonArray(gameController, algorithmListView, BASE_BLOCKS);
         blockButtons.addAll(EffectBlockButton.createButtonArray(gameController, algorithmListView, EFFECT_BLOCKS));
+
         ActionBlockButton customBlockButton = new ActionBlockButton(gameController, algorithmListView, new CustomBlock());
         blockContainer.getChildren().addAll(blockButtons);
         blockContainer.getChildren().add(customBlockButton);
 
 
         WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(gameController, GRID_WIDTH, GRID_HEIGHT);
-        StackPane whiteboardStack = whiteboardCanvas.getStackPane();
 
         // whiteboardStack.setAlignment(Pos.CENTER);
 
@@ -122,11 +116,11 @@ public class Main extends Application {
         deleteButtonsContainer.setSpacing(10);
         deleteButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     
-        VBox algorithmAndDeleteButtons = new VBox(algorithmContainer, deleteButtonsContainer);
+        VBox algorithmAndDeleteButtons = new VBox(algorithmListView.getListView(), deleteButtonsContainer);
 
 
         HBox secondaryContainer = new HBox();
-        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardStack);
+        secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardCanvas.getStackPane());
 
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
         mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);

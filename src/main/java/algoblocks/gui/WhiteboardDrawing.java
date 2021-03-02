@@ -34,14 +34,19 @@ public class WhiteboardDrawing{
         pane.getChildren().clear();
     }
 
-    public ArrayList<Runnable> draw(){
+    public ArrayList<Runnable> draw(PlayerPane playerPane){
         ArrayList<Runnable> tasks = new ArrayList<Runnable>();
 
         Drawing drawing = game.getDrawing();
         
 
         drawing.forEach((Shape shape) -> {
-            Runnable task = () -> Platform.runLater(() -> pane.getChildren().add(createLine(shape)));
+            Runnable task = () -> {
+                Platform.runLater(() -> {
+                    playerPane.updatePlayerSprite(shape.getFinish());
+                    pane.getChildren().add(createLine(shape));
+                });
+            };
             tasks.add(task);
         });
 
@@ -53,8 +58,8 @@ public class WhiteboardDrawing{
         //aca deberia ir la parte de activar los botones de nuevo.
     }
 
-    private javafx.scene.shape.Line createLine(Shape shape){
-        javafx.scene.shape.Line line = new javafx.scene.shape.Line();
+    private Line createLine(Shape shape){
+        Line line = new Line();
 
         Size gridSize = game.getGridSize();
         int gridWidth = gridSize.width();

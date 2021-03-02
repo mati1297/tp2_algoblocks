@@ -17,4 +17,8 @@ public class LoweredPencilState implements PencilState {
                 new Blank(oldCoords, newCoords)
         );
     }
+
+    public boolean canDraw() {
+        return true;
+    }
 }

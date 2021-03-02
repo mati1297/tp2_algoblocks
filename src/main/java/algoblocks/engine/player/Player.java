@@ -11,12 +11,14 @@ public class Player {
     private Coordinates position;
     private Movement movement;
     private Drawing drawing;
+    private boolean isMoving;
 
     public Player(Grid grid) {
         pencil = new Pencil();
         position = new Coordinates();
         movement = new Movement(grid);
         drawing = new Drawing();
+        isMoving = false;
     }
 
     @Override
@@ -38,10 +40,27 @@ public class Player {
         return true;
     }
 
+    public String getPlayerSpritePath() {
+        if (isMoving) {
+            if (pencil.canDraw())
+                return "File:resources/playerSprites/RunPencilDown.png";
+            else return "File:resources/playerSprites/RunPencilUp.png";
+        } else {
+            if (pencil.canDraw())
+                return "File:resources/playerSprites/IdlePencilDown.png";
+            else return "File:resources/playerSprites/IdlePencilUp.png";
+        }
+    }
+
+    public void setIsMoving(boolean value) {
+        isMoving = value;
+    }
+
     public void resetPlayer() {
         position = new Coordinates();
         pencil = new Pencil();
         drawing = new Drawing();
+        isMoving = false;
     }
 
     public void move(Direction direction) {

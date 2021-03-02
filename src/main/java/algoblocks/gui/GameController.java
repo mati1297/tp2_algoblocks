@@ -4,7 +4,11 @@ import algoblocks.engine.*;
 import algoblocks.engine.grid.*;
 import algoblocks.engine.drawing.*;
 import algoblocks.engine.block.*;
+
+import java.io.File;
 import java.util.ArrayList;
+
+import javafx.scene.image.Image;
 
 public class GameController{
     private Game game;
@@ -15,6 +19,9 @@ public class GameController{
         openedBlocks = new ArrayList<EffectBlock>();
     }
 
+    public Coordinates getPlayerPosition() {
+        return game.getPlayer().getPosition();
+    }
 
     public void addActionBlockToWorkspace(Block block){
         if(!openedBlocks.isEmpty())
@@ -32,6 +39,10 @@ public class GameController{
         else
             game.addBlockToWorkspace(effectBlock);
         openedBlocks.add(effectBlock);
+    }
+
+    public Image getPlayerSprite() {
+        return new Image("File:resources/playerSprite.png");
     }
 
     public Drawing getDrawing(){

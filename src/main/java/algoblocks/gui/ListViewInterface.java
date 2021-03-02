@@ -1,8 +1,7 @@
 package algoblocks.gui;
 
-
 import javafx.scene.control.ListView;
-import javafx.scene.effect.Effect;
+// import javafx.scene.effect.Effect;
 
 import java.util.ArrayList;
 
@@ -15,6 +14,14 @@ public class ListViewInterface{
     public ListViewInterface(){
         listView = new ListView<BlockItem>();
         openedItems = new ArrayList<EffectBlockItem>();
+    }
+
+    public void setPrefHeight (Double prefHeight) {
+        listView.setPrefHeight(prefHeight);
+    }
+
+    public void setId (String id) {
+        listView.setId(id);
     }
 
     public void addActionBlock(Block block){
@@ -34,8 +41,6 @@ public class ListViewInterface{
         openedItems.add(newEffectBlockItem);
         listView.refresh();
     }
-
-
 
     public boolean remove(int index){
         //me fijo si esta abierto primeramente. Si esta abierto borro todo.

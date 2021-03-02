@@ -5,5 +5,6 @@ import algoblocks.engine.grid.Coordinates;
 
 public interface PencilState {
     public Shape draw(Coordinates oldCoords, Coordinates newCoords);
+    public boolean canDraw();
 }
 

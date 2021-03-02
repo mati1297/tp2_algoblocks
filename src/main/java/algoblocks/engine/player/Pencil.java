@@ -34,4 +34,8 @@ public class Pencil {
     public void lower() {
         state = new LoweredPencilState();
     }
+
+    public boolean canDraw() {
+        return state.canDraw();
+    }
 }
