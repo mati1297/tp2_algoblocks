@@ -3,23 +3,29 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 import java.util.ArrayList;
 
-public class CustomBlock extends EffectBlock {
+public class CustomBlock extends Block {
+  private ArrayList<Block> blocks;
+  private String blockName;
 
   public CustomBlock(){
-    super();
+    blockName = "Custom";
+    blocks = new ArrayList<Block>();
   }
 
   public CustomBlock(String name){
-    super(name);
+    blockName = name;
+    blocks = new ArrayList<Block>();
   }
 
   public CustomBlock(String name, ArrayList<Block> blocks){
-    super(name);
+    blockName = name;
+    this.blocks = new ArrayList<Block>();
     this.blocks.addAll(blocks);
   }
 
   public CustomBlock(ArrayList<Block> blocks){
-    super("");
+    blockName = "Custom";
+    this.blocks = new ArrayList<Block>();
     this.blocks.addAll(blocks);
   }
 
@@ -27,11 +33,15 @@ public class CustomBlock extends EffectBlock {
     blockName = name;
   }
 
-  public EffectBlock makeCopy(){
-    EffectBlock newBlock = new CustomBlock();
+  public CustomBlock makeCopy(){
+    CustomBlock newBlock = new CustomBlock();
     newBlock.blockName = blockName;
     blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock){
+      if(block instanceof CustomBlock){
+        CustomBlock otherBlock = (CustomBlock) block;
+        newBlock.blocks.add(otherBlock.makeCopy());
+      }
+      else if(block instanceof EffectBlock){
         EffectBlock otherBlock = (EffectBlock) block;
         newBlock.blocks.add(otherBlock.makeCopy());
       }
@@ -39,6 +49,15 @@ public class CustomBlock extends EffectBlock {
         newBlock.blocks.add(block);
     });
     return newBlock;
+  }
+
+  public void addBlock(Block block){
+    blocks.add(block);
+  }
+
+  @Override
+  public String getBlockName() {
+    return blockName;
   }
 
   public Sequence getSequence() {
