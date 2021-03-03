@@ -4,7 +4,7 @@ import algoblocks.engine.action.Sequence;
 import java.util.stream.IntStream;
 
 public class RepeatBlock extends EffectBlock {
-
+  private String blockName;
   private int times;
 
   public RepeatBlock(int times){
@@ -15,8 +15,9 @@ public class RepeatBlock extends EffectBlock {
     blockName = "Repeat " + String.valueOf(times) + " times";
   }
 
-  public EffectBlock makeCopy(){
-    EffectBlock newBlock = new RepeatBlock(times);
+  @Override
+  public RepeatBlock makeCopy(){
+    RepeatBlock newBlock = new RepeatBlock(times);
     newBlock.blockName = blockName;
     blocks.forEach((Block block) -> {
       if(block instanceof EffectBlock){
@@ -33,6 +34,30 @@ public class RepeatBlock extends EffectBlock {
     if(times >= 2)
       this.times = times;
     blockName = "Repeat " + String.valueOf(times) + " times";
+  }
+
+  @Override
+  public String getBlockName() {
+    return blockName;
+  }
+
+  @Override
+  public boolean equals(Object object){
+    if(super.equals(object) == false)
+      return false;
+
+    RepeatBlock otherBlock = (RepeatBlock) object;
+
+    if(!blockName.equals(otherBlock.blockName))
+      return false;
+
+    if(!blocks.equals(otherBlock.blocks))
+      return false;
+
+    if(times != otherBlock.times)
+      return false;
+
+    return true;
   }
 
   public Sequence getSequence() {

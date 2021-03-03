@@ -14,15 +14,9 @@ public abstract class EffectBlock extends Block {
 
     public abstract EffectBlock makeCopy();
 
-    public EffectBlock(String name){
-        super(name);
-        blocks = new ArrayList<Block>();
-    }
-
     public void addBlock(Block block){
         blocks.add(block);
     }
-
 
     @Override
     public boolean equals(Object object){
@@ -30,13 +24,12 @@ public abstract class EffectBlock extends Block {
             return false;
 
         EffectBlock otherBlock = (EffectBlock) object;
-        
+
         if(!blocks.equals(otherBlock.blocks))
             return false;
 
         return true;
     }
-
 
     public abstract Sequence getSequence();
     public abstract Sequence getInvertedSequence();

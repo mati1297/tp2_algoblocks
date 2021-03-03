@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WorkspaceTest {
     @Test
-    public void AddBlockAndCompileWorkspaceReturnSequenceWithAction(){
+    public void addBlockAndCompileWorkspaceReturnSequenceWithAction(){
         Workspace workspace = new Workspace();
 
         workspace.addBlock(new MoveUpBlock());
@@ -21,7 +21,7 @@ public class WorkspaceTest {
     }
 
     @Test
-    public void DeleteBlockAndCompileWorkspaceReturnsSequenceWithoutThatAction(){
+    public void deleteBlockAndCompileWorkspaceReturnsSequenceWithoutThatAction(){
         Workspace workspace = new Workspace();
 
         workspace.addBlock(new MoveUpBlock());

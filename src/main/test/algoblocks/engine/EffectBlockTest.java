@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EffectBlockTest {
     @Test
-    public void RepeatTwoTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
+    public void repeatTwoTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -28,7 +28,7 @@ public class EffectBlockTest {
 
 
     @Test
-    public void RepeatTwoTimesBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){
+    public void repeatTwoTimesBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -48,7 +48,7 @@ public class EffectBlockTest {
 
 
     @Test
-    public void RepeatThreeTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
+    public void repeatThreeTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -69,7 +69,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void RepeatThreeTimesBlockInvertedWithMoveUpMoveLeftAndActionsReturnSequenceWithThatActionsInverted(){
+    public void repeatThreeTimesBlockInvertedWithMoveUpMoveLeftAndActionsReturnSequenceWithThatActionsInverted(){
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -90,7 +90,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void RepeatingTwoTimesAThreeTimesBlockRepeatItsActionSixTimes(){
+    public void repeatingTwoTimesAThreeTimesBlockRepeatItsActionSixTimes(){
         ActionBlock moveDownBlock = new MoveDownBlock();
 
         EffectBlock repeatThreeTimes = new RepeatBlock(3);
@@ -112,7 +112,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void CreateARepeatBlockWithLessThan2TimesCreatesADefaultRepeatBlock(){
+    public void createARepeatBlockWithLessThan2TimesCreatesADefaultRepeatBlock(){
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -131,7 +131,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void InvertBlockWithRaisePencilReturnSequenceWithLowerPencil(){
+    public void invertBlockWithRaisePencilReturnSequenceWithLowerPencil(){
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlock = new InvertBlock();
@@ -146,7 +146,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void InvertBlockWithRaisePencilReturnInvertedSequenceWithRaisePencil(){
+    public void invertBlockWithRaisePencilReturnInvertedSequenceWithRaisePencil(){
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlock = new InvertBlock();
@@ -162,7 +162,7 @@ public class EffectBlockTest {
 
 
     @Test
-    public void InvertingAnInvertBlockReturnOriginalAction(){
+    public void invertingAnInvertBlockReturnOriginalAction(){
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlockOne = new InvertBlock();
@@ -178,43 +178,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void CustomBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
-        ActionBlock moveUpBlock = new MoveUpBlock();
-        ActionBlock moveLeftBlock = new MoveLeftBlock();
-
-        EffectBlock customBlock = new CustomBlock();
-        customBlock.addBlock(moveUpBlock);
-        customBlock.addBlock(moveLeftBlock);
-
-        Sequence customSequence = customBlock.getSequence();
-        Sequence testSequence = new Sequence();
-        testSequence.concatenate(moveUpBlock.getSequence());
-        testSequence.concatenate(moveLeftBlock.getSequence());
-
-        assertTrue(customSequence.equals(testSequence));
-    }
-
-
-    @Test
-    public void CustomBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){
-        ActionBlock moveUpBlock = new MoveUpBlock();
-        ActionBlock moveLeftBlock = new MoveLeftBlock();
-
-        EffectBlock customBlock = new CustomBlock();
-        customBlock.addBlock(moveUpBlock);
-        customBlock.addBlock(moveLeftBlock);
-
-        Sequence customSequence = customBlock.getInvertedSequence();
-        Sequence testSequence = new Sequence();
-        testSequence.concatenate(moveUpBlock.getInvertedSequence());
-        testSequence.concatenate(moveLeftBlock.getInvertedSequence());
-
-        assertTrue(customSequence.equals(testSequence));
-    }
-
-
-    @Test
-    public void RepeatBlockIsEqualToAnotherWithSameBlocksAndTimes(){
+    public void repeatBlockIsEqualToAnotherWithSameBlocksAndTimes(){
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
@@ -230,12 +194,12 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void RepeatBlockIsDifferentToAnotherWithSameBlocksButDifferentTimes(){
+    public void repeatBlockIsDifferentToAnotherWithSameBlocksButDifferentTimes(){
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
-        EffectBlock repeatOne = new RepeatBlock(2);
-        EffectBlock repeatTwo = new RepeatBlock(3);
+        RepeatBlock repeatOne = new RepeatBlock(2);
+        RepeatBlock repeatTwo = new RepeatBlock(3);
 
         repeatOne.addBlock(moveUp);
         repeatOne.addBlock(moveDown);
@@ -246,7 +210,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void InvertBlocksWithDifferentBlocksAreDifferent(){
+    public void invertBlocksWithDifferentBlocksAreDifferent(){
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
@@ -280,7 +244,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void SettingARepeatBlockWithLessThanTwoTimesSetsATwoTimesBlock(){
+    public void settingARepeatBlockWithLessThanTwoTimesSetsATwoTimesBlock() {
         ActionBlock moveDownBlock = new MoveDownBlock();
 
         RepeatBlock repeat = new RepeatBlock(2);
@@ -288,7 +252,7 @@ public class EffectBlockTest {
         repeat.addBlock(moveDownBlock);
 
         repeat.setTimes(0);
-        
+
         Sequence repeatSequence = repeat.getSequence();
         Sequence testSequence = new Sequence();
         testSequence.concatenate(moveDownBlock.getSequence());
@@ -296,17 +260,4 @@ public class EffectBlockTest {
 
         assertTrue(repeatSequence.equals(testSequence));
     }
-
-    @Test
-    public void CustomBlockConstructorAndSetNameWorkOk(){
-        CustomBlock custom = new CustomBlock("Custom block 1");
-
-        assertEquals(custom.getBlockName(), "Custom block 1");
-
-        custom.setName("Custom block 2");
-
-        assertEquals(custom.getBlockName(), "Custom block 2");
-
-    }
-
 }

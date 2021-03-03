@@ -3,9 +3,10 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public class InvertBlock extends EffectBlock {
+  private static final String blockName = "Invert";
 
   public InvertBlock(){
-    super("Invert");
+    super();
   }
 
   public Sequence getSequence() {
@@ -22,9 +23,30 @@ public class InvertBlock extends EffectBlock {
     return sequence;
   }
 
-  public EffectBlock makeCopy(){
-    EffectBlock newBlock = new InvertBlock();
-    newBlock.blockName = blockName;
+  @Override
+  public String getBlockName() {
+    return blockName;
+  }
+
+  @Override
+  public boolean equals(Object object){
+    if(super.equals(object) == false)
+      return false;
+
+    InvertBlock otherBlock = (InvertBlock) object;
+
+    if(!blockName.equals(otherBlock.blockName))
+      return false;
+
+    if(!blocks.equals(otherBlock.blocks))
+      return false;
+
+    return true;
+  }
+
+  @Override
+  public InvertBlock makeCopy(){
+    InvertBlock newBlock = new InvertBlock();
     blocks.forEach((Block block) -> {
       if(block instanceof EffectBlock){
         EffectBlock otherBlock = (EffectBlock) block;

@@ -28,7 +28,7 @@ public class GameTest {
     @Test
     public void workspaceAddRepeatBlockAndExecuteInPlayer(){
         Game game = new Game();
-        EffectBlock repeatTwice = new RepeatBlock(4);
+        RepeatBlock repeatTwice = new RepeatBlock(4);
         Block moveUp = new MoveUpBlock();
 
         repeatTwice.addBlock(moveUp);
@@ -46,7 +46,7 @@ public class GameTest {
     @Test
     public void workspaceAddInvertBlockAndExecuteInPlayer(){
         Game game = new Game();
-        EffectBlock invert = new InvertBlock();
+        InvertBlock invert = new InvertBlock();
         Block moveUp = new MoveUpBlock();
         Block moveLeft = new MoveLeftBlock();
 
@@ -66,7 +66,7 @@ public class GameTest {
     @Test
     public void workspaceAddCustomBlockAndExecuteInPlayer(){
         Game game = new Game();
-        EffectBlock custom = new CustomBlock();
+        CustomBlock custom = new CustomBlock();
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
         Block moveLeft = new MoveLeftBlock();
