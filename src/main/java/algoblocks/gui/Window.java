@@ -27,8 +27,7 @@ public class Window {
     this.stage.setWidth(width);
   }
 
-  public void show(){
+  public void show() {
     stage.show();
   }
-
 }

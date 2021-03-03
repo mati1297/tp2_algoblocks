@@ -13,7 +13,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) {
         mainWindow = new MainWindow(stage, gameController, 800, 600);
         mainWindow.show();
     }

@@ -4,13 +4,14 @@ import algoblocks.engine.block.*;
 import algoblocks.engine.grid.Coordinates;
 import algoblocks.engine.drawing.*;
 import algoblocks.engine.player.Player;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     @Test
-    public void workspaceAddActionBlockAndExecuteInPlayer(){
+    public void workspaceAddActionBlockAndExecuteInPlayer() {
         Game game = new Game();
         Block moveDown = new MoveDownBlock();
 
@@ -26,7 +27,7 @@ public class GameTest {
     }
 
     @Test
-    public void workspaceAddRepeatBlockAndExecuteInPlayer(){
+    public void workspaceAddRepeatBlockAndExecuteInPlayer() {
         Game game = new Game();
         EffectBlock repeatTwice = new RepeatBlock(4);
         Block moveUp = new MoveUpBlock();
@@ -44,7 +45,7 @@ public class GameTest {
     }
 
     @Test
-    public void workspaceAddInvertBlockAndExecuteInPlayer(){
+    public void workspaceAddInvertBlockAndExecuteInPlayer() {
         Game game = new Game();
         EffectBlock invert = new InvertBlock();
         Block moveUp = new MoveUpBlock();
@@ -64,7 +65,7 @@ public class GameTest {
     }
 
     @Test
-    public void workspaceAddCustomBlockAndExecuteInPlayer(){
+    public void workspaceAddCustomBlockAndExecuteInPlayer() {
         Game game = new Game();
         EffectBlock custom = new CustomBlock();
         Block moveUp = new MoveUpBlock();
@@ -86,15 +87,15 @@ public class GameTest {
     }
 
     @Test
-    public void DrawingCopyConstructorCopiesAnotherDrawing(){
-      Drawing drawingOne = new Drawing();
-      Coordinates coords = new Coordinates();
-  
-      drawingOne.addShape(new Line(coords, coords));
-      drawingOne.addShape(new Blank(coords, coords));
-      
-      Drawing drawingTwo = new Drawing(drawingOne);
-  
-      assertTrue(drawingTwo.equals(drawingOne));
+    public void drawingCopyConstructorCopiesAnotherDrawing() {
+        Drawing drawingOne = new Drawing();
+        Coordinates coords = new Coordinates();
+    
+        drawingOne.addShape(new Line(coords, coords));
+        drawingOne.addShape(new Blank(coords, coords));
+        
+        Drawing drawingTwo = new Drawing(drawingOne);
+    
+        assertTrue(drawingTwo.equals(drawingOne));
     }
 }

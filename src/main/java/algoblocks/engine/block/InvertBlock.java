@@ -4,7 +4,7 @@ import algoblocks.engine.action.Sequence;
 
 public class InvertBlock extends EffectBlock {
 
-  public InvertBlock(){
+  public InvertBlock() {
     super("Invert");
   }
 
@@ -22,11 +22,11 @@ public class InvertBlock extends EffectBlock {
     return sequence;
   }
 
-  public EffectBlock makeCopy(){
+  public EffectBlock makeCopy() {
     EffectBlock newBlock = new InvertBlock();
     newBlock.blockName = blockName;
     blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock){
+      if(block instanceof EffectBlock) {
         EffectBlock otherBlock = (EffectBlock) block;
         newBlock.blocks.add(otherBlock.makeCopy());
       }

@@ -5,7 +5,9 @@ import algoblocks.engine.drawing.*;
 import algoblocks.engine.grid.Coordinates;
 import algoblocks.engine.grid.Grid;
 import algoblocks.engine.player.*;
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
@@ -146,20 +148,20 @@ public class PlayerTest {
     }
 
     @Test
-    public void nullIsDifferentToPlayer(){
+    public void nullIsDifferentToPlayer() {
         Player player = new Player(new Grid(0, 0));
 
         assertNotEquals(player, null);
     }
 
     @Test
-    public void objectOfOtherClassIsDifferentToPlayer(){
+    public void objectOfOtherClassIsDifferentToPlayer() {
         Player player = new Player(new Grid(0, 0));
 
         assertNotEquals(player, 5);
     }
 
-    @Test void playerInDifferentPositionsAreDifferent(){
+    @Test void playerInDifferentPositionsAreDifferent() {
         Player playerOne = new Player(new Grid(10, 10));
         Player playerTwo = new Player(new Grid(10, 10));
 
@@ -169,7 +171,7 @@ public class PlayerTest {
     }
 
     @Test 
-    public void playerSamePositionDifferentDrawingsAreDifferent(){
+    public void playerSamePositionDifferentDrawingsAreDifferent() {
         Player playerOne = new Player(new Grid(10, 10));
         Player playerTwo = new Player(new Grid(10, 10));
 
@@ -180,7 +182,7 @@ public class PlayerTest {
     }
 
     @Test 
-    public void playerWithDifferentsStateOfPencilAreDifferent(){
+    public void playerWithDifferentsStateOfPencilAreDifferent() {
         Player playerOne = new Player(new Grid(10, 10));
         Player playerTwo = new Player(new Grid(10, 10));
 
@@ -189,5 +191,4 @@ public class PlayerTest {
 
         assertNotEquals(playerOne, playerTwo);
     }
-
 }

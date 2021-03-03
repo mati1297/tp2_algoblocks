@@ -37,10 +37,12 @@ public class GameController {
         EffectBlock effectBlock;
         effectBlock = (EffectBlock) block;
         effectBlock = effectBlock.makeCopy();
+
         if(!openedBlocks.isEmpty())
             openedBlocks.get(openedBlocks.size() - 1).addBlock(effectBlock);
         else
             game.addBlockToWorkspace(effectBlock);
+
         openedBlocks.add(effectBlock);
     }
 

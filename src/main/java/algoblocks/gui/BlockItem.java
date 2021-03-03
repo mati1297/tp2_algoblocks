@@ -5,7 +5,7 @@ import algoblocks.engine.block.*;
 public abstract class BlockItem {
     protected Block block;
 
-    public BlockItem(Block block){
+    public BlockItem(Block block) {
         this.block = block;
     }
 

@@ -1,14 +1,13 @@
 package algoblocks.gui;
 
-
-public class EffectBlockItemClosedState extends EffectBlockItemState{
+public class EffectBlockItemClosedState extends EffectBlockItemState {
     @Override
-    public String toString(){
+    public String toString() {
         return "Closed";
     }
     
     @Override
-    public boolean isOpened(){
+    public boolean isOpened() {
         return false;
     }
 }

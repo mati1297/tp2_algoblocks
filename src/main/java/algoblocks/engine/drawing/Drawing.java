@@ -6,13 +6,13 @@ import java.util.function.Consumer;
 public class Drawing {
   private ArrayList<Shape> shapes;
 
-  public Drawing(){
+  public Drawing() {
     shapes = new ArrayList<Shape>();
   }
 
-  public Drawing(Drawing drawing){
+  public Drawing(Drawing drawing) {
     this.shapes = new ArrayList<Shape>();
-    for (Shape shape: drawing.shapes){
+    for (Shape shape: drawing.shapes) {
         this.shapes.add(shape.makeCopy());
     }
   }
@@ -43,7 +43,7 @@ public class Drawing {
   }
 
   public boolean isBlank() {
-    for(Shape shape : shapes){
+    for(Shape shape : shapes) {
       if(!(shape instanceof Blank))
         return false;
     }
@@ -51,7 +51,7 @@ public class Drawing {
     return true;
   }
 
-  public void addShape(Shape newShape){
+  public void addShape(Shape newShape) {
     shapes.add(newShape);
   }
 
@@ -63,7 +63,7 @@ public class Drawing {
     return shapes.isEmpty();
   }
 
-  public void forEach(Consumer<? super Shape> action){
+  public void forEach(Consumer<? super Shape> action) {
     shapes.forEach(action);
   }
 }

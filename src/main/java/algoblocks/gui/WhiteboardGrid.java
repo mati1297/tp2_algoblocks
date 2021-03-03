@@ -1,22 +1,19 @@
 package algoblocks.gui;
 
-import algoblocks.engine.*;
-import algoblocks.engine.drawing.*;
 import algoblocks.engine.grid.*;
 import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
-import algoblocks.gui.*;
 
-public class WhiteboardGrid{
+public class WhiteboardGrid {
     private Pane pane;
     private GameController game;
 
     private double width;
     private double height;
 
-    public WhiteboardGrid(GameController game, double width, double height){
+    public WhiteboardGrid(GameController game, double width, double height) {
         this.game = game;
         pane = new Pane();
         this.width = width;
@@ -26,20 +23,19 @@ public class WhiteboardGrid{
         pane.getChildren().addAll(createGrid());
     }
 
-    public Pane getPane(){
+    public Pane getPane() {
         return pane;
     }
 
-
-    private ArrayList<javafx.scene.shape.Line> createGrid() {
-        ArrayList<javafx.scene.shape.Line> lines = new ArrayList<Line>();
+    private ArrayList<Line> createGrid() {
+        ArrayList<Line> lines = new ArrayList<Line>();
 
         Size gridSize = game.getGridSize();
         int gridWidth = gridSize.width();
         int gridHeight = gridSize.height();
 
         for(int i = 1; i < gridWidth; i++) {
-            javafx.scene.shape.Line line = new javafx.scene.shape.Line();
+            Line line = new Line();
 
             line.setStroke(Color.GRAY);
             line.setStrokeWidth(1);
@@ -53,7 +49,7 @@ public class WhiteboardGrid{
         }
 
         for(int i = 1; i < gridHeight; i++) {
-            javafx.scene.shape.Line line = new javafx.scene.shape.Line();
+            Line line = new Line();
 
             line.setStroke(Color.GRAY);
             line.setStrokeWidth(1);

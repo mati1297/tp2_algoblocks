@@ -4,10 +4,10 @@ import algoblocks.engine.player.Player;
 
 import java.util.ArrayList;
 
-public class Sequence{
+public class Sequence {
     private ArrayList<Action> actions;
 
-    public Sequence(){
+    public Sequence() {
         actions = new ArrayList<Action>();
     }
 
@@ -21,15 +21,15 @@ public class Sequence{
             action.execute(player);
     }
 
-    public void addAction(Action newAction){
+    public void addAction(Action newAction) {
         actions.add(newAction);
     }
 
-    public void concatenate(Sequence otherSecuence){
+    public void concatenate(Sequence otherSecuence) {
         actions.addAll(otherSecuence.actions);
     }
 
-    public Action get(int pos){
+    public Action get(int pos) {
         try{
             return actions.get(pos);
         } catch(IndexOutOfBoundsException e) {
@@ -37,12 +37,12 @@ public class Sequence{
         }
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return actions.isEmpty();
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 
@@ -53,9 +53,10 @@ public class Sequence{
 
         if(actions.size() != otherSequence.actions.size())
             return false;
+
         int i = 0;
         
-        for(Action action: actions){
+        for(Action action: actions) {
             if(!action.equals(otherSequence.actions.get(i)))
                 return false;
             i++;

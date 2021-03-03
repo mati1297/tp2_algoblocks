@@ -1,23 +1,24 @@
 package algoblocks.gui;
 
-import algoblocks.engine.*;
 import algoblocks.engine.drawing.Drawing;
 import algoblocks.engine.drawing.Shape;
 import algoblocks.engine.grid.*;
+
 import java.util.ArrayList;
+
 import javafx.scene.layout.Pane;
 import javafx.application.Platform;
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
 
-public class WhiteboardDrawing{
+public class WhiteboardDrawing {
     private Pane pane;
     private GameController game;
 
     private double width;
     private double height;
 
-    public WhiteboardDrawing(GameController game, double width, double height){
+    public WhiteboardDrawing(GameController game, double width, double height) {
         this.game = game;
         pane = new Pane();
         this.width = width;
@@ -26,15 +27,15 @@ public class WhiteboardDrawing{
         pane.setMaxHeight(height);
     }
 
-    public Pane getPane(){
+    public Pane getPane() {
         return pane;
     }
 
-    public void clear(){
+    public void clear() {
         pane.getChildren().clear();
     }
 
-    public ArrayList<Runnable> draw(PlayerPane playerPane){
+    public ArrayList<Runnable> draw(PlayerPane playerPane) {
         ArrayList<Runnable> tasks = new ArrayList<Runnable>();
 
         Platform.runLater(() -> playerPane.updatePlayerSprite());
@@ -58,13 +59,9 @@ public class WhiteboardDrawing{
         });
 
         return tasks;
-
-        
-
-        //aca deberia ir la parte de activar los botones de nuevo.
     }
 
-    private Line createLine(Shape shape){
+    private Line createLine(Shape shape) {
         Line line = new Line();
 
         Size gridSize = game.getGridSize();
@@ -84,6 +81,4 @@ public class WhiteboardDrawing{
 
         return line;
     }
-
-
 }

@@ -14,7 +14,7 @@ public abstract class Block {
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 

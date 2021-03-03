@@ -5,33 +5,33 @@ import java.util.ArrayList;
 
 public class CustomBlock extends EffectBlock {
 
-  public CustomBlock(){
+  public CustomBlock() {
     super();
   }
 
-  public CustomBlock(String name){
+  public CustomBlock(String name) {
     super(name);
   }
 
-  public CustomBlock(String name, ArrayList<Block> blocks){
+  public CustomBlock(String name, ArrayList<Block> blocks) {
     super(name);
     this.blocks.addAll(blocks);
   }
 
-  public CustomBlock(ArrayList<Block> blocks){
+  public CustomBlock(ArrayList<Block> blocks) {
     super("");
     this.blocks.addAll(blocks);
   }
 
-  public void setName(String name){
+  public void setName(String name) {
     blockName = name;
   }
 
-  public EffectBlock makeCopy(){
+  public EffectBlock makeCopy() {
     EffectBlock newBlock = new CustomBlock();
     newBlock.blockName = blockName;
     blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock){
+      if(block instanceof EffectBlock) {
         EffectBlock otherBlock = (EffectBlock) block;
         newBlock.blocks.add(otherBlock.makeCopy());
       }

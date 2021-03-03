@@ -1,30 +1,26 @@
 package algoblocks.gui.buttons;
 
-
-import javafx.scene.control.Button;
 import algoblocks.gui.*;
-import algoblocks.engine.*;
-import algoblocks.engine.block.*;
-import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 
+import javafx.scene.control.Button;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
 
-public class RunButton extends Button{
+public class RunButton extends Button {
     private static final String NAME = "Run";
     ArrayList<Button> buttonsToDisable;
 
-    public RunButton(RunAlgorithm run){
+    public RunButton(RunAlgorithm run) {
         super();
         this.setText(NAME);
-        this.setOnAction(new EventHandler<ActionEvent>(){
+        this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent){
+            public void handle(ActionEvent actionEvent) {
                 run.execute();
             }
         });
     }
-
 }

@@ -7,7 +7,7 @@ public class RepeatBlock extends EffectBlock {
 
   private int times;
 
-  public RepeatBlock(int times){
+  public RepeatBlock(int times) {
     super();
     this.times = 2;
     if(times >= 2)
@@ -15,11 +15,11 @@ public class RepeatBlock extends EffectBlock {
     blockName = "Repeat " + String.valueOf(times) + " times";
   }
 
-  public EffectBlock makeCopy(){
+  public EffectBlock makeCopy() {
     EffectBlock newBlock = new RepeatBlock(times);
     newBlock.blockName = blockName;
     blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock){
+      if(block instanceof EffectBlock) {
         EffectBlock otherBlock = (EffectBlock) block;
         newBlock.blocks.add(otherBlock.makeCopy());
       }
@@ -29,7 +29,7 @@ public class RepeatBlock extends EffectBlock {
     return newBlock;
   }
 
-  public void setTimes(int times){
+  public void setTimes(int times) {
     if(times >= 2)
       this.times = times;
     blockName = "Repeat " + String.valueOf(times) + " times";

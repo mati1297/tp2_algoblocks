@@ -7,25 +7,24 @@ import java.util.ArrayList;
 public abstract class EffectBlock extends Block {
     protected ArrayList<Block> blocks;
 
-    public EffectBlock(){
+    public EffectBlock() {
         super();
         blocks = new ArrayList<Block>();
     }
 
     public abstract EffectBlock makeCopy();
 
-    public EffectBlock(String name){
+    public EffectBlock(String name) {
         super(name);
         blocks = new ArrayList<Block>();
     }
 
-    public void addBlock(Block block){
+    public void addBlock(Block block) {
         blocks.add(block);
     }
 
-
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if(super.equals(object) == false)
             return false;
 
@@ -36,7 +35,6 @@ public abstract class EffectBlock extends Block {
 
         return true;
     }
-
 
     public abstract Sequence getSequence();
     public abstract Sequence getInvertedSequence();
