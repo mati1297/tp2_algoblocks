@@ -16,11 +16,8 @@ public class RunButton extends Button{
     private static final String NAME = "Run";
     ArrayList<Button> buttonsToDisable;
 
-    public RunButton(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToDisable){
+    public RunButton(RunDraw run){
         super();
-        RunDraw run = new RunDraw(game, whiteboardCanvas, buttonsToDisable);
-        this.buttonsToDisable = buttonsToDisable;
-        this.buttonsToDisable.add(this);
         this.setText(NAME);
         this.setOnAction(new EventHandler<ActionEvent>(){
             @Override

@@ -19,6 +19,7 @@ public class MainWindow extends Window{
     private ListViewInterface algorithmListView;
     private ArrayList<Button> blockButtons;
     private CustomBlockButton customBlockButton;
+    private RunDraw runDraw;
 
     private FlowPane blockContainer;
     private FlowPane actionButtonsContainer;
@@ -51,6 +52,8 @@ public class MainWindow extends Window{
         grid_height = grid_width;
         
         whiteboardCanvas = new WhiteboardCanvas(gameController, grid_width, grid_height);
+
+        runDraw = new RunDraw(gameController, whiteboardCanvas);
 
         createAndSetBlockListView();
         createAndSetBlockButtons();
@@ -104,13 +107,16 @@ public class MainWindow extends Window{
         Button deleteAllButton = new DeleteAllButton(gameController, algorithmListView);
         Button closeBlockButton = new CloseBlockButton(gameController, algorithmListView);
         Button saveButton = new SaveButton(gameController, algorithmListView, customBlockButton);
+        Button runButton = new RunButton(runDraw);
         ArrayList<Button> buttonsToDisable = new ArrayList<Button>();
         buttonsToDisable.add(deleteButton);
         buttonsToDisable.add(deleteAllButton);
         buttonsToDisable.add(closeBlockButton);
         buttonsToDisable.add(saveButton);
+        buttonsToDisable.add(runButton);
         buttonsToDisable.addAll(blockButtons);
-        Button runButton = new RunButton(gameController, whiteboardCanvas, buttonsToDisable);
+        runDraw.setButtonsToDisable(buttonsToDisable);
+        
 
         actionButtonsContainer = new FlowPane(deleteButton, deleteAllButton, closeBlockButton, saveButton, runButton);
         actionButtonsContainer.setPadding(new Insets(5, 5, 5, 5));

@@ -17,10 +17,10 @@ public class RunDraw{
     private GameController game;
     private ArrayList<Button> buttonsToDisable;
 
-    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas, ArrayList<Button> buttonsToDisable){
+    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas){
         this.whiteboardCanvas = whiteboardCanvas;
         this.game = game;
-        this.buttonsToDisable = buttonsToDisable;
+        this.buttonsToDisable = new ArrayList<Button>();
     }
 
     public void execute(){
@@ -52,5 +52,9 @@ public class RunDraw{
         buttonsToDisable.forEach((Button button) -> {
             Platform.runLater(() -> button.setDisable(false));
         });
+    }
+
+    public void setButtonsToDisable(ArrayList<Button> buttonsToDisable){
+        this.buttonsToDisable = buttonsToDisable;
     }
 }
