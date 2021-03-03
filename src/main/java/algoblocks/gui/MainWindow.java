@@ -4,7 +4,6 @@ package algoblocks.gui;
 import javax.swing.text.html.ListView;
 import algoblocks.engine.block.*;
 import algoblocks.gui.buttons.*;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
@@ -19,7 +18,7 @@ public class MainWindow extends Window{
     private static final String title = "AlgoBlocks";
     private ListViewInterface algorithmListView;
     private ArrayList<Button> blockButtons;
-    private ActionBlockButton customBlockButton;
+    private CustomBlockButton customBlockButton;
 
     private FlowPane blockContainer;
     private FlowPane actionButtonsContainer;
@@ -93,7 +92,7 @@ public class MainWindow extends Window{
 
         blockButtons = ActionBlockButton.createButtonArray(gameController, algorithmListView, BASE_BLOCKS);
         blockButtons.addAll(EffectBlockButton.createButtonArray(gameController, algorithmListView, EFFECT_BLOCKS));
-        customBlockButton = new ActionBlockButton(gameController, algorithmListView, new CustomBlock());
+        customBlockButton = new CustomBlockButton(gameController, algorithmListView, new CustomBlock());
         blockButtons.add(customBlockButton);
 
         blockContainer.getChildren().addAll(blockButtons);
