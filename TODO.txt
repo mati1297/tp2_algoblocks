@@ -1,19 +1,9 @@
-Actualizar diagramas de clase: EffectBlock debe conocer a ActionBlock ya que se le pasan ActionBlocks.
-Desarrollar la parte de borde para que la linea no cruce de un lado a otro.
 Validar cuando se pide la secuencia un bloque vacio.
-Ver si los bloques deben llevar nombre.
-Ver tema de como devolver los valores de coordinates.
-Agregar nombres a los bloques de effecto y verificar que son iguales. (distinto que con el nombre).
- -> Los bloques para compararse llaman a su superior y se fijan que tengan el mismo nombre. Luego verifican que
-tengan los mismos bloques etc (para el effect block) o la misma acción (para los de action).
-(ver tema de comparacion por nombre o times en repeatblocks.
 
 VER BIEN QUE RUNBUTTON USA UNA CLASE QUE ESTA FUERA DE SU PACKAGE.
 
 
 TODO para entrega.
-	Sprite para jugador.
-	Custom block -> ventana aparte para creación, pedir nombre, maxima cantidad de customblocks.
 	Hacer todas las validaciones.
 
 Configurar ventanas.
