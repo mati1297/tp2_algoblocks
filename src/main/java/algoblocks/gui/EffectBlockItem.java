@@ -4,19 +4,19 @@ import algoblocks.engine.block.*;
 import java.util.ArrayList;
 
 public class EffectBlockItem extends BlockItem{
-    private ArrayList<BlockItem> childs;
+    private ArrayList<BlockItem> children;
     private EffectBlockItemState state;
     private int level;
 
     public EffectBlockItem(Block block, int level){
         super(block);
         this.level = level;
-        childs = new ArrayList<BlockItem>();
+        children = new ArrayList<BlockItem>();
         state = new EffectBlockItemOpenedState();
     }
 
     public void addChild(BlockItem blockItem){
-        childs.add(blockItem);
+        children.add(blockItem);
     }
 
     public void close(){
@@ -30,7 +30,7 @@ public class EffectBlockItem extends BlockItem{
         for (int i = 0; i <= level; i++){
             tabs += "\t";
         }
-        for(BlockItem child: childs){
+        for(BlockItem child: children){
             output += "\n" + tabs + child.toString();
         }
         return output;
