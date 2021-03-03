@@ -85,4 +85,12 @@ public class GridTest {
     Grid grid = new Grid(5, 6);
     assertTrue(grid.getSize().equals(new Size(5, 6)));
   }
+
+  @Test
+  public void createInvalidSizedGridAndSizeSetsToDefault(){
+    Grid grid = new Grid(-1, 2);
+    Size size = new Size(10, 10);
+
+    assertTrue(grid.getSize().equals(size));
+  }
 }
