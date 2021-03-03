@@ -14,7 +14,7 @@ public abstract class Shape {
         this.alpha = alpha;
     }
 
-    public boolean isBlank() {
+    public boolean isDrawable() {
         return alpha == 0;
     }
 

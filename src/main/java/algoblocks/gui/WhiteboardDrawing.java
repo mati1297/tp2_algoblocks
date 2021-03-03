@@ -44,7 +44,7 @@ public class WhiteboardDrawing{
         drawing.forEach((Shape shape) -> {
             Runnable task = () -> {
                 Platform.runLater(() -> {
-                    playerPane.updatePlayerSprite(shape.getFinish(), !shape.isBlank(), true);
+                    playerPane.updatePlayerSprite(shape.getFinish(), !shape.isDrawable(), true);
                     pane.getChildren().add(createLine(shape));
                 });
             };

@@ -10,14 +10,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class RunDraw{
+public class RunAlgorithm{
     private static final int DELAY = 500;
 
     private WhiteboardCanvas whiteboardCanvas;
     private GameController game;
     private ArrayList<Button> buttonsToDisable;
 
-    public RunDraw(GameController game, WhiteboardCanvas whiteboardCanvas){
+    public RunAlgorithm(GameController game, WhiteboardCanvas whiteboardCanvas){
         this.whiteboardCanvas = whiteboardCanvas;
         this.game = game;
         this.buttonsToDisable = new ArrayList<Button>();

@@ -16,7 +16,7 @@ public class RunButton extends Button{
     private static final String NAME = "Run";
     ArrayList<Button> buttonsToDisable;
 
-    public RunButton(RunDraw run){
+    public RunButton(RunAlgorithm run){
         super();
         this.setText(NAME);
         this.setOnAction(new EventHandler<ActionEvent>(){
