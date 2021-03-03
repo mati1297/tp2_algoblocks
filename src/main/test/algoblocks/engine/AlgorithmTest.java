@@ -49,4 +49,33 @@ public class AlgorithmTest {
         assertTrue(algorithm.equals(expectedAlgorithm));
     }
     
+
+    @Test
+    public void algorithmIsDifferentToNull(){
+        assertNotEquals(new Algorithm(), null);
+    }
+
+    @Test
+    public void algorithmIsDifferentToOtherObject(){
+        assertNotEquals(new Algorithm(), 5);
+    }
+
+    @Test
+    public void algorithmsWithDifferentBlocksAreDifferent(){
+        Algorithm algorithm = new Algorithm();
+        Algorithm algorithm2 = new Algorithm();
+        algorithm.addBlock(new MoveDownBlock());
+        algorithm2.addBlock(new MoveUpBlock());
+
+        assertNotEquals(algorithm, algorithm2);
+    }
+
+    @Test
+    public void algorithmsWithDifferentCantOfBlocksAreDifferent(){
+        Algorithm algorithm = new Algorithm();
+        Algorithm algorithm2 = new Algorithm();
+        algorithm.addBlock(new MoveDownBlock());
+
+        assertNotEquals(algorithm, algorithm2);
+    }
 }

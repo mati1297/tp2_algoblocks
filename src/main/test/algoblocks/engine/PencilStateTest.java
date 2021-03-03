@@ -1,7 +1,6 @@
 package algoblocks.engine;
 
-import algoblocks.engine.drawing.Blank;
-import algoblocks.engine.drawing.Line;
+import algoblocks.engine.drawing.*;
 import algoblocks.engine.grid.Coordinates;
 import algoblocks.engine.player.LoweredPencilState;
 import algoblocks.engine.player.PencilState;
@@ -17,6 +16,7 @@ public class PencilStateTest {
 
         Blank blank = new Blank(coords, coords);
         
+        assertFalse(raisedState.canDraw());
         assertEquals(raisedState.draw(coords, coords), blank);
     }
 
@@ -27,6 +27,8 @@ public class PencilStateTest {
 
         Line line = new Line(coords, coords);
 
+        assertTrue(loweredState.canDraw());
         assertEquals(loweredState.draw(coords, coords), line);
     }
+
 }

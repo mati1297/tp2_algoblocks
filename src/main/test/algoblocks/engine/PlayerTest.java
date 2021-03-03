@@ -1,9 +1,7 @@
 package algoblocks.engine;
 
 import algoblocks.engine.action.*;
-import algoblocks.engine.drawing.Blank;
-import algoblocks.engine.drawing.Drawing;
-import algoblocks.engine.drawing.Line;
+import algoblocks.engine.drawing.*;
 import algoblocks.engine.grid.Coordinates;
 import algoblocks.engine.grid.Grid;
 import algoblocks.engine.player.*;
@@ -27,6 +25,7 @@ public class PlayerTest {
         Drawing drawing = player.run(new Sequence(new MoveDownAction()));
         
         assertFalse(drawing.isBlank());
+        assertTrue(player.canDraw());
     }
 
     @Test
@@ -39,6 +38,7 @@ public class PlayerTest {
         Drawing drawing = player.run(new Sequence(new MoveDownAction()));
         
         assertTrue(drawing.isBlank());
+        assertFalse(player.canDraw());
     }
 
     @Test

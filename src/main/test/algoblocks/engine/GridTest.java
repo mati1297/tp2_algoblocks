@@ -88,7 +88,23 @@ public class GridTest {
 
   @Test
   public void createInvalidSizedGridAndSizeSetsToDefault(){
+    Grid grid = new Grid(-1, -2);
+    Size size = new Size(10, 10);
+
+    assertTrue(grid.getSize().equals(size));
+  }
+
+  @Test
+  public void createInvalidXSizedGridAndSizeSetsToDefault(){
     Grid grid = new Grid(-1, 2);
+    Size size = new Size(10, 10);
+
+    assertTrue(grid.getSize().equals(size));
+  }
+
+  @Test
+  public void createInvalidYSizedGridAndSizeSetsToDefault(){
+    Grid grid = new Grid(1, -2);
     Size size = new Size(10, 10);
 
     assertTrue(grid.getSize().equals(size));

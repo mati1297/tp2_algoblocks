@@ -1,11 +1,8 @@
 package algoblocks.engine;
 
 import algoblocks.engine.action.Sequence;
-import algoblocks.engine.*;
 import algoblocks.engine.block.*;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Algorithm{
     private ArrayList<Block> blocks;
@@ -31,9 +28,6 @@ public class Algorithm{
         return true;
     }
 
-    public void print() {
-        blocks.forEach((block) -> System.out.println(block));
-    }
 
     public void addBlock(Block newBlock){
         blocks.add(newBlock);
