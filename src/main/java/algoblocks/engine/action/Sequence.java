@@ -30,8 +30,11 @@ public class Sequence{
     }
 
     public Action get(int pos){
-        // VALIDAR
-        return actions.get(pos);
+        try{
+            return actions.get(pos);
+        } catch(IndexOutOfBoundsException e) {
+            throw e;
+        }
     }
 
     public boolean isEmpty(){
