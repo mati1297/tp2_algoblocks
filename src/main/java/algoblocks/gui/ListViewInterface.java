@@ -20,6 +20,10 @@ public class ListViewInterface{
         listView.setPrefHeight(prefHeight);
     }
 
+    public void setPrefWidth (Double prefWidth) {
+        listView.setPrefWidth(prefWidth);
+    }
+
     public void setId (String id) {
         listView.setId(id);
     }

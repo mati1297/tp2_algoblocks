@@ -21,8 +21,8 @@ public class WhiteboardGrid{
         pane = new Pane();
         this.width = width;
         this.height = height;
-        pane.setPrefWidth(width);
-        pane.setPrefHeight(height);
+        pane.setMaxWidth(width);
+        pane.setMaxHeight(height);
         pane.getChildren().addAll(createGrid());
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.application.Platform;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,35 +18,47 @@ import javafx.scene.image.ImageView;
 public class PlayerPane {
   private Pane pane;
   private GameController game;
+  private int spriteSize;
 
   private double width;
   private double height;
 
   public PlayerPane(GameController game, double width, double height){
+    spriteSize = 90;
     this.game = game;
     pane = new Pane();
+    Rectangle clip = new Rectangle(width, height);
+    pane.setClip(clip);
     this.width = width;
     this.height = height;
-    pane.setPrefWidth(width);
-    pane.setPrefHeight(height);
-    this.updatePlayerSprite(game.getPlayerPosition());
+    pane.setMaxWidth(width);
+    pane.setMaxHeight(height);
+    this.updatePlayerSprite();
   }
 
   public Pane getPane() {
     return pane;
   }
 
+  public void setSpriteSize(int size) {
+    spriteSize = size;
+  }
+
   public void clear() {
     pane.getChildren().clear();
   }
 
-  public void updatePlayerSprite(Coordinates position) {
-    this.clear();
-    pane.getChildren().add(createPlayerSprite(position));
+  public void updatePlayerSprite() {
+    updatePlayerSprite(new Coordinates(), false, false);
   }
 
-  private ImageView createPlayerSprite(Coordinates playerPosition) {
-    ImageView playerSprite = new ImageView(game.getPlayerSprite());
+  public void updatePlayerSprite(Coordinates position, boolean canDraw, boolean isMoving) {
+    this.clear();
+    pane.getChildren().add(createPlayerSprite(position, canDraw, isMoving));
+  }
+
+  private ImageView createPlayerSprite(Coordinates playerPosition, boolean canDraw, boolean isMoving) {
+    ImageView playerSprite = new ImageView(game.getPlayerSprite(canDraw, isMoving));
 
     Size gridSize = game.getGridSize();
     int gridWidth = gridSize.width();
@@ -54,11 +67,11 @@ public class PlayerPane {
     Double centerX = (playerPosition.getX() + gridWidth / 2) * width / gridWidth;
     Double centerY = (-1 * playerPosition.getY() + gridHeight / 2) * height / gridHeight;
 
-    playerSprite.setX(centerX - 32);
-    playerSprite.setY(centerY - 64);
+    playerSprite.setX(centerX - spriteSize / 2);
+    playerSprite.setY(centerY - spriteSize);
 
-    playerSprite.setFitWidth(64);
-    playerSprite.setFitHeight(64);
+    playerSprite.setFitWidth(spriteSize);
+    playerSprite.setFitHeight(spriteSize);
 
     return playerSprite;
   }

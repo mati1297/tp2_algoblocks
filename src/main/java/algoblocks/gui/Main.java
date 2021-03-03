@@ -82,7 +82,6 @@ public class Main extends Application {
         algorithmListView.setId("algorithmContainer");
 
         FlowPane blockContainer = new FlowPane();
-        // blockContainer.setPrefHeight(window.getHeight() / 10);
         blockContainer.setPadding(new Insets(5, 5, 5, 5));
         blockContainer.setVgap(5);
         blockContainer.setHgap(5);
@@ -95,10 +94,7 @@ public class Main extends Application {
         blockContainer.getChildren().addAll(blockButtons);
         blockContainer.getChildren().add(customBlockButton);
 
-
         WhiteboardCanvas whiteboardCanvas = new WhiteboardCanvas(gameController, GRID_WIDTH, GRID_HEIGHT);
-
-        // whiteboardStack.setAlignment(Pos.CENTER);
 
         Button deleteButton = new DeleteButton(gameController, algorithmListView);
         Button deleteAllButton = new DeleteAllButton(gameController, algorithmListView);
@@ -112,12 +108,14 @@ public class Main extends Application {
         buttonsToDisable.addAll(blockButtons);
         Button runButton = new RunButton(gameController, whiteboardCanvas, buttonsToDisable);
 
-        HBox deleteButtonsContainer = new HBox(deleteButton, deleteAllButton, closeBlockButton, saveButton, runButton);
-        deleteButtonsContainer.setSpacing(10);
-        deleteButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
+        FlowPane actionButtonsContainer = new FlowPane(deleteButton, deleteAllButton, closeBlockButton, saveButton, runButton);
+        actionButtonsContainer.setPadding(new Insets(5, 5, 5, 5));
+        actionButtonsContainer.setVgap(5);
+        actionButtonsContainer.setHgap(5);
+        actionButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     
-        VBox algorithmAndDeleteButtons = new VBox(algorithmListView.getListView(), deleteButtonsContainer);
-
+        VBox algorithmAndDeleteButtons = new VBox(algorithmListView.getListView(), actionButtonsContainer);
+        algorithmAndDeleteButtons.setMaxWidth(window.getWidth() - GRID_WIDTH);
 
         HBox secondaryContainer = new HBox();
         secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardCanvas.getStackPane());
@@ -127,9 +125,8 @@ public class Main extends Application {
         mainContainer.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(mainContainer);
-        //scene.getStylesheets().add("File:src/resources/styles.css");
+        // scene.getStylesheets().add("File:src/resources/styles.css");
 
-//      scene.setCursor(Cursor.MOVE);
         stage.setScene(scene);
 
         stage.show();

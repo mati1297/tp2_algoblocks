@@ -22,8 +22,8 @@ public class WhiteboardDrawing{
         pane = new Pane();
         this.width = width;
         this.height = height;
-        pane.setPrefWidth(width);
-        pane.setPrefHeight(height);
+        pane.setMaxWidth(width);
+        pane.setMaxHeight(height);
     }
 
     public Pane getPane(){
@@ -37,19 +37,25 @@ public class WhiteboardDrawing{
     public ArrayList<Runnable> draw(PlayerPane playerPane){
         ArrayList<Runnable> tasks = new ArrayList<Runnable>();
 
+        Platform.runLater(() -> playerPane.updatePlayerSprite());
+
         Drawing drawing = game.getDrawing();
-        
 
         drawing.forEach((Shape shape) -> {
             Runnable task = () -> {
                 Platform.runLater(() -> {
-                    playerPane.updatePlayerSprite(shape.getFinish());
+                    playerPane.updatePlayerSprite(shape.getFinish(), !shape.isBlank(), true);
                     pane.getChildren().add(createLine(shape));
                 });
             };
             tasks.add(task);
         });
 
+        tasks.add(() -> {
+            Platform.runLater(() -> {
+                playerPane.updatePlayerSprite(game.getPlayerPosition(), game.canPlayerDraw(), false);
+            });
+        });
 
         return tasks;
 

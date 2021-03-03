@@ -23,6 +23,10 @@ public class GameController{
         return game.getPlayer().getPosition();
     }
 
+    public boolean canPlayerDraw() {
+        return game.getPlayer().canDraw();
+    }
+
     public void addActionBlockToWorkspace(Block block){
         if(!openedBlocks.isEmpty())
             openedBlocks.get(openedBlocks.size() - 1).addBlock(block);
@@ -41,8 +45,14 @@ public class GameController{
         openedBlocks.add(effectBlock);
     }
 
-    public Image getPlayerSprite() {
-        return new Image("File:resources/playerSprite.png");
+    public Image getPlayerSprite(boolean canDraw, boolean isMoving) {
+        if (isMoving) {
+            if (canDraw) return new Image("File:resources/runPencilDown.png");
+            return new Image("File:resources/runPencilUp.png");
+        } else {
+            if (canDraw) return new Image("File:resources/idlePencilDown.png");
+            return new Image("File:resources/idlePencilUp.png");
+        }
     }
 
     public Drawing getDrawing(){

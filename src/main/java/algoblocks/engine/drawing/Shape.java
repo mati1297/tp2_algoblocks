@@ -14,6 +14,10 @@ public abstract class Shape {
         this.alpha = alpha;
     }
 
+    public boolean isBlank() {
+        return alpha == 0;
+    }
+
     public abstract Shape makeCopy();
 
     @Override

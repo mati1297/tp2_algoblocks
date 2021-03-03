@@ -2,6 +2,7 @@ package algoblocks.gui;
 
 import algoblocks.engine.*;
 import algoblocks.engine.drawing.*;
+import javafx.geometry.Insets;
 import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 
