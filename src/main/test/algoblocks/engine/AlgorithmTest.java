@@ -36,6 +36,20 @@ public class AlgorithmTest {
     }
 
     @Test
+    public void removeInvalidBlockFromAlgorithm() {
+        Algorithm algorithm = new Algorithm();
+
+        algorithm.addBlock(new MoveUpBlock());
+
+        algorithm.deleteBlock(1);
+
+        Algorithm expectedAlgorithm = new Algorithm();
+        expectedAlgorithm.addBlock(new MoveUpBlock());
+
+        assertTrue(algorithm.equals(expectedAlgorithm));
+    }
+
+    @Test
     public void clearAlgorithmDeletesAllBlocks() {
         Algorithm algorithm = new Algorithm();
 
