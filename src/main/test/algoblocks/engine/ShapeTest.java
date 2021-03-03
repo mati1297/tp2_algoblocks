@@ -1,5 +1,6 @@
 package algoblocks.engine;
 
+import algoblocks.engine.drawing.Blank;
 import algoblocks.engine.drawing.Line;
 import algoblocks.engine.drawing.Shape;
 import algoblocks.engine.grid.Coordinates;
@@ -75,5 +76,23 @@ public class ShapeTest {
         assertTrue(coordsOne.equals(shape.getStart()));
         assertTrue(coordsTwo.equals(shape.getFinish()));
         assertTrue(alpha == shape.getAlpha());
+    }
+
+    @Test
+    public void blankIsNotDrawable(){
+        Coordinates coords = new Coordinates(0, 0);
+
+        Blank blank = new Blank(coords, coords);
+
+        assertFalse(blank.isDrawable());
+    }
+
+    @Test
+    public void lineIsDrawable(){
+        Coordinates coords = new Coordinates(0, 0);
+        
+        Line line = new Line(coords, coords);
+
+        assertTrue(line.isDrawable());
     }
 }

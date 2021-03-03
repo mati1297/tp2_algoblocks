@@ -15,7 +15,7 @@ public abstract class Shape {
     }
 
     public boolean isDrawable() {
-        return alpha == 0;
+        return alpha != 0;
     }
 
     public abstract Shape makeCopy();
