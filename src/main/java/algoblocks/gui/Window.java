@@ -1,32 +1,33 @@
 package algoblocks.gui;
 
 import javafx.geometry.Rectangle2D;
-import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class Window {
-  private double height;
-  private double width;
+  protected int height;
+  protected int width;
+  protected Stage stage;
 
-  public Window() {
-    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-    width = screenBounds.getWidth();
-    height = screenBounds.getHeight();
-  }
-
-  public Window(double width, double height) {
+  public Window(String title, int width, int height) {
     this.width = width;
     this.height = height;
+
+    stage = new Stage();
+    stage.setTitle(title);
+    stage.setHeight(height);
+    stage.setWidth(width);
   }
 
-  public double getRatio() {
-    return width / height;
+  public Window(String title, int width, int height, Stage stage) {
+    this.height = height;
+    this.width = width;
+    
+    this.stage = new Stage();
+    this.stage.setTitle(title);
+    this.stage.setHeight(height);
+    this.stage.setWidth(width);
+
+    //max
   }
 
-  public double getWidth() {
-    return width;
-  }
-
-  public double getHeight() {
-    return height;
-  }
 }

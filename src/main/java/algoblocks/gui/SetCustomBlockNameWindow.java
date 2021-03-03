@@ -15,18 +15,21 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
 
-public class SetCustomBlockNameWindow{
+public class SetCustomBlockNameWindow extends Window{
     private static final String title = "Set custom block name";
     private static final String labelText = "New custom block text";
     private static final String okText = "Ok";
     private static final String cancelText = "Cancel";
 
-    private Stage window;
+    private static final int WIDTH = 200;
+    private static final int HEIGHT = 100;
+
+
 
     public SetCustomBlockNameWindow(SaveButton button){
-        Stage window = new Stage();
+        super(title, WIDTH, HEIGHT);
 
-        Label titleLabel = new Label(title);
+        Label titleLabel = new Label(labelText);
         
 
         
@@ -41,26 +44,25 @@ public class SetCustomBlockNameWindow{
         VBox mainLayout = new VBox(titleLabel, textField, buttonLayout);
         
         
-        Scene scene = new Scene(mainLayout, 230, 100); //set 
+        Scene scene = new Scene(mainLayout); //set 
 
 
         okButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent actionEvent){
                 button.continueAction(textField.getText());
-                window.close();
+                stage.close();
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent actionEvent){
-                window.close();
+                stage.close();
             }
         });
 
-        window.setTitle(title);
-        window.setScene(scene);
-        window.show();
+        stage.setScene(scene);
+        stage.show();
         
     }
 }
