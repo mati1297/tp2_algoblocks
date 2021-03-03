@@ -4,10 +4,8 @@ package algoblocks.gui;
 import algoblocks.gui.buttons.*;
 
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
@@ -78,8 +76,6 @@ public class SetCustomBlockNameWindow extends Window{
             }
         });
 
-        stage.setScene(scene);
-        stage.show();
-        
+        stage.setScene(scene);    
     }
 }

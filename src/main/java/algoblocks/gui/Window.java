@@ -1,6 +1,5 @@
 package algoblocks.gui;
 
-import javafx.geometry.Rectangle2D;
 import javafx.stage.Stage;
 
 public class Window {
@@ -26,8 +25,10 @@ public class Window {
     this.stage.setTitle(title);
     this.stage.setHeight(height);
     this.stage.setWidth(width);
+  }
 
-    //max
+  public void show(){
+    stage.show();
   }
 
 }

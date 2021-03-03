@@ -28,13 +28,14 @@ public class SaveButton extends Button{
             @Override
             public void handle(ActionEvent actionEvent){
                 //bloquear todo
-                callWindow();
+                showWindow();
             }
         });
     }
 
-    public void callWindow(){
+    public void showWindow(){
         SetCustomBlockNameWindow window = new SetCustomBlockNameWindow(this);
+        window.show();
     }
 
     public void continueAction(String name){

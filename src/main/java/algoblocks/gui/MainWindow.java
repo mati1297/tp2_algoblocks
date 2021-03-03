@@ -74,8 +74,6 @@ public class MainWindow extends Window{
 
         Scene scene = new Scene(mainContainer);
         this.stage.setScene(scene);
-        this.stage.show();
-        
     }
 
 
@@ -124,5 +122,6 @@ public class MainWindow extends Window{
         actionButtonsContainer.setHgap(5);
         actionButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     }
+
 
 }

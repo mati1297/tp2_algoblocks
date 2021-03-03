@@ -1,7 +1,5 @@
 package algoblocks.gui;
 
-import algoblocks.engine.block.*;
-import algoblocks.gui.buttons.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -18,6 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage){
         mainWindow = new MainWindow(stage, gameController, 800, 600);
+        mainWindow.show();
     }
 
 
