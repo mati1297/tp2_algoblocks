@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    
     private static MainWindow mainWindow;
     private static GameController gameController;
 
@@ -18,6 +17,4 @@ public class Main extends Application {
         mainWindow = new MainWindow(stage, gameController, 800, 600);
         mainWindow.show();
     }
-
-
 }

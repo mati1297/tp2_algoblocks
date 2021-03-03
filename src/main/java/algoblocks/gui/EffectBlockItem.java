@@ -3,7 +3,7 @@ package algoblocks.gui;
 import algoblocks.engine.block.*;
 import java.util.ArrayList;
 
-public class EffectBlockItem extends BlockItem{
+public class EffectBlockItem extends BlockItem {
     private ArrayList<BlockItem> children;
     private EffectBlockItemState state;
     private int level;
@@ -23,7 +23,6 @@ public class EffectBlockItem extends BlockItem{
         state = new EffectBlockItemClosedState();
     }
 
-    @Override
     public String toString(){
         String output = block.getBlockName() + "(" + state.toString() + ")";
         String tabs = "";

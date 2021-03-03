@@ -5,16 +5,15 @@ import algoblocks.engine.grid.*;
 import algoblocks.engine.drawing.*;
 import algoblocks.engine.block.*;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 
-public class GameController{
+public class GameController {
     private Game game;
     private ArrayList<EffectBlock> openedBlocks;
 
-    public GameController(){
+    public GameController() {
         game = new Game();
         openedBlocks = new ArrayList<EffectBlock>();
     }
@@ -27,14 +26,14 @@ public class GameController{
         return game.getPlayer().canDraw();
     }
 
-    public void addActionBlockToWorkspace(Block block){
+    public void addActionBlockToWorkspace(Block block) {
         if(!openedBlocks.isEmpty())
             openedBlocks.get(openedBlocks.size() - 1).addBlock(block);
         else
             game.addBlockToWorkspace(block);
     }
 
-    public void addEffectBlockToWorkspace(Block block){
+    public void addEffectBlockToWorkspace(Block block) {
         EffectBlock effectBlock;
         effectBlock = (EffectBlock) block;
         effectBlock = effectBlock.makeCopy();
@@ -55,35 +54,35 @@ public class GameController{
         }
     }
 
-    public Drawing getDrawing(){
+    public Drawing getDrawing() {
         return game.getDrawing();
     }
 
-    public Size getGridSize(){
+    public Size getGridSize() {
         return game.getGridSize();
     }
 
-    public void deleteBlockFromWorkspace(int index, boolean opened){
+    public void deleteBlockFromWorkspace(int index, boolean opened) {
         if(opened)
             openedBlocks.clear();
         game.deleteBlockFromWorkspace(index);
     }
 
-    public void run(){
+    public void run() {
         game.run();
     }
 
-    public void clearWorkspace(){
+    public void clearWorkspace() {
         game.clearWorkspace();
         openedBlocks.clear();
     }
 
-    public void closeEffectBlock(){
+    public void closeEffectBlock() {
         if(!openedBlocks.isEmpty())
             openedBlocks.remove(openedBlocks.size() - 1);
     }
 
-    public CustomBlock createCustomBlock(){
+    public CustomBlock createCustomBlock() {
         return game.createCustomBlock();
     }
 }

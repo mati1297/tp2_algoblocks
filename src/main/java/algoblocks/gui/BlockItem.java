@@ -2,7 +2,7 @@ package algoblocks.gui;
 
 import algoblocks.engine.block.*;
 
-public class BlockItem{
+public abstract class BlockItem {
     protected Block block;
 
     public BlockItem(Block block){
@@ -10,7 +10,5 @@ public class BlockItem{
     }
 
     @Override
-    public String toString(){
-        return block.getBlockName();
-    }
+    public abstract String toString();
 }

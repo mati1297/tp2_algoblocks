@@ -24,15 +24,11 @@ public class ListViewInterface{
         listView.setPrefWidth(prefWidth);
     }
 
-    public void setId (String id) {
-        listView.setId(id);
-    }
-
     public void addActionBlock(Block block){
         if(!openedItems.isEmpty())
-            openedItems.get(openedItems.size() - 1).addChild(new BlockItem(block));
+            openedItems.get(openedItems.size() - 1).addChild(new ActionBlockItem(block));
         else
-            listView.getItems().add(new BlockItem(block));
+            listView.getItems().add(new ActionBlockItem(block));
         listView.refresh();
     }
 
@@ -47,7 +43,6 @@ public class ListViewInterface{
     }
 
     public boolean remove(int index){
-        //me fijo si esta abierto primeramente. Si esta abierto borro todo.
         boolean opened = false;
         BlockItem item = listView.getItems().get(index);
         if(item instanceof EffectBlockItem){
