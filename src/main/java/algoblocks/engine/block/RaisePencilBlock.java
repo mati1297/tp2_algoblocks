@@ -5,8 +5,15 @@ import algoblocks.engine.action.LowerPencilAction;
 import algoblocks.engine.action.RaisePencilAction;
 
 public class RaisePencilBlock extends ActionBlock {
+  private static final String blockName = "Raise Pencil";
+
   public RaisePencilBlock() {
-    super("Raise Pencil");
+    super();
+  }
+
+  @Override
+  public String getBlockName() {
+    return blockName;
   }
 
   public Sequence getSequence() {

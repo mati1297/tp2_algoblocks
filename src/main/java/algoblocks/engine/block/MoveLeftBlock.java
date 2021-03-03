@@ -5,8 +5,15 @@ import algoblocks.engine.action.MoveLeftAction;
 import algoblocks.engine.action.MoveRightAction;
 
 public class MoveLeftBlock extends ActionBlock {
+  private static final String blockName = "Move Left";
+
   public MoveLeftBlock() {
-    super("Move Left");
+    super();
+  }
+
+  @Override
+  public String getBlockName() {
+    return blockName;
   }
 
   public Sequence getSequence() {
