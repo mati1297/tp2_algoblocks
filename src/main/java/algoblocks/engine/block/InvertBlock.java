@@ -8,6 +8,10 @@ public class InvertBlock extends EffectBlock {
     super(BlockNames.INVERT);
   }
 
+  public InvertBlock(InvertBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     Sequence sequence = new Sequence();
     for(Block block: blocks)

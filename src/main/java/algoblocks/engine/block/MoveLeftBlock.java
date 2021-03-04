@@ -10,6 +10,10 @@ public class MoveLeftBlock extends ActionBlock {
     super(BlockNames.MOVE_LEFT);
   }
 
+  public MoveLeftBlock(MoveLeftBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     return new Sequence(new MoveLeftAction());
   }

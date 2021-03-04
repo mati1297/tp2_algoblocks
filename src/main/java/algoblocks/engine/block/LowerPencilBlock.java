@@ -10,6 +10,10 @@ public class LowerPencilBlock extends ActionBlock {
     super(BlockNames.LOWER_PENCIL);
   }
 
+  public LowerPencilBlock(LowerPencilBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     return new Sequence(new LowerPencilAction());
   }

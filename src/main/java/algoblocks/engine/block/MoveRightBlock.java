@@ -10,6 +10,10 @@ public class MoveRightBlock extends ActionBlock {
     super(BlockNames.MOVE_RIGHT);
   }
 
+  public MoveRightBlock(MoveRightBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     return new Sequence(new MoveRightAction());
   }

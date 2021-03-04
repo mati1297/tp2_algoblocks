@@ -293,4 +293,24 @@ public class EffectBlockTest {
 
         assertEquals(repeat.getBlockName(), "Repeat 4 times");
     }
+
+    @Test
+    public void invertBlockCopyConstructorWorksOk(){
+        InvertBlock block = new InvertBlock();
+
+        InvertBlock blockTest = new InvertBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    @Test
+    public void repeatBlockCopyConstructorWorksOk(){
+        RepeatBlock block = new RepeatBlock(2);
+
+        RepeatBlock blockTest = new RepeatBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
 }

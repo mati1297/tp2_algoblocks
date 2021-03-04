@@ -153,4 +153,65 @@ public class ActionBlockTest {
 
         assertFalse(block.equals(null));
     }
+
+    @Test
+    public void lowerPencilBlockCopyConstructorWorksOk(){
+        LowerPencilBlock block = new LowerPencilBlock();
+
+        LowerPencilBlock blockTest = new LowerPencilBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    @Test
+    public void raisePencilBlockCopyConstructorWorksOk(){
+        RaisePencilBlock block = new RaisePencilBlock();
+
+        RaisePencilBlock blockTest = new RaisePencilBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    @Test
+    public void moveDownBlockCopyConstructorWorksOk(){
+        MoveDownBlock block = new MoveDownBlock();
+
+        MoveDownBlock blockTest = new MoveDownBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    @Test
+    public void moveUpBlockCopyConstructorWorksOk(){
+        MoveUpBlock block = new MoveUpBlock();
+
+        MoveUpBlock blockTest = new MoveUpBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+    @Test
+    public void moveLeftBlockCopyConstructorWorksOk(){
+        MoveLeftBlock block = new MoveLeftBlock();
+
+        MoveLeftBlock blockTest = new MoveLeftBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    @Test
+    public void moveRightBlockCopyConstructorWorksOk(){
+        MoveRightBlock block = new MoveRightBlock();
+
+        MoveRightBlock blockTest = new MoveRightBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
+    }
+
+    
 }

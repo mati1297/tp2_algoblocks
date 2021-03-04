@@ -10,6 +10,10 @@ public class MoveUpBlock extends ActionBlock {
     super(BlockNames.MOVE_UP);
   }
 
+  public MoveUpBlock(MoveUpBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     return new Sequence(new MoveUpAction());
   }

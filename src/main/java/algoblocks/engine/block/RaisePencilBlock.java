@@ -10,6 +10,10 @@ public class RaisePencilBlock extends ActionBlock {
     super(BlockNames.RAISE_PENCIL);
   }
 
+  public RaisePencilBlock(RaisePencilBlock original){
+    super(original);
+  }
+
   public Sequence getSequence() {
     return new Sequence(new RaisePencilAction());
   }

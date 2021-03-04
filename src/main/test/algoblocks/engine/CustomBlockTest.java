@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CustomBlockTest {
 
@@ -68,6 +69,16 @@ public class CustomBlockTest {
         testSequence.concatenate(moveLeftBlock.getSequence());
 
         assertTrue(customSequence.equals(testSequence));
+    }
+
+    @Test
+    public void customBlockCopyConstructoWorksOk(){
+        CustomBlock block = new CustomBlock();
+
+        CustomBlock blockTest = new CustomBlock(block);
+
+        assertEquals(block, blockTest);
+        assertFalse(block == blockTest);
     }
 
 }
