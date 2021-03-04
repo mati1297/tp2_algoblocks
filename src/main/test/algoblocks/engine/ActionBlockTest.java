@@ -12,7 +12,7 @@ public class ActionBlockTest {
     public void actionBlockIsCreatedWithCorrectName() {
         MoveDownBlock block = new MoveDownBlock();
 
-        assertEquals(block.getBlockName(), "Move Down");
+        assertEquals(block.getBlockName(), BlockNames.MOVE_DOWN);
     }
 
     @Test

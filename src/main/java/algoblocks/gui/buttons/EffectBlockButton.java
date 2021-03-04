@@ -9,19 +9,19 @@ import algoblocks.gui.ListViewInterface;
 import java.util.ArrayList;
 
 public class EffectBlockButton extends BlockButton {
-    public EffectBlockButton(GameController game, ListViewInterface targetList, Block block) {
+    public EffectBlockButton(GameController game, ListViewInterface targetList, EffectBlock block) {
         super(game, targetList, block);
     }
 
     @Override
     public void action() {
         targetList.addEffectBlock(block);
-        game.addEffectBlockToWorkspace(block);
+        game.addEffectBlockToWorkspace((EffectBlock) block);
     }
     
-    public static ArrayList<Button> createButtonArray(GameController game, ListViewInterface targetList, ArrayList<Block> blocks) {
+    public static ArrayList<Button> createButtonArray(GameController game, ListViewInterface targetList, ArrayList<EffectBlock> blocks) {
         ArrayList<Button> buttons = new ArrayList<Button>();
-        blocks.forEach((Block block) -> {
+        blocks.forEach((EffectBlock block) -> {
             buttons.add(new EffectBlockButton(game, targetList, block));
         });
         return buttons;

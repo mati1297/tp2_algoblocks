@@ -3,9 +3,18 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public abstract class Block {
+    protected String blockName;
+
+    public Block(String name){
+        this.blockName = name;
+    }
+
+    public Block(Block original){
+        this.blockName = original.blockName;
+    }
 
     public Block(){
-
+        blockName = "";
     }
 
     @Override
@@ -13,7 +22,10 @@ public abstract class Block {
         return !(object == null || getClass() != object.getClass());
     }
 
-    public abstract String getBlockName();
+    public String getBlockName(){
+        return blockName;
+    }
+
     public abstract Sequence getSequence();
     public abstract Sequence getInvertedSequence();
 }

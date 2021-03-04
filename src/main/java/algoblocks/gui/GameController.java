@@ -5,8 +5,11 @@ import algoblocks.engine.grid.*;
 import algoblocks.engine.drawing.*;
 import algoblocks.engine.block.*;
 
+import java.lang.reflect.Constructor;
+
 import java.util.ArrayList;
 
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 
 public class GameController {
@@ -33,10 +36,21 @@ public class GameController {
             game.addBlockToWorkspace(block);
     }
 
-    public void addEffectBlockToWorkspace(Block block) {
-        EffectBlock effectBlock;
-        effectBlock = (EffectBlock) block;
-        effectBlock = effectBlock.makeCopy();
+    public void addEffectBlockToWorkspace(EffectBlock block) {
+        EffectBlock effectBlock = new InvertBlock();
+        Constructor<? extends EffectBlock> constructor = null;
+        try{
+            constructor = block.getClass().getDeclaredConstructor(block.getClass());
+        }
+        catch(Exception e) {
+            System.out.println(e.toString());
+         }
+        try{
+            effectBlock = constructor.newInstance(block);
+        }
+        catch(Exception e){System.out.println(e);}
+
+
 
         if(!openedBlocks.isEmpty())
             openedBlocks.get(openedBlocks.size() - 1).addBlock(effectBlock);
