@@ -14,12 +14,12 @@ public class SaveButton extends Button {
     private BlockButton button;
     private GameController game;
 
-    public SaveButton(GameController game, WorkspaceView targetList, BlockButton button) {
+    public SaveButton(GameController gameController, WorkspaceView targetList, BlockButton button) {
         super();
         this.setText(AlgorithmButtonNames.SAVE_BUTTON);
         this.button = button;
         this.targetList = targetList;
-        this.game = game;
+        this.game = gameController;
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

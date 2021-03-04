@@ -11,10 +11,10 @@ public class WhiteboardCanvas {
     private WhiteboardDrawing drawing;
     private PlayerPane playerPane;
 
-    public WhiteboardCanvas(GameController game, double width, double height) {
-        grid = new WhiteboardGrid(game, width, height);
-        drawing = new WhiteboardDrawing(game, width, height);
-        playerPane = new PlayerPane(game, width, height);
+    public WhiteboardCanvas(GameController gameController, double width, double height) {
+        grid = new WhiteboardGrid(gameController, width, height);
+        drawing = new WhiteboardDrawing(gameController, width, height);
+        playerPane = new PlayerPane(gameController, width, height);
     }
 
     public StackPane getStackPane() {

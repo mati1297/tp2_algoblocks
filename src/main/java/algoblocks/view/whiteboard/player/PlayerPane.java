@@ -16,9 +16,9 @@ public class PlayerPane {
   private double width;
   private double height;
 
-  public PlayerPane(GameController game, double width, double height) {
+  public PlayerPane(GameController gameController, double width, double height) {
     spriteSize = 90;
-    this.game = game;
+    this.game = gameController;
     pane = new Pane();
     sprite = new PlayerSprite();
     Rectangle clip = new Rectangle(width, height);

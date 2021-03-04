@@ -14,8 +14,8 @@ public class WhiteboardGrid {
     private double width;
     private double height;
 
-    public WhiteboardGrid(GameController game, double width, double height) {
-        this.game = game;
+    public WhiteboardGrid(GameController gameController, double width, double height) {
+        this.game = gameController;
         pane = new Pane();
         this.width = width;
         this.height = height;

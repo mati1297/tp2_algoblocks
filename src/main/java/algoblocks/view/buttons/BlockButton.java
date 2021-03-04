@@ -13,10 +13,10 @@ public abstract class BlockButton extends Button {
     protected Block block;
     protected GameController game;
 
-    public BlockButton(GameController game, WorkspaceView targetList, Block block) {
+    public BlockButton(GameController gameController, WorkspaceView targetList, Block block) {
         super();
         this.targetList = targetList;
-        this.game = game;
+        this.game = gameController;
         this.block = block;
         this.setText(block.getName());
         this.setOnAction(new EventHandler<ActionEvent>() {

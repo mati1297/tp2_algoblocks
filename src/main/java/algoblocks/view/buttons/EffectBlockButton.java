@@ -9,8 +9,8 @@ import algoblocks.controller.GameController;
 import java.util.ArrayList;
 
 public class EffectBlockButton extends BlockButton {
-    public EffectBlockButton(GameController game, WorkspaceView targetList, EffectBlock block) {
-        super(game, targetList, block);
+    public EffectBlockButton(GameController gameController, WorkspaceView targetList, EffectBlock block) {
+        super(gameController, targetList, block);
     }
 
     @Override

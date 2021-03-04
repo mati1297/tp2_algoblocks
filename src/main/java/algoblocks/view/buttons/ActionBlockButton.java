@@ -9,8 +9,8 @@ import algoblocks.view.workspace.WorkspaceView;
 import java.util.ArrayList;
 
 public class ActionBlockButton extends BlockButton {
-    public ActionBlockButton(GameController game, WorkspaceView targetList, Block block) {
-        super(game, targetList, block);
+    public ActionBlockButton(GameController gameController, WorkspaceView targetList, Block block) {
+        super(gameController, targetList, block);
     }
 
     @Override

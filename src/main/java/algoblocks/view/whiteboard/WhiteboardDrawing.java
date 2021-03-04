@@ -20,8 +20,8 @@ public class WhiteboardDrawing {
     private double width;
     private double height;
 
-    public WhiteboardDrawing(GameController game, double width, double height) {
-        this.game = game;
+    public WhiteboardDrawing(GameController gameController, double width, double height) {
+        this.game = gameController;
         pane = new Pane();
         this.width = width;
         this.height = height;

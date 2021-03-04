@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 public class DeleteButton extends Button {
     ListView<String> targetList;
 
-    public DeleteButton(GameController game, WorkspaceView targetList) {
+    public DeleteButton(GameController gameController, WorkspaceView targetList) {
         super();
         this.setText(AlgorithmButtonNames.DELETE_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
@@ -19,7 +19,7 @@ public class DeleteButton extends Button {
             public void handle(ActionEvent actionEvent) {
                 int index = targetList.getSelectedIndex();
                 if(index >= 0) {
-                    game.deleteBlockFromWorkspace(index, targetList.remove(index));
+                    gameController.deleteBlockFromWorkspace(index, targetList.remove(index));
                     
                 }
             }

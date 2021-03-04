@@ -11,13 +11,13 @@ import algoblocks.controller.GameController;
 public class DeleteAllButton extends Button {
     ListView<String> targetList;
 
-    public DeleteAllButton(GameController game, WorkspaceView targetList) {
+    public DeleteAllButton(GameController gameController, WorkspaceView targetList) {
         super();
         this.setText(AlgorithmButtonNames.DELETE_ALL_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                game.clearWorkspace();
+                gameController.clearWorkspace();
                 targetList.clear();
             }
         });

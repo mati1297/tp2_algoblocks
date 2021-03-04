@@ -11,13 +11,13 @@ import javafx.scene.control.Button;
 public class CloseBlockButton extends Button {
     ListView<String> targetList;
 
-    public CloseBlockButton(GameController game, WorkspaceView targetList) {
+    public CloseBlockButton(GameController gameController, WorkspaceView targetList) {
         super();
         this.setText(AlgorithmButtonNames.CLOSE_BLOCK_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                game.closeEffectBlock();
+                gameController.closeEffectBlock();
                 targetList.closeEffectBlock();
             }
         });
