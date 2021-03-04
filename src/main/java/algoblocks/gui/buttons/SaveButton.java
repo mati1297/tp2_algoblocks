@@ -17,7 +17,6 @@ public class SaveButton extends Button {
         super();
         this.setText(NAME);
         this.button = button;
-        this.button.setDisable(true);
         this.targetList = targetList;
         this.game = game;
         this.setOnAction(new EventHandler<ActionEvent>() {
@@ -40,6 +39,5 @@ public class SaveButton extends Button {
         button.setText(name);
         targetList.clear();
         button.setBlock(block);
-        button.setDisable(false);  
     }
 }
