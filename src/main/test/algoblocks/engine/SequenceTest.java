@@ -1,5 +1,7 @@
 package algoblocks.engine;
 
+import algoblocks.engine.action.*;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SequenceTest {
 
     @Test
-    public void NewSequenceWithAnActionAndTheFirstIsThatAction(){
+    public void newSequenceWithAnActionAndTheFirstIsThatAction() {
         Action action = new MoveUpAction();
         Sequence sequence = new Sequence(action);
 
@@ -15,7 +17,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void NewEmptySequenceAddsActionAndTheFirstIsThatAction(){
+    public void newEmptySequenceAddsActionAndTheFirstIsThatAction() {
         Action action = new MoveUpAction();
         Sequence sequence = new Sequence();
         sequence.addAction(action);
@@ -24,14 +26,14 @@ public class SequenceTest {
     }
 
     @Test
-    public void NewSequenceIsEmpty(){
+    public void newSequenceIsEmpty() {
         Sequence sequence = new Sequence();
 
         assertTrue(sequence.isEmpty());
     }
 
     @Test
-    public void SequenceConcatenateAndIsTheSameThanAddingTwoAction(){
+    public void sequenceConcatenateAndIsTheSameThanAddingTwoAction() {
         Sequence firstSequence = new Sequence(new MoveUpAction());
         Sequence lastSequence = new Sequence(new MoveLeftAction());
         firstSequence.concatenate(lastSequence);
@@ -43,21 +45,21 @@ public class SequenceTest {
     }
 
     @Test
-    public void SequenceIsDifferentToNull(){
+    public void sequenceIsDifferentToNull() {
         Sequence sequence = new Sequence();
 
         assertFalse(sequence.equals(null));
     }
 
     @Test
-    public void SequenceIsTheSameThatItself(){
+    public void sequenceIsTheSameThatItself() {
         Sequence sequence = new Sequence();
 
         assertTrue(sequence.equals(sequence));
     }
 
     @Test
-    public void SequenceWithDifferentActionsAreNotEqual(){
+    public void sequenceWithDifferentActionsAreNotEqual() {
         Sequence sequenceOne = new Sequence(new MoveLeftAction());
         Sequence sequenceTwo = new Sequence(new MoveUpAction());
 
@@ -65,7 +67,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void SequencesWithSameActionsInSameOrderAreEquals(){
+    public void sequencesWithSameActionsInSameOrderAreEquals() {
         Sequence sequenceOne = new Sequence(new MoveDownAction());
         Sequence sequenceTwo = new Sequence(new MoveDownAction());
 
@@ -73,7 +75,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void SequencesWithDifferentSizeAreDifferent(){
+    public void sequencesWithDifferentSizeAreDifferent() {
         Sequence sequenceOne = new Sequence(new MoveUpAction());
         Sequence sequenceTwo = new Sequence(new MoveUpAction());
         sequenceOne.addAction(new MoveLeftAction());
@@ -82,10 +84,19 @@ public class SequenceTest {
     }
 
     @Test
-    public void SequenceIsDifferentToAnObjectOfADifferentClass(){
+    public void sequenceIsDifferentToAnObjectOfADifferentClass() {
         Sequence sequence = new Sequence(new MoveUpAction());
         int integer = 10;
 
         assertFalse(sequence.equals(integer));
+    }
+
+    @Test
+    public void accessingIndexOutOfBoundsThrowsException() {
+        Sequence sequence = new Sequence(new MoveDownAction());
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            sequence.get(5);
+        });
     }
 }

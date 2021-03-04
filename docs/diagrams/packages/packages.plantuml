@@ -1,0 +1,25 @@
+@startuml packages
+
+folder controller{
+}
+
+folder engine{
+    folder action
+    folder block
+    folder drawing
+    folder grid
+    folder player
+}
+
+folder view {
+    folder buttons
+    folder whiteboard
+    folder workspace
+}
+
+
+controller ..> engine
+view ..> controller
+view ..> engine
+
+@enduml
