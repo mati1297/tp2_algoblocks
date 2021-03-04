@@ -5,15 +5,9 @@ import algoblocks.engine.action.MoveDownAction;
 import algoblocks.engine.action.MoveUpAction;
 
 public class MoveUpBlock extends ActionBlock {
-  private static final String blockName = "Move Up";
 
   public MoveUpBlock() {
-    super();
-  }
-
-  @Override
-  public String getBlockName() {
-    return blockName;
+    super(BlockNames.MOVE_UP);
   }
 
   public Sequence getSequence() {

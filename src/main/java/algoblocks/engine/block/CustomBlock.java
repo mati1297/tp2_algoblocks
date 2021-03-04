@@ -5,26 +5,25 @@ import java.util.ArrayList;
 
 public class CustomBlock extends Block {
   private ArrayList<Block> blocks;
-  private String blockName;
 
   public CustomBlock(){
-    blockName = "Custom";
+    super(BlockNames.CUSTOM_DEFAULT);
     blocks = new ArrayList<Block>();
   }
 
   public CustomBlock(String name){
-    blockName = name;
+    super(name);
     blocks = new ArrayList<Block>();
   }
 
   public CustomBlock(String name, ArrayList<Block> blocks){
-    blockName = name;
+    super(name);
     this.blocks = new ArrayList<Block>();
     this.blocks.addAll(blocks);
   }
 
   public CustomBlock(ArrayList<Block> blocks){
-    blockName = "Custom";
+    super(BlockNames.CUSTOM_DEFAULT);
     this.blocks = new ArrayList<Block>();
     this.blocks.addAll(blocks);
   }

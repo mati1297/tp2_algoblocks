@@ -3,10 +3,9 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public class InvertBlock extends EffectBlock {
-  private static final String blockName = "Invert";
 
   public InvertBlock(){
-    super();
+    super(BlockNames.INVERT);
   }
 
   public Sequence getSequence() {
@@ -21,11 +20,6 @@ public class InvertBlock extends EffectBlock {
     for(Block block: blocks)
       sequence.concatenate(block.getSequence());
     return sequence;
-  }
-
-  @Override
-  public String getBlockName() {
-    return blockName;
   }
 
   @Override

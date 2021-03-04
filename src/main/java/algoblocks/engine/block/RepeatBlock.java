@@ -4,15 +4,13 @@ import algoblocks.engine.action.Sequence;
 import java.util.stream.IntStream;
 
 public class RepeatBlock extends EffectBlock {
-  private String blockName;
   private int times;
 
   public RepeatBlock(int times) {
-    super();
     this.times = 2;
     if(times >= 2)
       this.times = times;
-    blockName = "Repeat " + String.valueOf(times) + " times";
+    blockName = BlockNames.REPEAT_PART_ONE + " " + String.valueOf(times) + " " + BlockNames.REPEAT_PART_TWO;
   }
 
   @Override
@@ -35,11 +33,6 @@ public class RepeatBlock extends EffectBlock {
     if(times >= 2)
       this.times = times;
     blockName = "Repeat " + String.valueOf(times) + " times";
-  }
-
-  @Override
-  public String getBlockName() {
-    return blockName;
   }
 
   @Override

@@ -7,7 +7,12 @@ import java.util.ArrayList;
 public abstract class EffectBlock extends Block {
     protected ArrayList<Block> blocks;
 
-    public EffectBlock() {
+    public EffectBlock(String name) {
+        super(name);
+        blocks = new ArrayList<Block>();
+    }
+
+    public EffectBlock(){
         super();
         blocks = new ArrayList<Block>();
     }
