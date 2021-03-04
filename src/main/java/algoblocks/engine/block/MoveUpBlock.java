@@ -5,8 +5,13 @@ import algoblocks.engine.action.MoveDownAction;
 import algoblocks.engine.action.MoveUpAction;
 
 public class MoveUpBlock extends ActionBlock {
+
   public MoveUpBlock() {
-    super("Move Up");
+    super(BlockNames.MOVE_UP);
+  }
+
+  public MoveUpBlock(MoveUpBlock original){
+    super(original);
   }
 
   public Sequence getSequence() {

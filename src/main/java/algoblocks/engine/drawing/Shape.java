@@ -1,7 +1,6 @@
 package algoblocks.engine.drawing;
 
 import algoblocks.engine.grid.Coordinates;
-import javafx.scene.paint.Color;
 
 public abstract class Shape {
     protected Coordinates start;
@@ -12,6 +11,10 @@ public abstract class Shape {
         this.start = start;
         this.finish = finish;
         this.alpha = alpha;
+    }
+
+    public boolean isDrawable() {
+        return alpha != 0;
     }
 
     public abstract Shape makeCopy();
@@ -33,11 +36,11 @@ public abstract class Shape {
         return alpha;
     }
 
-    public Coordinates getStart(){
+    public Coordinates getStart() {
         return start;
     }
 
-    public Coordinates getFinish(){
+    public Coordinates getFinish() {
         return finish;
     }
 }

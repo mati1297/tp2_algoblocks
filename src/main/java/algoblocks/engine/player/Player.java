@@ -20,7 +20,7 @@ public class Player {
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 
@@ -36,6 +36,10 @@ public class Player {
             return false;
 
         return true;
+    }
+
+    public boolean canDraw() {
+        return pencil.canDraw();
     }
 
     public void resetPlayer() {
@@ -64,7 +68,7 @@ public class Player {
         return drawing;
     }
 
-    public Coordinates getPosition(){
+    public Coordinates getPosition() {
         return position;
     }
 }

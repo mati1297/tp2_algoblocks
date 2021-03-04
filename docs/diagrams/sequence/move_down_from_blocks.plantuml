@@ -1,8 +1,8 @@
 @startuml move_down_from_blocks
 
-Actor User
-User -> ":Game": addBlockToWorkspace\n(MoveDownBlock)
-activate User
+
+":GameController" -> ":Game": addBlockToWorkspace\n(MoveDownBlock)
+activate ":GameController"
 activate ":Game"
 ":Game" -> ":Workspace": addBlock(MoveDownBlock)
 activate ":Workspace"
@@ -52,6 +52,6 @@ deactivate ":MoveDownAction"
 deactivate ":Sequence"
 return drawing
 deactivate ":Game"
-deactivate User
+deactivate ":GameController"
 
 @enduml

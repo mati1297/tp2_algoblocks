@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgorithmTest {
     @Test
-    public void AddBlockAndCompileAlgorithmReturnSequenceWithAction(){
+    public void addBlockAndCompileAlgorithmReturnSequenceWithAction() {
         Algorithm algorithm = new Algorithm();
 
         algorithm.addBlock(new MoveUpBlock());
@@ -21,7 +21,7 @@ public class AlgorithmTest {
     }
 
     @Test
-    public void RemoveBlockFromAlgorithm() {
+    public void removeBlockFromAlgorithm() {
         Algorithm algorithm = new Algorithm();
 
         algorithm.addBlock(new MoveUpBlock());
@@ -36,7 +36,21 @@ public class AlgorithmTest {
     }
 
     @Test
-    public void ClearAlgorithmDeletesAllBlocks() {
+    public void removeInvalidBlockFromAlgorithm() {
+        Algorithm algorithm = new Algorithm();
+
+        algorithm.addBlock(new MoveUpBlock());
+
+        algorithm.deleteBlock(1);
+
+        Algorithm expectedAlgorithm = new Algorithm();
+        expectedAlgorithm.addBlock(new MoveUpBlock());
+
+        assertTrue(algorithm.equals(expectedAlgorithm));
+    }
+
+    @Test
+    public void clearAlgorithmDeletesAllBlocks() {
         Algorithm algorithm = new Algorithm();
 
         algorithm.addBlock(new MoveUpBlock());
@@ -49,4 +63,33 @@ public class AlgorithmTest {
         assertTrue(algorithm.equals(expectedAlgorithm));
     }
     
+
+    @Test
+    public void algorithmIsDifferentToNull() {
+        assertNotEquals(new Algorithm(), null);
+    }
+
+    @Test
+    public void algorithmIsDifferentToOtherObject() {
+        assertNotEquals(new Algorithm(), 5);
+    }
+
+    @Test
+    public void algorithmsWithDifferentBlocksAreDifferent() {
+        Algorithm algorithm = new Algorithm();
+        Algorithm algorithm2 = new Algorithm();
+        algorithm.addBlock(new MoveDownBlock());
+        algorithm2.addBlock(new MoveUpBlock());
+
+        assertNotEquals(algorithm, algorithm2);
+    }
+
+    @Test
+    public void algorithmsWithDifferentCantOfBlocksAreDifferent() {
+        Algorithm algorithm = new Algorithm();
+        Algorithm algorithm2 = new Algorithm();
+        algorithm.addBlock(new MoveDownBlock());
+
+        assertNotEquals(algorithm, algorithm2);
+    }
 }

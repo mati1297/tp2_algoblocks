@@ -5,8 +5,13 @@ import algoblocks.engine.action.MoveLeftAction;
 import algoblocks.engine.action.MoveRightAction;
 
 public class MoveRightBlock extends ActionBlock {
+  
   public MoveRightBlock() {
-    super("Move Right");
+    super(BlockNames.MOVE_RIGHT);
+  }
+
+  public MoveRightBlock(MoveRightBlock original){
+    super(original);
   }
 
   public Sequence getSequence() {

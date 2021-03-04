@@ -4,7 +4,7 @@ public class Coordinates {
     private Coordinate x;
     private Coordinate y;
 
-    public Coordinates(){
+    public Coordinates() {
         x = new Coordinate();
         y = new Coordinate();
     }
@@ -37,22 +37,22 @@ public class Coordinates {
         return x.equals(someCoordinates.x) && y.equals(someCoordinates.y);
     }
 
-    public int getDistanceBetween(Coordinates otherCoordinates) {
-        int x0 = otherCoordinates.x.getValue();
-        int y0 = otherCoordinates.y.getValue();
-
-        int x1 = x.getValue();
-        int y1 = y.getValue();
-
-        return (int) Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
-    }
-
     public int getX() {
         return x.getValue();
     }
 
     public int getY() {
         return y.getValue();
+    }
+
+    public int getDistanceBetween(Coordinates otherCoordinates) {
+        int x0 = otherCoordinates.getX();
+        int y0 = otherCoordinates.getY();
+
+        int x1 = getX();
+        int y1 = getY();
+
+        return (int) Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
     }
 
     public Coordinates incX() {

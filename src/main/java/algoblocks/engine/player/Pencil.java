@@ -11,7 +11,7 @@ public class Pencil {
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 
@@ -33,5 +33,9 @@ public class Pencil {
 
     public void lower() {
         state = new LoweredPencilState();
+    }
+
+    public boolean canDraw() {
+        return state.canDraw();
     }
 }

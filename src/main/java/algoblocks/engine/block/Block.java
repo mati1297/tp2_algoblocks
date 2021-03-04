@@ -3,31 +3,27 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public abstract class Block {
-    protected String blockName;
+    protected String name;
 
-    public Block(String name) {
-        blockName = name;
+    public Block(String name){
+        this.name = name;
     }
 
-    public Block() {
-        blockName = "";
+    public Block(Block original){
+        this.name = original.name;
+    }
+
+    public Block(){
+        name = "";
     }
 
     @Override
     public boolean equals(Object object){
-        if (object == null || getClass() != object.getClass())
-            return false;
-
-        Block otherBlock = (Block) object;
-
-        if (!blockName.equals(otherBlock.blockName))
-            return false;
-        
-        return true;
+        return !(object == null || getClass() != object.getClass());
     }
 
-    public String getBlockName() {
-        return blockName;
+    public String getName(){
+        return name;
     }
 
     public abstract Sequence getSequence();

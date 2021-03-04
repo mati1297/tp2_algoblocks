@@ -5,7 +5,11 @@ import algoblocks.engine.action.Sequence;
 public class InvertBlock extends EffectBlock {
 
   public InvertBlock(){
-    super("Invert");
+    super(BlockNames.INVERT);
+  }
+
+  public InvertBlock(InvertBlock original){
+    super(original);
   }
 
   public Sequence getSequence() {
@@ -21,4 +25,5 @@ public class InvertBlock extends EffectBlock {
       sequence.concatenate(block.getSequence());
     return sequence;
   }
+
 }

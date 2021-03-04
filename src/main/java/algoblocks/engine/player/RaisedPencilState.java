@@ -10,4 +10,8 @@ public class RaisedPencilState implements PencilState {
         newCoords = new Coordinates(newCoords);
         return new Blank(oldCoords, newCoords);
     }
+
+    public boolean canDraw() {
+        return false;
+    }
 }

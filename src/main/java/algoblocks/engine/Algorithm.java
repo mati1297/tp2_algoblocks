@@ -1,20 +1,18 @@
 package algoblocks.engine;
 
 import algoblocks.engine.action.Sequence;
-import algoblocks.engine.block.Block;
-
+import algoblocks.engine.block.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Algorithm{
-    private List<Block> blocks;
+public class Algorithm {
+    private ArrayList<Block> blocks;
 
-    public Algorithm(){
+    public Algorithm() {
         blocks = new ArrayList<Block>();
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 
@@ -30,31 +28,31 @@ public class Algorithm{
         return true;
     }
 
-    public void print() {
-        blocks.forEach((block) -> System.out.println(block));
-    }
 
-    public void addBlock(Block newBlock){
+    public void addBlock(Block newBlock) {
         blocks.add(newBlock);
     }
 
-    public void deleteBlock(int index){
+    public void deleteBlock(int index) {
         if(index < blocks.size())
             blocks.remove(index);
     }
 
-    public void clear(){
+    public void clear() {
         blocks.clear();
     }
 
-    public Sequence compile(){
+    public Sequence compile() {
         Sequence output = new Sequence();
 
-        blocks.stream().forEach((block)->{
+        blocks.stream().forEach((block) -> {
             output.concatenate(block.getSequence());
         });
 
         return output;
     }
-    
+
+    public CustomBlock createCustomBlock() {
+        return new CustomBlock(blocks);
+    }
 }

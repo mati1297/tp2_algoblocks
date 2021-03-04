@@ -1,30 +1,32 @@
 package algoblocks.engine;
 
-
 import algoblocks.engine.action.Sequence;
-import algoblocks.engine.block.Block;
+import algoblocks.engine.block.*;
 
-public class Workspace{
+public class Workspace {
     private Algorithm algorithm;
 
-    public Workspace(){
+    public Workspace() {
         algorithm = new Algorithm();
     }
     
-    public void addBlock(Block newBlock){
+    public void addBlock(Block newBlock) {
         algorithm.addBlock(newBlock);
     }
 
-    public void deleteBlock(int index){
+    public void deleteBlock(int index) {
         algorithm.deleteBlock(index);
     }
 
-    public void clear(){
+    public void clear() {
         algorithm.clear();
     }
 
-    public Sequence compile(){
+    public Sequence compile() {
         return algorithm.compile();
     }
 
+    public CustomBlock createCustomBlock() {
+        return algorithm.createCustomBlock();
+    }
 }

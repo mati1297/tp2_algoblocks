@@ -5,8 +5,13 @@ import algoblocks.engine.action.LowerPencilAction;
 import algoblocks.engine.action.RaisePencilAction;
 
 public class LowerPencilBlock extends ActionBlock {
+
   public LowerPencilBlock() {
-    super("Lower Pencil");
+    super(BlockNames.LOWER_PENCIL);
+  }
+
+  public LowerPencilBlock(LowerPencilBlock original){
+    super(original);
   }
 
   public Sequence getSequence() {

@@ -7,7 +7,9 @@ import algoblocks.engine.player.DownDirection;
 import algoblocks.engine.player.LeftDirection;
 import algoblocks.engine.player.RightDirection;
 import algoblocks.engine.player.UpDirection;
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MovementTest {
