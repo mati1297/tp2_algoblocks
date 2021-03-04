@@ -9,12 +9,11 @@ import algoblocks.gui.GameController;
 import algoblocks.gui.*;
 
 public class DeleteAllButton extends Button {
-    public static final String TEXT = "Delete All";
     ListView<String> targetList;
 
     public DeleteAllButton(GameController game, ListViewInterface targetList) {
         super();
-        this.setText(TEXT);
+        this.setText(AlgorithmButtonNames.DELETE_ALL_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

@@ -9,12 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class CloseBlockButton extends Button {
-    public static final String TEXT = "Close Block";
     ListView<String> targetList;
 
     public CloseBlockButton(GameController game, ListViewInterface targetList) {
         super();
-        this.setText(TEXT);
+        this.setText(AlgorithmButtonNames.CLOSE_BLOCK_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

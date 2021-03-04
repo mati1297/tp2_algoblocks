@@ -9,12 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class DeleteButton extends Button {
-    public static final String TEXT = "Delete";
     ListView<String> targetList;
 
     public DeleteButton(GameController game, ListViewInterface targetList) {
         super();
-        this.setText(TEXT);
+        this.setText(AlgorithmButtonNames.DELETE_BUTTON);
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

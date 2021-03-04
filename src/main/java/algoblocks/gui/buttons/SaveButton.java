@@ -9,13 +9,12 @@ import javafx.event.ActionEvent;
 
 public class SaveButton extends Button {
     private ListViewInterface targetList;
-    private static final String NAME = "Save";
     private BlockButton button;
     private GameController game;
 
     public SaveButton(GameController game, ListViewInterface targetList, BlockButton button) {
         super();
-        this.setText(NAME);
+        this.setText(AlgorithmButtonNames.SAVE_BUTTON);
         this.button = button;
         this.targetList = targetList;
         this.game = game;
