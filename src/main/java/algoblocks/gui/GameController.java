@@ -9,8 +9,7 @@ import java.lang.reflect.Constructor;
 
 import java.util.ArrayList;
 
-import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
+
 
 public class GameController {
     private Game game;
@@ -58,16 +57,6 @@ public class GameController {
             game.addBlockToWorkspace(effectBlock);
 
         openedBlocks.add(effectBlock);
-    }
-
-    public Image getPlayerSprite(boolean canDraw, boolean isMoving) {
-        if (isMoving) {
-            if (canDraw) return new Image("File:resources/runPencilDown.png");
-            return new Image("File:resources/runPencilUp.png");
-        } else {
-            if (canDraw) return new Image("File:resources/idlePencilDown.png");
-            return new Image("File:resources/idlePencilUp.png");
-        }
     }
 
     public Drawing getDrawing() {

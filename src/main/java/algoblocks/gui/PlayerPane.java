@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 
 public class PlayerPane {
   private Pane pane;
+  private PlayerSprite sprite;
   private GameController game;
   private int spriteSize;
 
@@ -18,6 +19,7 @@ public class PlayerPane {
     spriteSize = 90;
     this.game = game;
     pane = new Pane();
+    sprite = new PlayerSprite();
     Rectangle clip = new Rectangle(width, height);
     pane.setClip(clip);
     this.width = width;
@@ -49,7 +51,7 @@ public class PlayerPane {
   }
 
   private ImageView createPlayerSprite(Coordinates playerPosition, boolean canDraw, boolean isMoving) {
-    ImageView playerSprite = new ImageView(game.getPlayerSprite(canDraw, isMoving));
+    ImageView playerSprite = new ImageView(sprite.get(canDraw, isMoving));
 
     Size gridSize = game.getGridSize();
     int gridWidth = gridSize.width();
