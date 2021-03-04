@@ -1,18 +1,9 @@
 package algoblocks.gui;
 
-import algoblocks.engine.*;
-import algoblocks.engine.drawing.Drawing;
-import algoblocks.engine.drawing.Shape;
 import algoblocks.engine.grid.*;
-import java.util.ArrayList;
 
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.application.Platform;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class PlayerPane {
@@ -23,7 +14,7 @@ public class PlayerPane {
   private double width;
   private double height;
 
-  public PlayerPane(GameController game, double width, double height){
+  public PlayerPane(GameController game, double width, double height) {
     spriteSize = 90;
     this.game = game;
     pane = new Pane();

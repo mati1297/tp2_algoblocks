@@ -4,15 +4,15 @@ import algoblocks.engine.action.Sequence;
 import algoblocks.engine.block.*;
 import java.util.ArrayList;
 
-public class Algorithm{
+public class Algorithm {
     private ArrayList<Block> blocks;
 
-    public Algorithm(){
+    public Algorithm() {
         blocks = new ArrayList<Block>();
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass())
             return false;
 
@@ -29,32 +29,30 @@ public class Algorithm{
     }
 
 
-    public void addBlock(Block newBlock){
+    public void addBlock(Block newBlock) {
         blocks.add(newBlock);
     }
 
-    public void deleteBlock(int index){
-        //validate
+    public void deleteBlock(int index) {
         if(index < blocks.size())
             blocks.remove(index);
     }
 
-    public void clear(){
+    public void clear() {
         blocks.clear();
     }
 
-    public Sequence compile(){
+    public Sequence compile() {
         Sequence output = new Sequence();
 
-        blocks.stream().forEach((block)->{
+        blocks.stream().forEach((block) -> {
             output.concatenate(block.getSequence());
         });
 
         return output;
     }
 
-    public CustomBlock createCustomBlock(){
+    public CustomBlock createCustomBlock() {
         return new CustomBlock(blocks);
     }
-    
 }

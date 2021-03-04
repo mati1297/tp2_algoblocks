@@ -1,7 +1,5 @@
 package algoblocks.gui;
 
-
-import javax.swing.text.html.ListView;
 import algoblocks.engine.block.*;
 import algoblocks.gui.buttons.*;
 import javafx.geometry.Insets;
@@ -13,8 +11,7 @@ import javafx.scene.control.Button;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-public class MainWindow extends Window{
+public class MainWindow extends Window {
     private static final String title = "AlgoBlocks";
     private ListViewInterface algorithmListView;
     private ArrayList<Button> blockButtons;
@@ -43,7 +40,7 @@ public class MainWindow extends Window{
         new InvertBlock(),
     }));
 
-    public MainWindow(Stage stage, GameController gameController, int width, int height){
+    public MainWindow(Stage stage, GameController gameController, int width, int height) {
         super(title, width, height, stage);
 
         this.gameController = gameController;
@@ -59,9 +56,6 @@ public class MainWindow extends Window{
         createAndSetBlockButtons();
         createAndSetAlgorithmButtons();
 
-
-        
-
         VBox algorithmAndDeleteButtons = new VBox(algorithmListView.getListView(), actionButtonsContainer);
         algorithmAndDeleteButtons.setMaxWidth(width - grid_width);
 
@@ -69,22 +63,19 @@ public class MainWindow extends Window{
         secondaryContainer.getChildren().addAll(algorithmAndDeleteButtons, whiteboardCanvas.getStackPane());
 
         VBox mainContainer = new VBox(blockContainer, secondaryContainer);
-        mainContainer.setVgrow(secondaryContainer, Priority.ALWAYS);
+        VBox.setVgrow(secondaryContainer, Priority.ALWAYS);
         mainContainer.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(mainContainer);
         this.stage.setScene(scene);
     }
 
-
-    private void createAndSetBlockListView(){
+    private void createAndSetBlockListView() {
         algorithmListView = new ListViewInterface();
         algorithmListView.setPrefHeight(height * 0.8);
-        algorithmListView.setId("algorithmContainer");
     }
 
-
-    private void createAndSetBlockButtons(){
+    private void createAndSetBlockButtons() {
         blockContainer = new FlowPane();
         blockContainer.setPadding(new Insets(5, 5, 5, 5));
         blockContainer.setVgap(5);
@@ -99,8 +90,7 @@ public class MainWindow extends Window{
         blockContainer.getChildren().addAll(blockButtons);
     }
 
-
-    private void createAndSetAlgorithmButtons(){
+    private void createAndSetAlgorithmButtons() {
         Button deleteButton = new DeleteButton(gameController, algorithmListView);
         Button deleteAllButton = new DeleteAllButton(gameController, algorithmListView);
         Button closeBlockButton = new CloseBlockButton(gameController, algorithmListView);
@@ -114,7 +104,6 @@ public class MainWindow extends Window{
         buttonsToDisable.add(runButton);
         buttonsToDisable.addAll(blockButtons);
         runAlgorithm.setButtonsToDisable(buttonsToDisable);
-        
 
         actionButtonsContainer = new FlowPane(deleteButton, deleteAllButton, closeBlockButton, saveButton, runButton);
         actionButtonsContainer.setPadding(new Insets(5, 5, 5, 5));
@@ -122,6 +111,4 @@ public class MainWindow extends Window{
         actionButtonsContainer.setHgap(5);
         actionButtonsContainer.setAlignment(Pos.BOTTOM_CENTER);
     }
-
-
 }

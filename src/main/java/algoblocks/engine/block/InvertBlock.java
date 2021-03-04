@@ -35,9 +35,6 @@ public class InvertBlock extends EffectBlock {
 
     InvertBlock otherBlock = (InvertBlock) object;
 
-    if(!blockName.equals(otherBlock.blockName))
-      return false;
-
     if(!blocks.equals(otherBlock.blocks))
       return false;
 
@@ -48,7 +45,7 @@ public class InvertBlock extends EffectBlock {
   public InvertBlock makeCopy(){
     InvertBlock newBlock = new InvertBlock();
     blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock){
+      if(block instanceof EffectBlock) {
         EffectBlock otherBlock = (EffectBlock) block;
         newBlock.blocks.add(otherBlock.makeCopy());
       }

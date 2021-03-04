@@ -1,29 +1,27 @@
 package algoblocks.gui;
 
-import algoblocks.engine.Game;
-import algoblocks.gui.WhiteboardCanvas;
 import javafx.application.Platform;
-import java.util.ArrayList;
-
 import javafx.scene.control.Button;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 
-public class RunAlgorithm{
+public class RunAlgorithm {
     private static final int DELAY = 500;
 
     private WhiteboardCanvas whiteboardCanvas;
     private GameController game;
     private ArrayList<Button> buttonsToDisable;
 
-    public RunAlgorithm(GameController game, WhiteboardCanvas whiteboardCanvas){
+    public RunAlgorithm(GameController game, WhiteboardCanvas whiteboardCanvas) {
         this.whiteboardCanvas = whiteboardCanvas;
         this.game = game;
         this.buttonsToDisable = new ArrayList<Button>();
     }
 
-    public void execute(){
+    public void execute() {
         disableButtons();
         game.run();
         Platform.runLater(() -> whiteboardCanvas.clear());
@@ -42,19 +40,19 @@ public class RunAlgorithm{
         executor.shutdown();
     }
 
-    private void disableButtons(){
+    private void disableButtons() {
         buttonsToDisable.forEach((Button button) -> {
             Platform.runLater(() -> button.setDisable(true));
         });
     }
 
-    private void enableButtons(){
+    private void enableButtons() {
         buttonsToDisable.forEach((Button button) -> {
             Platform.runLater(() -> button.setDisable(false));
         });
     }
 
-    public void setButtonsToDisable(ArrayList<Button> buttonsToDisable){
+    public void setButtonsToDisable(ArrayList<Button> buttonsToDisable) {
         this.buttonsToDisable = buttonsToDisable;
     }
 }

@@ -2,13 +2,14 @@ package algoblocks.engine;
 
 import algoblocks.engine.action.Sequence;
 import algoblocks.engine.block.*;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EffectBlockTest {
     @Test
-    public void repeatTwoTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
+    public void repeatTwoTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions() {
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -26,9 +27,8 @@ public class EffectBlockTest {
         assertTrue(repeatSequence.equals(testSequence));
     }
 
-
     @Test
-    public void repeatTwoTimesBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){
+    public void repeatTwoTimesBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted() {
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -46,9 +46,8 @@ public class EffectBlockTest {
         assertTrue(repeatSequence.equals(testSequence));
     }
 
-
     @Test
-    public void repeatThreeTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions(){
+    public void repeatThreeTimesBlockWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActions() {
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -69,7 +68,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void repeatThreeTimesBlockInvertedWithMoveUpMoveLeftAndActionsReturnSequenceWithThatActionsInverted(){
+    public void repeatThreeTimesBlockInvertedWithMoveUpMoveLeftAndActionsReturnSequenceWithThatActionsInverted() {
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -90,7 +89,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void repeatingTwoTimesAThreeTimesBlockRepeatItsActionSixTimes(){
+    public void repeatingTwoTimesAThreeTimesBlockRepeatItsActionSixTimes() {
         ActionBlock moveDownBlock = new MoveDownBlock();
 
         EffectBlock repeatThreeTimes = new RepeatBlock(3);
@@ -112,7 +111,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void createARepeatBlockWithLessThan2TimesCreatesADefaultRepeatBlock(){
+    public void createARepeatBlockWithLessThan2TimesCreatesADefaultRepeatBlock() {
         ActionBlock moveUpBlock = new MoveUpBlock();
         ActionBlock moveLeftBlock = new MoveLeftBlock();
 
@@ -131,7 +130,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void invertBlockWithRaisePencilReturnSequenceWithLowerPencil(){
+    public void invertBlockWithRaisePencilReturnSequenceWithLowerPencil() {
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlock = new InvertBlock();
@@ -142,11 +141,10 @@ public class EffectBlockTest {
         testSequence.concatenate(raisePencilBlock.getInvertedSequence());
 
         assertTrue(invertedSequence.equals(testSequence));
-
     }
 
     @Test
-    public void invertBlockWithRaisePencilReturnInvertedSequenceWithRaisePencil(){
+    public void invertBlockWithRaisePencilReturnInvertedSequenceWithRaisePencil() {
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlock = new InvertBlock();
@@ -157,12 +155,10 @@ public class EffectBlockTest {
         testSequence.concatenate(raisePencilBlock.getSequence());
 
         assertTrue(invertedSequence.equals(testSequence));
-
     }
 
-
     @Test
-    public void invertingAnInvertBlockReturnOriginalAction(){
+    public void invertingAnInvertBlockReturnOriginalAction() {
         ActionBlock raisePencilBlock = new RaisePencilBlock();
 
         EffectBlock invertBlockOne = new InvertBlock();
@@ -178,7 +174,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void repeatBlockIsEqualToAnotherWithSameBlocksAndTimes(){
+    public void repeatBlockIsEqualToAnotherWithSameBlocksAndTimes() {
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
@@ -194,7 +190,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void repeatBlockIsDifferentToAnotherWithSameBlocksButDifferentTimes(){
+    public void repeatBlockIsDifferentToAnotherWithSameBlocksButDifferentTimes() {
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
@@ -210,7 +206,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void invertBlocksWithDifferentBlocksAreDifferent(){
+    public void invertBlocksWithDifferentBlocksAreDifferent() {
         Block moveUp = new MoveUpBlock();
         Block moveDown = new MoveDownBlock();
 
@@ -224,7 +220,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void settingTimesInRepeatBlockWorksOk(){
+    public void settingTimesInRepeatBlockWorksOk() {
         ActionBlock moveDownBlock = new MoveDownBlock();
 
         RepeatBlock repeat = new RepeatBlock(2);
@@ -260,4 +256,5 @@ public class EffectBlockTest {
 
         assertTrue(repeatSequence.equals(testSequence));
     }
+
 }

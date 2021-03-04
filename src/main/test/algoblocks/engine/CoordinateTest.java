@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CoordinateTest {
-
     @Test
-    public void coordinate10IsBiggerThanCoordinate2(){
+    public void coordinate10IsBiggerThanCoordinate2() {
         Coordinate c1 = new Coordinate(10);
         Coordinate c2 = new Coordinate(2);
 
@@ -16,7 +15,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void coordinate1IsLowerThanCoordinate2(){
+    public void coordinate1IsLowerThanCoordinate2() {
         Coordinate c1 = new Coordinate(1);
         Coordinate c2 = new Coordinate(2);
 
@@ -24,7 +23,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void coordinate5DecrementsTwiceAndIsLowerThatCoordinate4(){
+    public void coordinate5DecrementsTwiceAndIsLowerThatCoordinate4() {
         Coordinate c1 = new Coordinate(5);
         Coordinate c2 = new Coordinate(4);
 
@@ -35,7 +34,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void coordinate1IncrementsTwiceAndIsBiggerThatCoordinate2(){
+    public void coordinate1IncrementsTwiceAndIsBiggerThatCoordinate2() {
         Coordinate c1 = new Coordinate(1);
         Coordinate c2 = new Coordinate(2);
 
@@ -46,7 +45,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void coordinate1NegatesAndIsEqualToCoordinateMinus1(){
+    public void coordinate1NegatesAndIsEqualToCoordinateMinus1() {
         Coordinate c1 = new Coordinate(1);
         Coordinate c2 = new Coordinate(-1);
 
@@ -56,7 +55,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void intCreatedCoordinateIsEqualToCopyCreatedCoordinate(){
+    public void intCreatedCoordinateIsEqualToCopyCreatedCoordinate() {
         Coordinate intCoord = new Coordinate(10);
         Coordinate copyCoord = new Coordinate(intCoord);
 
@@ -64,7 +63,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void CompareCoordinateWithAnObjectOfADifferentClass(){
+    public void compareCoordinateWithAnObjectOfADifferentClass() {
         Coordinate coord = new Coordinate();
         int integer = 10;
 
@@ -72,16 +71,15 @@ public class CoordinateTest {
     }
 
     @Test 
-    public void CompareCoordinateWithNull(){
+    public void compareCoordinateWithNull() {
         Coordinate coord = new Coordinate();
 
         assertFalse(coord.equals(null));
     }
 
     @Test
-    public void CompareCoordinateWithItself(){
+    public void compareCoordinateWithItself() {
         Coordinate coord = new Coordinate();
-        
         assertTrue(coord.equals(coord));
     }
 }

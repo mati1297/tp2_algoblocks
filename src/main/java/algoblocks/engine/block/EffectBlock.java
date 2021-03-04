@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class EffectBlock extends Block {
     protected ArrayList<Block> blocks;
 
-    public EffectBlock(){
+    public EffectBlock() {
         super();
         blocks = new ArrayList<Block>();
     }
@@ -19,7 +19,7 @@ public abstract class EffectBlock extends Block {
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         if(super.equals(object) == false)
             return false;
 

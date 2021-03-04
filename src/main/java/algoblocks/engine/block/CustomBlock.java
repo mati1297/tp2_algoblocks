@@ -29,7 +29,7 @@ public class CustomBlock extends Block {
     this.blocks.addAll(blocks);
   }
 
-  public void setName(String name){
+  public void setName(String name) {
     blockName = name;
   }
 

@@ -16,7 +16,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveUpBlockReturnsSequenceWithMoveUpAction(){
+    public void moveUpBlockReturnsSequenceWithMoveUpAction() {
         ActionBlock block = new MoveUpBlock();
 
         Sequence sequence = block.getSequence();
@@ -25,7 +25,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveUpBlockReturnsInverseSequenceWithMoveDownAction(){
+    public void moveUpBlockReturnsInverseSequenceWithMoveDownAction() {
         ActionBlock block = new MoveUpBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -34,7 +34,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveDownBlockReturnsSequenceWithMoveDownAction(){
+    public void moveDownBlockReturnsSequenceWithMoveDownAction() {
         ActionBlock block = new MoveDownBlock();
 
         Sequence sequence = block.getSequence();
@@ -43,7 +43,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveDownBlockReturnsInverseSequenceWithMoveUpAction(){
+    public void moveDownBlockReturnsInverseSequenceWithMoveUpAction() {
         ActionBlock block = new MoveDownBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -52,7 +52,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveRightBlockReturnsSequenceWithMoveRightAction(){
+    public void moveRightBlockReturnsSequenceWithMoveRightAction() {
         ActionBlock block = new MoveRightBlock();
 
         Sequence sequence = block.getSequence();
@@ -61,7 +61,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveRightBlockReturnsInverseSequenceWithMoveLeftAction(){
+    public void moveRightBlockReturnsInverseSequenceWithMoveLeftAction() {
         ActionBlock block = new MoveRightBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -70,7 +70,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveLeftBlockReturnsSequenceWithMoveLeftAction(){
+    public void moveLeftBlockReturnsSequenceWithMoveLeftAction() {
         ActionBlock block = new MoveLeftBlock();
 
         Sequence sequence = block.getSequence();
@@ -79,7 +79,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void moveLeftBlockReturnsInverseSequenceWithMoveRightAction(){
+    public void moveLeftBlockReturnsInverseSequenceWithMoveRightAction() {
         ActionBlock block = new MoveLeftBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -88,7 +88,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void raisePencilBlockReturnsSequenceWithRaisePencilAction(){
+    public void raisePencilBlockReturnsSequenceWithRaisePencilAction() {
         ActionBlock block = new RaisePencilBlock();
 
         Sequence sequence = block.getSequence();
@@ -97,7 +97,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void raisePencilBlockReturnsInvertedSequenceWithLowerPencilAction(){
+    public void raisePencilBlockReturnsInvertedSequenceWithLowerPencilAction() {
         ActionBlock block = new RaisePencilBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -106,7 +106,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void lowerPencilBlockReturnsSequenceWithLowerPencilAction(){
+    public void lowerPencilBlockReturnsSequenceWithLowerPencilAction() {
         ActionBlock block = new LowerPencilBlock();
 
         Sequence sequence = block.getSequence();
@@ -115,7 +115,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void lowerPencilBlockReturnsInvertedSequenceWithRaisePencilAction(){
+    public void lowerPencilBlockReturnsInvertedSequenceWithRaisePencilAction() {
         ActionBlock block = new LowerPencilBlock();
 
         Sequence sequence = block.getInvertedSequence();
@@ -124,7 +124,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void twoDifferentActionBlocksAreDifferent(){
+    public void twoDifferentActionBlocksAreDifferent() {
         ActionBlock blockOne = new LowerPencilBlock();
         ActionBlock blockTwo = new MoveDownBlock();
 
@@ -132,7 +132,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void twoEqualActionBlocksAreEqual(){
+    public void twoEqualActionBlocksAreEqual() {
         ActionBlock blockOne = new LowerPencilBlock();
         ActionBlock blockTwo = new LowerPencilBlock();
 
@@ -140,7 +140,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void actionBlockIsDifferentToAnotherObject(){
+    public void actionBlockIsDifferentToAnotherObject() {
         ActionBlock block = new LowerPencilBlock();
         Integer integer = 3;
 
@@ -148,7 +148,7 @@ public class ActionBlockTest {
     }
 
     @Test
-    public void actionBlockIsDifferentToNull(){
+    public void actionBlockIsDifferentToNull() {
         ActionBlock block = new LowerPencilBlock();
 
         assertFalse(block.equals(null));

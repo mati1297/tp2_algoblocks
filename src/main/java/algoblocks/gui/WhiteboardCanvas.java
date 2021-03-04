@@ -1,36 +1,31 @@
 package algoblocks.gui;
 
-import algoblocks.engine.*;
-import algoblocks.engine.drawing.*;
-import javafx.geometry.Insets;
 import javafx.scene.layout.StackPane;
+
 import java.util.ArrayList;
 
-public class WhiteboardCanvas{
+public class WhiteboardCanvas {
     private WhiteboardGrid grid;
     private WhiteboardDrawing drawing;
     private PlayerPane playerPane;
 
-    WhiteboardCanvas(GameController game, double width, double height){
+    WhiteboardCanvas(GameController game, double width, double height) {
         grid = new WhiteboardGrid(game, width, height);
         drawing = new WhiteboardDrawing(game, width, height);
         playerPane = new PlayerPane(game, width, height);
     }
 
-    public StackPane getStackPane(){
+    public StackPane getStackPane() {
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(grid.getPane(), drawing.getPane(), playerPane.getPane());
         return stackPane;
     }
 
-    public ArrayList<Runnable> draw(){
+    public ArrayList<Runnable> draw() {
         return drawing.draw(playerPane);
     }
 
-    public void clear(){
+    public void clear() {
         drawing.clear();
     }
-
-
-    //Draw
 }

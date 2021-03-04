@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CustomBlockTest {
 
     @Test
-    public void customBlockConstructorAndSetNameWorkOk(){
+    public void customBlockConstructorAndSetNameWorkOk() {
         CustomBlock custom = new CustomBlock("Custom block 1");
 
         assertEquals(custom.getBlockName(), "Custom block 1");
@@ -18,8 +18,8 @@ public class CustomBlockTest {
         custom.setName("Custom block 2");
 
         assertEquals(custom.getBlockName(), "Custom block 2");
-
     }
+    
 
     @Test
     public void CustomBlockInvertedWithMoveUpAndMoveLeftActionsReturnSequenceWithThatActionsInverted(){

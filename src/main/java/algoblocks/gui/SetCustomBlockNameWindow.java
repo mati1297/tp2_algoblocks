@@ -1,6 +1,5 @@
 package algoblocks.gui;
 
-
 import algoblocks.gui.buttons.*;
 
 import javafx.scene.Scene;
@@ -15,8 +14,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
 
-
-public class SetCustomBlockNameWindow extends Window{
+public class SetCustomBlockNameWindow extends Window {
     private static final String title = "Set custom block name";
     private static final String labelText = "New custom block text";
     private static final String errorText = "No name inserted!";
@@ -28,53 +26,51 @@ public class SetCustomBlockNameWindow extends Window{
     private static final int WIDTH = 200;
     private static final int HEIGHT = 140;
 
-
-
-    public SetCustomBlockNameWindow(SaveButton button){
+    public SetCustomBlockNameWindow(SaveButton button) {
         super(title, WIDTH, HEIGHT);
 
         Label titleLabel = new Label(labelText);
+
         Label errorLabel = new Label(errorText);
         errorLabel.setTextFill(Color.web("#ff0000", 1));
         errorLabel.setVisible(false);
 
-        
         Button okButton = new Button(okText);
         okButton.setDefaultButton(true);
-        Button cancelButton = new Button(cancelText);
-        cancelButton.setCancelButton(false);
 
-        
-        
-        textField = new TextField();
-
-        HBox buttonLayout = new HBox(cancelButton, okButton);
-        buttonLayout.setAlignment(Pos.CENTER_RIGHT);
-        VBox mainLayout = new VBox(titleLabel, errorLabel, textField, buttonLayout);
-        mainLayout.setAlignment(Pos.CENTER_LEFT);
-        mainLayout.setPadding(new Insets(5, 5, 5, 5));
-        
-        Scene scene = new Scene(mainLayout);
-
-
-        okButton.setOnAction(new EventHandler<ActionEvent>(){
+        okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent){
+            public void handle(ActionEvent actionEvent) {
                 String blockName = textField.getText();
                 if(blockName == "")
                     errorLabel.setVisible(true);
-                else{
+                else {
                     button.continueAction(blockName);
                     stage.close();
                 }
             }
         });
-        cancelButton.setOnAction(new EventHandler<ActionEvent>(){
+
+        Button cancelButton = new Button(cancelText);
+        cancelButton.setCancelButton(false);
+
+        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent){
+            public void handle(ActionEvent actionEvent) {
                 stage.close();
             }
         });
+
+        textField = new TextField();
+
+        HBox buttonLayout = new HBox(cancelButton, okButton);
+        buttonLayout.setAlignment(Pos.CENTER_RIGHT);
+
+        VBox mainLayout = new VBox(titleLabel, errorLabel, textField, buttonLayout);
+        mainLayout.setAlignment(Pos.CENTER_LEFT);
+        mainLayout.setPadding(new Insets(5, 5, 5, 5));
+        
+        Scene scene = new Scene(mainLayout);
 
         stage.setScene(scene);    
     }
