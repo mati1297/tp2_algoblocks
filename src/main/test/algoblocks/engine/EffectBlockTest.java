@@ -257,4 +257,40 @@ public class EffectBlockTest {
         assertTrue(repeatSequence.equals(testSequence));
     }
 
+    @Test
+    public void invertBlockIsDifferentToRepeatBlockWithSameBlocks() {
+        EffectBlock invert = new InvertBlock();
+        RepeatBlock repeat = new RepeatBlock(2);
+        invert.addBlock(new MoveDownBlock());
+        repeat.addBlock(new MoveDownBlock());
+
+        assertFalse(invert.equals(repeat));
+    }
+
+    @Test
+    public void invertBlockHasInvertNameByDefault() {
+        InvertBlock invert = new InvertBlock();
+
+        assertEquals(invert.getBlockName(), "Invert");
+    }
+
+    @Test
+    public void repeatBlockIsDifferentoAnotherOneWithSameTimesAndDifferentBlocks() {
+        RepeatBlock repeatBlock = new RepeatBlock(3);
+        repeatBlock.addBlock(new LowerPencilBlock());
+        repeatBlock.addBlock(new MoveRightBlock());
+
+        RepeatBlock otherRepeatBlock = new RepeatBlock(3);
+        otherRepeatBlock.addBlock(new RaisePencilBlock());
+        otherRepeatBlock.addBlock(new MoveRightBlock());
+
+        assertFalse(repeatBlock.equals(otherRepeatBlock));
+    }
+
+    @Test
+    public void repeatBlockSetsNameAccordingToRepeatingTimes() {
+        RepeatBlock repeat = new RepeatBlock(4);
+
+        assertEquals(repeat.getBlockName(), "Repeat 4 times");
+    }
 }

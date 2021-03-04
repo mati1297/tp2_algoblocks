@@ -52,12 +52,6 @@ public class RepeatBlock extends EffectBlock {
     if(!blockName.equals(otherBlock.blockName))
       return false;
 
-    if(!blocks.equals(otherBlock.blocks))
-      return false;
-
-    if(times != otherBlock.times)
-      return false;
-
     return true;
   }
 

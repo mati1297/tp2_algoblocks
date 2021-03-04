@@ -29,19 +29,6 @@ public class InvertBlock extends EffectBlock {
   }
 
   @Override
-  public boolean equals(Object object){
-    if(super.equals(object) == false)
-      return false;
-
-    InvertBlock otherBlock = (InvertBlock) object;
-
-    if(!blocks.equals(otherBlock.blocks))
-      return false;
-
-    return true;
-  }
-
-  @Override
   public InvertBlock makeCopy(){
     InvertBlock newBlock = new InvertBlock();
     blocks.forEach((Block block) -> {
