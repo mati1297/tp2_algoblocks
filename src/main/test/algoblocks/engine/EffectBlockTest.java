@@ -271,7 +271,7 @@ public class EffectBlockTest {
     public void invertBlockHasInvertNameByDefault() {
         InvertBlock invert = new InvertBlock();
 
-        assertEquals(invert.getBlockName(), "Invert");
+        assertEquals(invert.getName(), "Invert");
     }
 
     @Test
@@ -291,7 +291,7 @@ public class EffectBlockTest {
     public void repeatBlockSetsNameAccordingToRepeatingTimes() {
         RepeatBlock repeat = new RepeatBlock(4);
 
-        assertEquals(repeat.getBlockName(), "Repeat 4 times");
+        assertEquals(repeat.getName(), "Repeat 4 times");
     }
 
     @Test

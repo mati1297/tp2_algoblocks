@@ -10,7 +10,7 @@ public class RepeatBlock extends EffectBlock {
     this.times = 2;
     if(times >= 2)
       this.times = times;
-    blockName = BlockNames.REPEAT_PART_ONE + " " + String.valueOf(times) + " " + BlockNames.REPEAT_PART_TWO;
+    name = BlockNames.REPEAT_PART_ONE + " " + String.valueOf(times) + " " + BlockNames.REPEAT_PART_TWO;
   }
 
   public RepeatBlock(RepeatBlock original){
@@ -22,7 +22,7 @@ public class RepeatBlock extends EffectBlock {
   public void setTimes(int times) {
     if(times >= 2)
       this.times = times;
-    blockName = "Repeat " + String.valueOf(times) + " times";
+    name = "Repeat " + String.valueOf(times) + " times";
   }
 
   @Override
@@ -32,7 +32,7 @@ public class RepeatBlock extends EffectBlock {
 
     RepeatBlock otherBlock = (RepeatBlock) object;
 
-    if(!blockName.equals(otherBlock.blockName))
+    if(!name.equals(otherBlock.name))
       return false;
 
     return true;

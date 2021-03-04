@@ -8,6 +8,6 @@ public class ActionBlockItem extends BlockItem {
     }
 
     public String toString() {
-        return block.getBlockName();
+        return block.getName();
     }
 }

@@ -18,7 +18,7 @@ public abstract class BlockButton extends Button {
         this.targetList = targetList;
         this.game = game;
         this.block = block;
-        this.setText(block.getBlockName());
+        this.setText(block.getName());
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -29,7 +29,7 @@ public abstract class BlockButton extends Button {
 
     public void setBlock(Block block) {
         this.block = block;
-        this.setText(block.getBlockName());
+        this.setText(block.getName());
     }
 
     public abstract void action();

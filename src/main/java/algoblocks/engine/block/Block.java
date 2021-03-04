@@ -3,18 +3,18 @@ package algoblocks.engine.block;
 import algoblocks.engine.action.Sequence;
 
 public abstract class Block {
-    protected String blockName;
+    protected String name;
 
     public Block(String name){
-        this.blockName = name;
+        this.name = name;
     }
 
     public Block(Block original){
-        this.blockName = original.blockName;
+        this.name = original.name;
     }
 
     public Block(){
-        blockName = "";
+        name = "";
     }
 
     @Override
@@ -22,8 +22,8 @@ public abstract class Block {
         return !(object == null || getClass() != object.getClass());
     }
 
-    public String getBlockName(){
-        return blockName;
+    public String getName(){
+        return name;
     }
 
     public abstract Sequence getSequence();

@@ -16,11 +16,11 @@ public class CustomBlockTest {
     public void customBlockConstructorAndSetNameWorkOk() {
         CustomBlock custom = new CustomBlock("Custom block 1");
 
-        assertEquals(custom.getBlockName(), "Custom block 1");
+        assertEquals(custom.getName(), "Custom block 1");
 
         custom.setName("Custom block 2");
 
-        assertEquals(custom.getBlockName(), "Custom block 2");
+        assertEquals(custom.getName(), "Custom block 2");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class CustomBlockTest {
         Sequence testSequence = new Sequence();
         testSequence.concatenate(new MoveRightBlock().getSequence());
 
-        assertEquals(custom.getBlockName(), "My Custom Block");
+        assertEquals(custom.getName(), "My Custom Block");
         assertTrue(customSequence.equals(testSequence));
     }
 

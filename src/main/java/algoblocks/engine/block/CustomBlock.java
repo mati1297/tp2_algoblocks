@@ -50,7 +50,7 @@ public class CustomBlock extends Block {
 
 
   public void setName(String name) {
-    blockName = name;
+    this.name = name;
   }
 
   public void addBlock(Block block){
@@ -58,8 +58,8 @@ public class CustomBlock extends Block {
   }
 
   @Override
-  public String getBlockName() {
-    return blockName;
+  public String getName() {
+    return name;
   }
 
   public Sequence getSequence() {

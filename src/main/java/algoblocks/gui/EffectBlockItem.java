@@ -24,7 +24,7 @@ public class EffectBlockItem extends BlockItem {
     }
 
     public String toString() {
-        String output = block.getBlockName() + "(" + state.toString() + ")";
+        String output = block.getName() + "(" + state.toString() + ")";
         String tabs = "";
 
         for (int i = 0; i <= level; i++)
