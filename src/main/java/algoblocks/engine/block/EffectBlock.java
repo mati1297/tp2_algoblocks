@@ -2,6 +2,7 @@ package algoblocks.engine.block;
 
 import algoblocks.engine.action.Sequence;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 public abstract class EffectBlock extends Block {
@@ -12,12 +13,30 @@ public abstract class EffectBlock extends Block {
         blocks = new ArrayList<Block>();
     }
 
-    public EffectBlock(){
+    public EffectBlock() {
         super();
         blocks = new ArrayList<Block>();
     }
 
-    public abstract EffectBlock makeCopy();
+    public EffectBlock(EffectBlock original){
+        super(original);
+        blocks = new ArrayList<Block>();
+        original.blocks.forEach((Block block) -> {
+            Constructor<? extends Block> constructor = null;
+            try{
+                constructor = block.getClass().getDeclaredConstructor(block.getClass());
+                
+            }
+            catch(Exception e) {
+                System.out.println(e.toString());
+             }
+            try{
+                blocks.add(constructor.newInstance(block));
+            }
+            catch(Exception e){System.out.println(e);}  
+            
+        });
+    }
 
     public void addBlock(Block block){
         blocks.add(block);

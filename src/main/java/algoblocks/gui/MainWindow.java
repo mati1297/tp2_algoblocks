@@ -34,7 +34,7 @@ public class MainWindow extends Window {
         new LowerPencilBlock(),
     }));
 
-    private static final ArrayList<Block> EFFECT_BLOCKS = new ArrayList<Block>(Arrays.asList(new Block[]{
+    private static final ArrayList<EffectBlock> EFFECT_BLOCKS = new ArrayList<EffectBlock>(Arrays.asList(new EffectBlock[]{
         new RepeatBlock(2),
         new RepeatBlock(3),
         new InvertBlock(),

@@ -22,17 +22,4 @@ public class InvertBlock extends EffectBlock {
     return sequence;
   }
 
-  @Override
-  public InvertBlock makeCopy(){
-    InvertBlock newBlock = new InvertBlock();
-    blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock) {
-        EffectBlock otherBlock = (EffectBlock) block;
-        newBlock.blocks.add(otherBlock.makeCopy());
-      }
-      else
-        newBlock.blocks.add(block);
-    });
-    return newBlock;
-  }
 }

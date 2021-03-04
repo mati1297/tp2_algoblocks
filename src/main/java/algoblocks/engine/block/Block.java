@@ -9,6 +9,10 @@ public abstract class Block {
         this.blockName = name;
     }
 
+    public Block(Block original){
+        this.blockName = original.blockName;
+    }
+
     public Block(){
         blockName = "";
     }

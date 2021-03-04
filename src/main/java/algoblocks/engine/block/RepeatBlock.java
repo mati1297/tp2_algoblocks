@@ -13,21 +13,11 @@ public class RepeatBlock extends EffectBlock {
     blockName = BlockNames.REPEAT_PART_ONE + " " + String.valueOf(times) + " " + BlockNames.REPEAT_PART_TWO;
   }
 
-  @Override
-  public RepeatBlock makeCopy(){
-    RepeatBlock newBlock = new RepeatBlock(times);
-    newBlock.blockName = blockName;
-    
-    blocks.forEach((Block block) -> {
-      if(block instanceof EffectBlock) {
-        EffectBlock otherBlock = (EffectBlock) block;
-        newBlock.blocks.add(otherBlock.makeCopy());
-      }
-      else
-        newBlock.blocks.add(block);
-    });
-    return newBlock;
+  public RepeatBlock(RepeatBlock original){
+    super(original);
+    this.times = original.times;
   }
+
 
   public void setTimes(int times) {
     if(times >= 2)

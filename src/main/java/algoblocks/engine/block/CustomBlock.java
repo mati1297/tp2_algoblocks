@@ -2,6 +2,7 @@ package algoblocks.engine.block;
 
 import algoblocks.engine.action.Sequence;
 import java.util.ArrayList;
+import java.lang.reflect.Constructor;
 
 public class CustomBlock extends Block {
   private ArrayList<Block> blocks;
@@ -28,26 +29,28 @@ public class CustomBlock extends Block {
     this.blocks.addAll(blocks);
   }
 
-  public void setName(String name) {
-    blockName = name;
+  public CustomBlock(CustomBlock original){
+    super(original);
+    blocks = new ArrayList<Block>();
+    original.blocks.forEach((Block block) -> {
+        Constructor<? extends Block> constructor = null;
+        try{
+            constructor = block.getClass().getDeclaredConstructor(block.getClass());      
+        }
+        catch(Exception e) {
+            System.out.println(e.toString());
+         }
+        try{
+            blocks.add(constructor.newInstance(block));
+        }
+        catch(Exception e){System.out.println(e);}  
+        
+    });
   }
 
-  public CustomBlock makeCopy(){
-    CustomBlock newBlock = new CustomBlock();
-    newBlock.blockName = blockName;
-    blocks.forEach((Block block) -> {
-      if(block instanceof CustomBlock){
-        CustomBlock otherBlock = (CustomBlock) block;
-        newBlock.blocks.add(otherBlock.makeCopy());
-      }
-      else if(block instanceof EffectBlock){
-        EffectBlock otherBlock = (EffectBlock) block;
-        newBlock.blocks.add(otherBlock.makeCopy());
-      }
-      else
-        newBlock.blocks.add(block);
-    });
-    return newBlock;
+
+  public void setName(String name) {
+    blockName = name;
   }
 
   public void addBlock(Block block){

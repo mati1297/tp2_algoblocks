@@ -8,6 +8,10 @@ public abstract class ActionBlock extends Block {
         super(name);
     };
 
+    public ActionBlock(ActionBlock original){
+        super(original);
+    }
+
     public abstract Sequence getSequence();
     public abstract Sequence getInvertedSequence();
 }
