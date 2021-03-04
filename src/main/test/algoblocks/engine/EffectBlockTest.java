@@ -275,7 +275,7 @@ public class EffectBlockTest {
     }
 
     @Test
-    public void repeatBlockIsDifferentoAnotherOneWithSameTimesAndDifferentBlocks() {
+    public void repeatBlockIsDifferentToAnotherOneWithSameTimesAndDifferentBlocks() {
         RepeatBlock repeatBlock = new RepeatBlock(3);
         repeatBlock.addBlock(new LowerPencilBlock());
         repeatBlock.addBlock(new MoveRightBlock());
