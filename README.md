@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/mati1297/tp2_algoblocks.svg?style=svg)](https://circleci.com/gh/mati1297/tp2_algoblocks) [![codecov](https://codecov.io/gh/mati1297/tp2_algoblocks/branch/master/graph/badge.svg)](https://codecov.io/gh/mati1297/tp2_algoblocks)
+[![Build Status](https://travis-ci.com/mati1297/tp2_algoblocks.svg?branch=master)](https://travis-ci.com/github/mati1297/tp2_algoblocks/) [![codecov](https://codecov.io/gh/mati1297/tp2_algoblocks/branch/master/graph/badge.svg)](https://codecov.io/gh/mati1297/tp2_algoblocks)
 
 
 
