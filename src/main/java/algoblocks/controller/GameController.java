@@ -36,7 +36,7 @@ public class GameController {
     }
 
     public void addEffectBlockToWorkspace(EffectBlock block) {
-        EffectBlock effectBlock = new InvertBlock();
+        EffectBlock effectBlock = null;
         Constructor<? extends EffectBlock> constructor = null;
         try{
             constructor = block.getClass().getDeclaredConstructor(block.getClass());
