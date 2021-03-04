@@ -56,7 +56,11 @@ public class Drawing {
   }
 
   public Shape get(int position) {
-    return shapes.get(position);
+    try {
+      return shapes.get(position);
+    } catch (IndexOutOfBoundsException e) {
+      throw e;
+    }
   }
 
   public boolean isEmpty() {
