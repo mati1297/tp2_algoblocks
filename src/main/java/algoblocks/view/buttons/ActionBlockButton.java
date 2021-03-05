@@ -14,7 +14,7 @@ public class ActionBlockButton extends BlockButton {
         super(new ActionBlockButtonHandler(gameController, targetList, block), block);
     }
 
-    public static ArrayList<Button> createButtonArray(GameController game, WorkspaceView targetList, ArrayList<Block> blocks) {
+    public static ArrayList<Button> createButtonArray(GameController gameController, WorkspaceView targetList, ArrayList<Block> blocks) {
         ArrayList<Button> buttons = new ArrayList<Button>();
         blocks.forEach((Block block) -> {
             buttons.add(new ActionBlockButton(gameController, targetList, block));

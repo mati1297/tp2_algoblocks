@@ -1,6 +1,8 @@
 package algoblocks.view;
 
 import algoblocks.controller.SaveCustomBlockController;
+import algoblocks.controller.handlers.CancelButtonHandler;
+import algoblocks.controller.handlers.OkButtonHandler;
 import algoblocks.view.buttons.*;
 
 import javafx.scene.Scene;
@@ -39,30 +41,16 @@ public class SetCustomBlockNameWindow extends Window {
         Button okButton = new Button(okText);
         okButton.setDefaultButton(true);
 
-        okButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String blockName = textField.getText();
-                if(blockName == "")
-                    errorLabel.setVisible(true);
-                else {
-                    saveController.continueAction(blockName);
-                    stage.close();
-                }
-            }
-        });
+        textField = new TextField();
+
+        okButton.setOnAction(new OkButtonHandler(stage, saveController, errorLabel, textField));
 
         Button cancelButton = new Button(cancelText);
         cancelButton.setCancelButton(false);
 
-        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                stage.close();
-            }
-        });
+        cancelButton.setOnAction(new CancelButtonHandler(stage));
 
-        textField = new TextField();
+        
 
         HBox buttonLayout = new HBox(cancelButton, okButton);
         buttonLayout.setAlignment(Pos.CENTER_RIGHT);
