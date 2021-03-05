@@ -1,6 +1,7 @@
 package algoblocks.view.buttons;
 
-import algoblocks.controller.GameController;
+import algoblocks.controller.*;
+import algoblocks.controller.handlers.SaveButtonHandler;
 import algoblocks.view.*;
 import algoblocks.engine.block.*;
 
@@ -14,31 +15,10 @@ public class SaveButton extends Button {
     private BlockButton button;
     private GameController game;
 
-    public SaveButton(GameController gameController, WorkspaceView targetList, BlockButton button) {
+    public SaveButton(SaveCustomBlockController saveController) {
         super();
         this.setText(AlgorithmButtonNames.SAVE_BUTTON);
-        this.button = button;
-        this.targetList = targetList;
-        this.game = gameController;
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                showWindow();
-            }
-        });
+        this.setOnAction(new SaveButtonHandler(saveController));
     }
 
-    public void showWindow() {
-        SetCustomBlockNameWindow window = new SetCustomBlockNameWindow(this);
-        window.show();
-    }
-
-    public void continueAction(String name) {
-        CustomBlock block = game.createCustomBlock();
-        game.clearWorkspace();
-        block.setName(name);
-        button.setText(name);
-        targetList.clear();
-        button.setBlock(block);
-    }
 }

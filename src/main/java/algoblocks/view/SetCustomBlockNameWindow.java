@@ -1,5 +1,6 @@
 package algoblocks.view;
 
+import algoblocks.controller.SaveCustomBlockController;
 import algoblocks.view.buttons.*;
 
 import javafx.scene.Scene;
@@ -26,7 +27,7 @@ public class SetCustomBlockNameWindow extends Window {
     private static final int WIDTH = 200;
     private static final int HEIGHT = 140;
 
-    public SetCustomBlockNameWindow(SaveButton button) {
+    public SetCustomBlockNameWindow(SaveCustomBlockController saveController) {
         super(title, WIDTH, HEIGHT);
 
         Label titleLabel = new Label(labelText);
@@ -45,7 +46,7 @@ public class SetCustomBlockNameWindow extends Window {
                 if(blockName == "")
                     errorLabel.setVisible(true);
                 else {
-                    button.continueAction(blockName);
+                    saveController.continueAction(blockName);
                     stage.close();
                 }
             }
