@@ -9,8 +9,6 @@ import java.lang.reflect.Constructor;
 
 import java.util.ArrayList;
 
-
-
 public class GameController {
     private Game game;
     private ArrayList<EffectBlock> openedBlocks;
