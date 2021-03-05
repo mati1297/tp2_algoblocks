@@ -18,10 +18,10 @@ public class CustomBlockButton extends BlockButton {
         this.setOnAction(handler);
     }
 
-    public static ArrayList<Button> createButtonArray(GameController game, WorkspaceView targetList, ArrayList<Block> blocks) {
+    public static ArrayList<Button> createButtonArray(GameController gameController, WorkspaceView targetList, ArrayList<Block> blocks) {
         ArrayList<Button> buttons = new ArrayList<Button>();
         blocks.forEach((Block block) -> {
-            buttons.add(new CustomBlockButton(game, targetList, block));
+            buttons.add(new CustomBlockButton(gameController, targetList, block));
         });
         return buttons;
     }

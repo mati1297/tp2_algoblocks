@@ -10,14 +10,14 @@ import algoblocks.view.workspace.WorkspaceView;
 import java.util.ArrayList;
 
 public class ActionBlockButton extends BlockButton {
-    public ActionBlockButton(GameController game, WorkspaceView targetList, Block block) {
-        super(new ActionBlockButtonHandler(game, targetList, block), block);
+    public ActionBlockButton(GameController gameController, WorkspaceView targetList, Block block) {
+        super(new ActionBlockButtonHandler(gameController, targetList, block), block);
     }
 
     public static ArrayList<Button> createButtonArray(GameController game, WorkspaceView targetList, ArrayList<Block> blocks) {
         ArrayList<Button> buttons = new ArrayList<Button>();
         blocks.forEach((Block block) -> {
-            buttons.add(new ActionBlockButton(game, targetList, block));
+            buttons.add(new ActionBlockButton(gameController, targetList, block));
         });
         return buttons;
     }
