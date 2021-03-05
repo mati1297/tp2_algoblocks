@@ -7,19 +7,14 @@ import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import algoblocks.controller.handlers.RunButtonHandler;
+import algoblocks.controller.RunAlgorithm;
 
 
 public class RunButton extends Button {
-    ArrayList<Button> buttonsToDisable;
-
     public RunButton(RunAlgorithm run) {
         super();
         this.setText(AlgorithmButtonNames.RUN_BUTTON);
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                run.execute();
-            }
-        });
+        this.setOnAction(new RunButtonHandler(run));
     }
 }

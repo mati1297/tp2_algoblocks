@@ -1,6 +1,5 @@
-package algoblocks.view;
+package algoblocks.controller;
 
-import algoblocks.controller.GameController;
 import algoblocks.view.whiteboard.WhiteboardCanvas;
 import javafx.application.Platform;
 import javafx.scene.control.Button;

@@ -1,5 +1,7 @@
 package algoblocks.view;
 
+import algoblocks.controller.RunAlgorithm;
+import algoblocks.controller.SaveCustomBlockController;
 import algoblocks.controller.GameController;
 import algoblocks.engine.block.*;
 import algoblocks.view.buttons.*;
@@ -97,7 +99,8 @@ public class MainWindow extends Window {
         Button deleteButton = new DeleteButton(gameController, algorithmListView);
         Button deleteAllButton = new DeleteAllButton(gameController, algorithmListView);
         Button closeBlockButton = new CloseBlockButton(gameController, algorithmListView);
-        Button saveButton = new SaveButton(gameController, algorithmListView, customBlockButton);
+        SaveCustomBlockController saveController = new SaveCustomBlockController(gameController, algorithmListView, customBlockButton);
+        Button saveButton = new SaveButton(saveController);
         Button runButton = new RunButton(runAlgorithm);
         ArrayList<Button> buttonsToDisable = new ArrayList<Button>();
         buttonsToDisable.add(deleteButton);
