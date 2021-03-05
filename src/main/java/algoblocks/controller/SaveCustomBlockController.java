@@ -1,17 +1,17 @@
 package algoblocks.controller;
 
 import algoblocks.view.workspace.WorkspaceView;
-import algoblocks.view.buttons.BlockButton;
+import algoblocks.view.buttons.CustomBlockButton;
 import algoblocks.engine.block.*;
 import algoblocks.view.SetCustomBlockNameWindow;
 
 
 public class SaveCustomBlockController {
     private GameController gameController;
-    private BlockButton button;
+    private CustomBlockButton button;
     private WorkspaceView targetList;
 
-    public SaveCustomBlockController(GameController gameController, WorkspaceView targetList, BlockButton button){
+    public SaveCustomBlockController(GameController gameController, WorkspaceView targetList, CustomBlockButton button){
         this.gameController = gameController;
         this.button = button;
         this.targetList = targetList;

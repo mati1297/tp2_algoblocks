@@ -15,8 +15,4 @@ public abstract class BlockButton extends Button {
         this.setOnAction(handler);
     }
 
-    public void setBlock(Block block) {
-        this.block = block;
-        this.setText(block.getName());
-    }
 }

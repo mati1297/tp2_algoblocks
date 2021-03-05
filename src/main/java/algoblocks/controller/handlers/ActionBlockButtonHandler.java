@@ -14,6 +14,10 @@ public class ActionBlockButtonHandler extends BlockButtonHandler {
     this.block = block;
   }
 
+  public void updateBlock(Block block){
+    this.block = block;
+  }
+
   public void handle(ActionEvent event) {
     workspaceView.addActionBlock(block);
     gameController.addActionBlockToWorkspace(block);
