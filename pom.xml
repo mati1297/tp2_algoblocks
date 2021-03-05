@@ -74,6 +74,7 @@
                         <exclude>algoblocks/view/**/**/*</exclude>
                         <exclude>algoblocks/view/*</exclude>
                         <exclude>algoblocks/controller/*</exclude>
+                        <exclude>algoblocks/controller/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

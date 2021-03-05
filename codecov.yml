@@ -1,2 +1,3 @@
 ignore:
-  - "src/main/java/algoblocks/gui"  # ignore folders and all its contents
+  - "src/main/java/algoblocks/vista"  # ignore folders and all its contents
+  - "src/main/java/algoblocks/controller"
