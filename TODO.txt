@@ -1,4 +1,0 @@
-Actualizar diagramas de clase: EffectBlock debe conocer a ActionBlock ya que se le pasan ActionBlocks.
-Desarrollar la parte de borde para que la linea no cruce de un lado a otro.
-Validar cuando se pide la secuencia un bloque vacio.
-Ver si los bloques deben llevar nombre.
