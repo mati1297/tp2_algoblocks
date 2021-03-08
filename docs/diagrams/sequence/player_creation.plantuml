@@ -1,9 +1,10 @@
 @startuml player_creation
 
-Actor User
-activate User
+
+
+":GameController" -> "player: Player": new Player(grid)
 create "player: Player"
-User -> "player: Player": new Player(grid)
+activate ":GameController"
 activate "player: Player"
 
 create "pencil: Pencil"
@@ -31,6 +32,6 @@ activate "drawing: Drawing"
 return drawing
 
 return player
-deactivate User
+deactivate ":GameController"
 
 @enduml

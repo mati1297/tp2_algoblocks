@@ -1,7 +1,8 @@
 @startuml lower_pencil_from_blocks
 
-Actor User
-User -> ":Game": addBlockToWorkspace\n(LowerPencilBlock)
+
+":GameController" -> ":Game": addBlockToWorkspace\n(LowerPencilBlock)
+activate ":GameController"
 activate User
 activate ":Game"
 ":Game" -> ":Workspace": addBlock(LowerPencilBlock)
@@ -49,6 +50,6 @@ deactivate ":LowerPencilAction"
 deactivate ":Sequence"
 return drawing
 deactivate ":Game"
-deactivate User
+deactivate ":GameController"
 
 @enduml

@@ -1,12 +1,17 @@
 package algoblocks.engine;
 
+import algoblocks.engine.drawing.Blank;
+import algoblocks.engine.drawing.Line;
+import algoblocks.engine.drawing.Shape;
+import algoblocks.engine.grid.Coordinates;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShapeTest {
     @Test
-    public void ShapeIsDifferentToNull(){
+    public void ShapeIsDifferentToNull() {
         Coordinates coords = new Coordinates();
         Shape shape = new Line(coords, coords);
     
@@ -14,7 +19,7 @@ public class ShapeTest {
     }
     
     @Test
-    public void ShapeIsDifferentToAnObjectOfADifferentClass(){
+    public void ShapeIsDifferentToAnObjectOfADifferentClass() {
         Coordinates coords = new Coordinates();
         Shape shape = new Line(coords, coords);
         int integer = 0;
@@ -23,7 +28,7 @@ public class ShapeTest {
     }
     
     @Test
-    public void ShapeIsEqualToItself(){
+    public void ShapeIsEqualToItself() {
         Coordinates coords = new Coordinates();
         Shape shape = new Line(coords, coords);
     
@@ -31,7 +36,7 @@ public class ShapeTest {
     }
 
     @Test
-    public void ShapeIsEqualToOtherShapeWithSameStartAndFinish(){
+    public void ShapeIsEqualToOtherShapeWithSameStartAndFinish() {
         Coordinates coordsOne = new Coordinates(1, 1);
         Coordinates coordsTwo = new Coordinates(1, 1);
         Shape shapeOne = new Line(coordsOne, coordsOne);
@@ -41,7 +46,7 @@ public class ShapeTest {
     }
 
     @Test
-    public void ShapeAreDifferentWithDifferentStarts(){
+    public void ShapeAreDifferentWithDifferentStarts() {
         Coordinates coordsOne = new Coordinates(1, 1);
         Coordinates coordsTwo = new Coordinates(2, 2);
         Shape shapeOne = new Line(coordsOne, coordsOne);
@@ -51,12 +56,43 @@ public class ShapeTest {
     }
 
     @Test
-    public void ShapeAreDifferentWithDifferentFinish(){
+    public void ShapeAreDifferentWithDifferentFinish() {
         Coordinates coordsOne = new Coordinates(1, 1);
         Coordinates coordsTwo = new Coordinates(2, 2);
         Shape shapeOne = new Line(coordsTwo, coordsTwo);
         Shape shapeTwo = new Line(coordsTwo, coordsOne);
     
         assertFalse(shapeOne.equals(shapeTwo));
+    }
+    
+    @Test
+    public void ShapeGettersReturnOK() {
+        Coordinates coordsOne = new Coordinates(1,1);
+        Coordinates coordsTwo = new Coordinates(2,2);
+        float alpha = 1.0f;
+
+        Shape shape = new Line(coordsOne, coordsTwo);
+
+        assertTrue(coordsOne.equals(shape.getStart()));
+        assertTrue(coordsTwo.equals(shape.getFinish()));
+        assertTrue(alpha == shape.getAlpha());
+    }
+
+    @Test
+    public void blankIsNotDrawable() {
+        Coordinates coords = new Coordinates(0, 0);
+
+        Blank blank = new Blank(coords, coords);
+
+        assertFalse(blank.isDrawable());
+    }
+
+    @Test
+    public void lineIsDrawable() {
+        Coordinates coords = new Coordinates(0, 0);
+        
+        Line line = new Line(coords, coords);
+
+        assertTrue(line.isDrawable());
     }
 }

@@ -1,0 +1,27 @@
+.root {
+  -fx-font-family: 'Arial';
+  -fx-background-color: #1A1A1A;
+}
+
+.button {
+  -fx-background-color: #393939;
+  -fx-border-radius: 5;
+  -fx-text-fill: #D7D7D7;
+}
+
+
+#algorithmContainer .list-cell {
+  -fx-text-fill: #D7D7D7;
+}
+
+#algorithmContainer .list-cell:even {
+  -fx-background-color: #393939;
+}
+
+#algorithmContainer .list-cell:odd {
+  -fx-background-color: #333333;
+}
+
+#whiteboard {
+  -fx-background-color: #C1C1C1;
+}

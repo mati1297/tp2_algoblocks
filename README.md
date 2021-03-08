@@ -10,7 +10,6 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Santiago Lopez** - [github](https://github.com/Santoi)
 * **Julian Garcia** - [github](https://github.com/juligarcia)
-* **Rodrigo Vargas** - [github](https://github.com/Scuero)
 * **Matias Charrut** - [github](https://github.com/mati1297)
 
 Corrector: **Edson Justo**
@@ -42,7 +41,9 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```bash
+    mvn clean javafx:run
+```
 
 ## Licencia
 
