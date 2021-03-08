@@ -24,7 +24,6 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 java 11
 maven 3.6.0
-...
 ```
 
 ## Ejecutando las pruebas
@@ -33,13 +32,15 @@ maven 3.6.0
     mvn test
 ```
 
-Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden abrir de la siguiente manera:
+El comando anterior crear el reporte de cobertura para CI. El reporte HTML puede ser abierto mediante:
 
 ```bash
     <browser> ./target/site/jacoco/index.html
 ```
 
 ## Ejecutando la aplicación
+
+Para ejecutar la aplicacion:
 
 ```bash
     mvn clean javafx:run
